@@ -158,4 +158,4 @@ var_dump($testVar->dnsListZones('1', '10', 'keyword'));
 **where**:
 - `'1'` - the current page of your zone list;
 - `'10'` - amount of results per page. It can be 10, 20, 30, 50 or 100.
-- `'keyword'` - a specific criteria (keyword), that your results will be based on.
+- `'keyword'` - **optional**. A specific criteria (keyword), that your results will be based on.
