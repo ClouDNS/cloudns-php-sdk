@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This is the SDK for ClouDNS HTTP API. The document provides guidelines and examples on how to implement and use the ClouDNS SDK for our HTTP API. You can read more about the API at [cloudns.net] (https://www.cloudns.net).
+This is the SDK for ClouDNS HTTP API. The document provides guidelines and examples on how to implement and use the ClouDNS SDK for our HTTP API. You can read more about the API at [cloudns.net](https://www.cloudns.net).
 
-The SDK is based on the methods used in the [HTTP API] (https://www.cloudns.net/wiki/article/41/).
+The SDK is based on the methods used in the [HTTP API](https://www.cloudns.net/wiki/article/41/).
 
 ## Table of contents
 
@@ -17,7 +17,7 @@ These are the minimal requirements to use/implement the ClouDNS SDK:
 
 ### Installation
 
-1. [Download] (https://github.com/ClouDNS/cloudns-php-sdk/archive/master.zip) .
+1. [Download](https://github.com/ClouDNS/cloudns-php-sdk/archive/master.zip) .
 2. Add the SDK file to your project's folder.
 3. Include it in your project. Here is a basic exmaple on how to do so:
 
