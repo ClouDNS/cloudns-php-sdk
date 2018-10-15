@@ -207,13 +207,11 @@ $exampleVar->dnsGetZonesStatistics();
 ```
 </details>
 
-#### 7. Get zone information
+####  <details><summary>7. Get zone information</summary>
 
 - **Description**: Shows information about the DNS zone - status, type.
 
 - **Example**:
-
-*<details><summary>Show example</summary>*
   
  ```
 <?php
