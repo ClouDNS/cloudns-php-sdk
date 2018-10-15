@@ -185,7 +185,7 @@ $exampleVar->dnsGetPagesCount('10', 'keyword'));;
 
 
 - **Example**:
-<details>*<summary>Show example</summary>*
+<details><summary>*Show example*</summary>
 
 ```
 <?php
