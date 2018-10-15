@@ -78,7 +78,7 @@ exampleFunction (arg1, arg2, arg3, ... , argN);
 
 ```
 
-where `exampleFunction` is the name of the function, that will be called, `(arg1, arg2, arg3, ... , argN)` are the arguments, required for the current function. Besides the required arguments, there are also **optional** ones, which are used only in certain cases and as such they are always at the end of the function. If the **optional** arguments are not required for a certain function they can be entered as empty or **NULL** value. Here is a function, where **arg1** and **arg2** are required arguments, while **arg3** and **arg4** are optional ones:
+where `exampleFunction` is the name of the function, that will be called, `(arg1, arg2, arg3, ... , argN)` are the arguments, required for the current function. Besides the required arguments, there are also **optional** ones, which are used only in certain cases and as such they are always at the end of the function. If the **optional** arguments are not required for a certain function they can be entered as empty, **NULL** value or can be skipped. Here is a function, where **arg1** and **arg2** are required arguments, while **arg3** and **arg4** are optional ones:
 
 
 ```
@@ -86,7 +86,14 @@ exampleFunction (arg1, arg2, NULL, " ");
 
 ```
 
-As you can see the **optional** arguments are located at the end of the function and can be entered as **NULL** and/or empty value.
+or
+
+```
+exampleFunction (arg1, arg2);
+
+```
+
+As you can see the **optional** arguments are located at the end of the function and can be entered as **NULL** and/or empty value and/or skipped.
 
 ### DNS
 
@@ -200,7 +207,7 @@ $exampleVar->dnsGetZonesStatistics();
 </details>
 <br />
 
-<details><summary>7. Get zone information</summary>
+<details><summary>7. Get zone information.</summary>
 
 
 - **Description**: Shows information about the DNS zone - status, type.
