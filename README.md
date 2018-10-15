@@ -191,13 +191,11 @@ $exampleVar->dnsGetPagesCount('10', 'keyword'));;
 - `'keyword'` - **optional**. A specific criteria (keyword), that your results will be based on.
 </details>
 
-#### 6. Get zones statistics.
+<details><summary ####>6. Get zones statistics.</summary>
 
 - **Description**: Shows information about the amount of DNS zones currently in the account and the zone limit, that is available for the account's subscription plan.
 
 - **Example**:
-
-*<details><summary>Show example</summary>*
 
 ```
 <?php
