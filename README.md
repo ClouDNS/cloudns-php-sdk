@@ -131,7 +131,7 @@ var_dump($exampleVar->dnsResgisterDomainZone('domain.tld', 'master/slave/parked/
 
 
 - **example**:
-
+```
 <?php
 var_dump($exampleVar->dnsDeleteDomainZone('domain.tld'));
 
