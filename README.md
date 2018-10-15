@@ -92,29 +92,29 @@ As you can see the **optional** arguments are located at the end of the function
 
 #### 1. Available name servers.
 
-- **description**: Get a list with available domain name servers.
+- **Description**: Get a list with available domain name servers.
 
-- **example**:
+- **Example**:
 
 ```
 
 <?php
-var_dump($exampleVar->dnsAvailableNameServers());
+$exampleVar->dnsAvailableNameServers();
 
 ?>
 ```
 
 #### 2. Create a new DNS zone.
 
-- **description**: Create/add a new DNS zone to your account. Works with Master, Slave, Parked, GeoDNS and Reverse DNS zone.
+- **Description**: Create/add a new DNS zone to your account. Works with Master, Slave, Parked, GeoDNS and Reverse DNS zone.
 
 
-- **example**:
+- **Example**:
 
 ```
 
 <?php
-var_dump($exampleVar->dnsResgisterDomainZone('domain.tld', 'master/slave/parked/geodns/reverse', array ('ns1.nameserver.tld', 'ns2.nameserver.tld'), '1.2.3.4'));;
+$exampleVar->dnsResgisterDomainZone('domain.tld', 'master/slave/parked/geodns/reverse', array ('ns1.nameserver.tld', 'ns2.nameserver.tld'), '1.2.3.4');
 
 ?>
 ```
@@ -133,7 +133,7 @@ var_dump($exampleVar->dnsResgisterDomainZone('domain.tld', 'master/slave/parked/
 - **example**:
 ```
 <?php
-var_dump($exampleVar->dnsDeleteDomainZone('domain.tld'));
+$exampleVar->dnsDeleteDomainZone('domain.tld');
 
 ?>
 ```
@@ -150,7 +150,7 @@ var_dump($exampleVar->dnsDeleteDomainZone('domain.tld'));
 
 ```
 <?php
-var_dump($testVar->dnsListZones('1', '10', 'keyword'));
+$testVar->dnsListZones('1', '10', 'keyword');
 
 ?>
 ```
@@ -159,3 +159,22 @@ var_dump($testVar->dnsListZones('1', '10', 'keyword'));
 - `'1'` - the current page of your zone list;
 - `'10'` - amount of results per page. It can be 10, 20, 30, 50 or 100.
 - `'keyword'` - **optional**. A specific criteria (keyword), that your results will be based on.
+
+#### 5. Get pages count.
+
+- **Description**: Get a list of all DNS zones in your account or only the ones matching a certain criteria (keyword).
+
+
+- **Example**:
+
+```
+<?php
+$testVar->dnsListZones('1', '10', 'keyword');
+
+?>
+```
+
+**where**:
+- `'1'` - the current page of your zone list;
+- `'10'` - amount of results per page. It can be 10, 20, 30, 50 or 100.
+- `'keyword'` - a specific criteria (keyword), that your results will be based on.
