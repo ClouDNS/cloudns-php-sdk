@@ -196,7 +196,7 @@ $exampleVar->dnsGetZonesStatistics();
 
 - **Description**: Shows information about the DNS zone - status, type.
 
-<!--
+<details>
 - **Example**:
 
 ```
@@ -208,4 +208,5 @@ $exampleVar->dnsGetZoneInformation('domain.tld');
 
 **where**:
 - `'domain.tld'` - name of the DNS zone, that you want to get information for.
--->
+
+</details>
