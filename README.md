@@ -148,6 +148,7 @@ var_dump($exampleVar->dnsDeleteDomainZone('domain.tld'));
 
 - **Example**:
 
+```
 <?php
 var_dump($testVar->dnsListZones('1', '10', 'keyword'));
 
