@@ -187,7 +187,6 @@ $exampleVar->dnsGetPagesCount('10', 'keyword'));;
 - **Example**:
 
 *<details><summary>Show example</summary>*
-<p>
 
 ```
 <?php
@@ -195,7 +194,6 @@ $exampleVar->dnsGetZonesStatistics();
 
 ?>
 ```
-</p>
 </details>
 
 #### 7. Get zone information
