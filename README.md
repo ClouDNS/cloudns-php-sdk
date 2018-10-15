@@ -66,7 +66,7 @@ $testVar = new ClouDNS_SDK('example@email.com', '123456789', true);
 
 where `example@email.com` is the email address set for the API sub-user (sub-atuh-user), `123456789` is the password of the API sub-user (auth-password) and `true` indicates the type of the API user.
 
-## SDK Methods
+## SDK Functions
 
 Here you will find examples for every method, used in the SDK. The methods are presented as PHP function calls and are divided into four main categories - DNS (for DNS zones, records, etc.), Domain (for registered domains), SSL (for SSL certificates) and Sub (for sub-users). They can be used only after a successful login to the API.
 
