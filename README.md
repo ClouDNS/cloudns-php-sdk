@@ -96,6 +96,8 @@ As you can see the **optional** arguments are located at the end of the function
 
 - **Example**:
 
+*<details><summary>Show example</summary>*
+
 ```
 
 <?php
@@ -103,6 +105,7 @@ $exampleVar->dnsAvailableNameServers();
 
 ?>
 ```
+</details>
 
 #### 2. Create a new DNS zone.
 
@@ -110,6 +113,8 @@ $exampleVar->dnsAvailableNameServers();
 
 
 - **Example**:
+
+*<details><summary>Show example</summary>*
 
 ```
 
@@ -124,13 +129,16 @@ $exampleVar->dnsResgisterDomainZone('domain.tld', 'master/slave/parked/geodns/re
 - `'master/slave/parked/geodns/reverse'` - the type of the DNS zone;
 - `array ('ns1.nameserver.tld', 'ns2.nameserver.tld')` - **optional**. An array with all the name servers, that will be configured and added for the NS record(s) upon creation of the DNS zone;
 - `'1.2.3.4'` - **optional**. The IP address of the Master server, required **only** for Slave zones;
+</details>
 
 #### 3. Delete a DNS zone.
 
-- **description**: Delete an existing DNS zone. Works with Master, Slave and Reverse zones as well as cloud/bulk domains.
+- **Description**: Delete an existing DNS zone. Works with Master, Slave and Reverse zones as well as cloud/bulk domains.
 
+- **Example**:
 
-- **example**:
+*<details><summary>Show example</summary>*
+
 ```
 <?php
 $exampleVar->dnsDeleteDomainZone('domain.tld');
@@ -140,13 +148,15 @@ $exampleVar->dnsDeleteDomainZone('domain.tld');
 
 **where**:
 - `'domain.tld'` - the domain name of the DNS zone, that will be deleted;
+</details>
 
 #### 4. List DNS zones.
 
 - **Description**: Get a list of all DNS zones in your account or only the ones matching a certain criteria (keyword).
 
-
 - **Example**:
+
+*<details><summary>Show example</summary>*
 
 ```
 <?php
@@ -159,13 +169,15 @@ $exampleVar->dnsListZones('1', '10', 'keyword');
 - `'1'` - the current page of your zone list;
 - `'10'` - amount of results per page. It can be 10, 20, 30, 50 or 100.
 - `'keyword'` - **optional**. A specific criteria (keyword), that your results will be based on.
+</details>
 
 #### 5. Get pages count.
 
 - **Description**: Amount of pages with DNS zones currently in your account. It can be combined to give results based on criteria (keyword).
 
-
-**<details><summary>Example</summary>**
+- **Example**
+  
+*<details><summary>Show example</summary>*
 
 ```
 <?php
@@ -183,7 +195,6 @@ $exampleVar->dnsGetPagesCount('10', 'keyword'));;
 
 - **Description**: Shows information about the amount of DNS zones currently in the account and the zone limit, that is available for the account's subscription plan.
 
-
 - **Example**:
 
 *<details><summary>Show example</summary>*
@@ -200,9 +211,11 @@ $exampleVar->dnsGetZonesStatistics();
 
 - **Description**: Shows information about the DNS zone - status, type.
 
-**<details><summary>Example</summary>**
+- **Example**
 
-```
+*<details><summary>Show example</summary>*
+  
+ ```
 <?php
 $exampleVar->dnsGetZoneInformation('domain.tld');
 
