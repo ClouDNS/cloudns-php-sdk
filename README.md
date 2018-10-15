@@ -207,7 +207,7 @@ $exampleVar->dnsGetZonesStatistics();
 ```
 </details>
 
-####<details><summary>7. Get zone information</summary>
+#### 7. <details><summary>Get zone information</summary>
 
 - **Description**: Shows information about the DNS zone - status, type.
 
