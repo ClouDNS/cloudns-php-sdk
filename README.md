@@ -95,6 +95,8 @@ exampleFunction (arg1, arg2);
 
 As you can see the **optional** arguments are located at the end of the function and can be entered as **NULL** and/or empty value and/or skipped.
 
+Note, that there are cases, where you will have to enter some of the **optional** arguments and skip others - for example skip **arg3** and enter **arg4**. In situations such as this one you can enter **arg3** as `NULL` or empty `' '` value, but you can not skip it.
+
 ### DNS
 
 <details><summary>1. Available name servers.</summary>
