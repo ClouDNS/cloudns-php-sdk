@@ -162,19 +162,18 @@ $testVar->dnsListZones('1', '10', 'keyword');
 
 #### 5. Get pages count.
 
-- **Description**: Get a list of all DNS zones in your account or only the ones matching a certain criteria (keyword).
+- **Description**: Amount of pages with DNS zones currently in your account. It can be combined to give results based on criteria (keyword).
 
 
 - **Example**:
 
 ```
 <?php
-$testVar->dnsListZones('1', '10', 'keyword');
+$testVar->dnsGetPagesCount('10', 'keyword'));;
 
 ?>
 ```
 
 **where**:
-- `'1'` - the current page of your zone list;
 - `'10'` - amount of results per page. It can be 10, 20, 30, 50 or 100.
-- `'keyword'` - a specific criteria (keyword), that your results will be based on.
+- `'keyword'` - **optional**. A specific criteria (keyword), that your results will be based on.
