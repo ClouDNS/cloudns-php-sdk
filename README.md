@@ -175,7 +175,7 @@ $exampleVar->dnsListZones('1', '10', 'keyword');
 
 - **Description**: Amount of pages with DNS zones currently in your account. It can be combined to give results based on criteria (keyword).
 
-- **Example**
+- **Example**:
   
 *<details><summary>Show example</summary>*
 
@@ -211,7 +211,7 @@ $exampleVar->dnsGetZonesStatistics();
 
 - **Description**: Shows information about the DNS zone - status, type.
 
-- **Example**
+- **Example**:
 
 *<details><summary>Show example</summary>*
   
