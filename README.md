@@ -184,7 +184,7 @@ $exampleVar->dnsGetPagesCount('10', 'keyword'));;
 - **Description**: Shows information about the amount of DNS zones currently in the account and the zone limit, that is available for the account's subscription plan.
 
 
-- **<details><summary>Example</summary>**
+<details><summary>- Example</summary>**
   
 ```
 <?php
