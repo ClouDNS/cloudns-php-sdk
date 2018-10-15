@@ -68,7 +68,7 @@ where `example@email.com` is the email address set for the API sub-user (sub-atu
 
 ## SDK Methods
 
-Here you will find examples for every method, used in the SDK. The methods are presented as PHP function calls and are divided into four main categories - DNS (for DNS zones, records, etc.), Domain (for registered domains), SSL (for SSL certificates) and Sub (for sub-users). They can be used only after a succesfful login to the API.
+Here you will find examples for every method, used in the SDK. The methods are presented as PHP function calls and are divided into four main categories - DNS (for DNS zones, records, etc.), Domain (for registered domains), SSL (for SSL certificates) and Sub (for sub-users). They can be used only after a successful login to the API.
 
 The basic construction of the functions is as follows:
 
