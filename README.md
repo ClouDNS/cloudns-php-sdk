@@ -217,3 +217,81 @@ $exampleVar->dnsGetZoneInformation('domain.tld');
 **where**:
 - `'domain.tld'` - name of the DNS zone, that you want to get information for.
 </details>
+<br />
+
+<details><summary>8. Update zone.</summary>
+
+
+- **Description**: Updates a DNS zone.
+
+- **Example**:
+  
+ ```
+<?php
+$exampleVar->dnsUpdateZone('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - name of the DNS zone that will be updated.
+</details>
+<br />
+
+<details><summary>9. Update status.</summary>
+
+
+- **Description**: Shows information for update status of the DNS zone and a list of name servers.
+
+- **Example**:
+  
+ ```
+<?php
+$exampleVar->dnsUpdateStatus('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - name of the DNS zone, that the update status and name servers will be shown for.
+</details>
+<br />
+
+<details><summary>10. Is updated.</summary>
+
+
+- **Description**: Shows the update status of the DNS zone for a list of name servers - **TRUE** if it is updated on all servers and **FALSE** if not.
+
+- **Example**:
+  
+ ```
+<?php
+$exampleVar->dnsIsUpdated('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - name of the DNS zone, that the update status and name servers will be shown for.
+</details>
+<br />
+
+<details><summary>11. Change zone's status.</summary>
+
+
+- **Description**: Change the status of the DNS zone - active/inactive.
+
+- **Example**:
+  
+ ```
+<?php
+$exampleVar->dnsChangeZonesStatus('domain.tld', '1');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - name of the DNS zone, that the status will be changed for (active or inactive).
+- `'1'` - **optional**. Status indicator - **1** to activate the DNS zone and **0** to deactivate it. If the argument is skipped the status will be toggled.
+</details>
+<br />
