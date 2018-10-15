@@ -204,7 +204,7 @@ $exampleVar->dnsGetZonesStatistics();
 ?>
 ```
 </details>
-</ br>
+<br />
 
 <details><summary>7. Get zone information</summary>
 
