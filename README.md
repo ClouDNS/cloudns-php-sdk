@@ -150,7 +150,7 @@ $exampleVar->dnsDeleteDomainZone('domain.tld');
 
 ```
 <?php
-$testVar->dnsListZones('1', '10', 'keyword');
+$exampleVar->dnsListZones('1', '10', 'keyword');
 
 ?>
 ```
@@ -169,7 +169,7 @@ $testVar->dnsListZones('1', '10', 'keyword');
 
 ```
 <?php
-$testVar->dnsGetPagesCount('10', 'keyword'));;
+$exampleVar->dnsGetPagesCount('10', 'keyword'));;
 
 ?>
 ```
