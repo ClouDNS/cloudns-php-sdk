@@ -112,8 +112,6 @@ $exampleVar->dnsAvailableNameServers();
 
 - **Example**:
 
-*<details><summary>Show example</summary>*
-
 ```
 
 <?php
