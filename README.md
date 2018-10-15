@@ -90,7 +90,7 @@ As you can see the **optional** arguments are located at the end of the function
 
 ### DNS
 
-1. Available name servers.
+#### 1. Available name servers.
 
 - **description**: Get a list with available domain name servers.
 
