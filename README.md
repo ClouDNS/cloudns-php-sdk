@@ -142,3 +142,19 @@ var_dump($exampleVar->dnsDeleteDomainZone('domain.tld'));
 - `'domain.tld'` - the domain name of the DNS zone, that will be deleted;
 
 #### 4. List DNS zones.
+
+- **Description**: Get a list of all DNS zones in your account or only the ones matching a certain criteria (keyword).
+
+
+- **Example**:
+
+<?php
+var_dump($testVar->dnsListZones('1', '10', 'keyword'));
+
+?>
+```
+
+**where**:
+- `'1'` - the current page of your zone list;
+- `'10'` - amount of results per page. It can be 10, 20, 30, 50 or 100.
+- `'keyword'` - a specific criteria (keyword), that your results will be based on.
