@@ -37,7 +37,7 @@ To gain access and use the methods, included in the SDK, the HTTP API credential
 
 ```
 <?php
-$testVar = new ClouDNS_SDK('0000', '123456789', false);
+$exampleVar = new ClouDNS_SDK('0000', '123456789', false);
 
 ?>
 ```
@@ -48,7 +48,7 @@ where `0000` is the ID of the API user (atuh-id), `123456789` is the password of
 
 ```
 <?php
-$testVar = new ClouDNS_SDK('0000', '123456789', true);
+$exampleVar = new ClouDNS_SDK('0000', '123456789', true);
 
 ?>
 ```
@@ -59,7 +59,7 @@ where `0000` is the ID of the API sub-user (sub-atuh-id), `123456789` is the pas
 
 ```
 <?php
-$testVar = new ClouDNS_SDK('example@email.com', '123456789', true);
+$exampleVar = new ClouDNS_SDK('example@email.com', '123456789', true);
 
 ?>
 ```
