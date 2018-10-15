@@ -104,7 +104,7 @@ var_dump($exampleVar->dnsAvailableNameServers());
 ?>
 ```
 
-2. Create a new DNS zone.
+#### 2. Create a new DNS zone.
 
 - **description**: Create/add a new DNS zone to your account. Works with Master, Slave, Parked, GeoDNS and Reverse DNS zone.
 
@@ -125,7 +125,7 @@ var_dump($exampleVar->dnsResgisterDomainZone('domain.tld', 'master/slave/parked/
 - `array ('ns1.nameserver.tld', 'ns2.nameserver.tld')` - **optional**. An array with all the name servers, that will be configured and added for the NS record(s) upon creation of the DNS zone;
 - `'1.2.3.4'` - **optional**. The IP address of the Master server, required **only** for Slave zones;
 
-3. Delete a DNS zone.
+#### 3. Delete a DNS zone.
 
 - **description**: Delete an existing DNS zone. Works with Master, Slave and Reverse zones as well as cloud/bulk domains.
 
@@ -141,4 +141,4 @@ var_dump($exampleVar->dnsDeleteDomainZone('domain.tld'));
 **where**:
 - `'domain.tld'` - the domain name of the DNS zone, that will be deleted;
 
-4. List DNS zones.
+#### 4. List DNS zones.
