@@ -1083,7 +1083,7 @@ $exampleVar->dnsDailyStatistics('domain.tld', '2018', '12');
   
 ```
 <?php
-$exampleVar->dnsMonthlyStatistics('domain.tld', '2018', '12');
+$exampleVar->dnsMonthlyStatistics('domain.tld', '2018');
 
 ?>
 ```
