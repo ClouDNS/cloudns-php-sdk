@@ -458,3 +458,342 @@ if `'caa-type'` is issuewild the `'caa-value'` can be hostname or ";".
 if `'caa-type'` is iodef the `'caa-value'` "mailto:someemail@address.tld, http://example.tld or http://example.tld.
 </details>
 <br />
+
+<details><summary>16. Copy records.</summary>
+
+
+- **Description**: Copies all the records from a specific zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsCopyRecords('domain.tld', 'domain2.tld', 1);
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - name of the DNS zone, which the records will be copied to.
+- `'domain2.tld'` - name of the DNS zone, which the records will be copied from.
+- `'1'` - **optional**. If entered (set to 1), deletes all the existing records in the DNS zozo, which the records will be copied to.
+</details>
+<br />
+
+<details><summary>17. Import records.</summary>
+
+
+- **Description**: Copies all the records from a specific zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsCopyRecords('domain.tld', 'bind', '@ 3600 IN TXT "v=spf1 a mx include:_spf.google.com ~all"
+@ 3600 IN MX ASPMX.L.GOOGLE.COM.', 1);
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - name of the DNS zone, which the records will be imported to.
+- `'bind'` - the format, which will be used to import the records. The available formats are **bind** and **tinydns**.
+- `'@ 3600 IN TXT "v=spf1 a mx include:_spf.google.com ~all"
+    @ 3600 IN MX ASPMX.L.GOOGLE.COM.'` - list of the records based on the chosen format. The records must be added one per row.
+- `'1'` - **optional**. If entered (set to 1), deletes all the existing records in the DNS zozo, which the records will be imported to.
+</details>
+<br />
+
+<details><summary>18. Export records in BIND format.</summary>
+
+
+- **Description**: Exports the zone records in BIND format.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsExportRecordsBIND('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - name of the DNS zone, which the records will be exported from in BIND format.
+</details>
+<br />
+
+<details><summary>19. Get the available record types.</summary>
+
+
+- **Description**: Shows the available record types, that can be set up, based on the DNS zone type.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsGetAvailableRecords('domain');
+
+?>
+```
+
+**where**:
+- `'domain'` - type of the DNS zone. The value can be **domain** for Master DNS zones, **reverse** for Reverse DNS zones and **parked** for Parked DNS zones.
+</details>
+
+<details><summary>20. Get the available TTL.</summary>
+
+
+- **Description**: Shows the available TTL, that can be set for the records.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsGetAvailableTTL();
+
+?>
+```
+
+</details>
+<br />
+
+<details><summary>21. Get SOA details.</summary>
+
+
+- **Description**: Shows the SOA details of the DNS zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsGetSOA('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - is the name of the DNS zone, that the SOA details will be shown for.
+
+</details>
+<br />
+
+<details><summary>22. Modify SOA details.</summary>
+
+
+- **Description**: Modify (edit) the SOA details of the DNS zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsModifySOA('domain.tld', 'ns1.nameserver.tld', 'example@email.tld', 2000, 3000, 2000000, 3600);
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - is the name of the DNS zone, that the SOA details will be modified (edited) for.
+- `'ns1.nameserver.tld'` - host name of the primary name server.
+- `'example@email.tld'` - DNS admin email.
+- `'2000'` - the refresh rate. The value must be between **1200** and **43200** seconds.
+- `'3000'` - the retry rate. The value must be between **180** and **2419200** seconds.
+- `'2000000'` - the expire rate. The value must be between **1209600** and **2419200** seconds.
+- `'3600'` - the default TTL. The value must be between **60** and **2419200** seconds.
+</details>
+<br />
+
+<details><summary>23. Get DynamicURL.</summary>
+
+
+- **Description**: Returns the DynamicURL of an A or AAAA record.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsGetDynamicURL('domain.tld', 12345);
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the DNS zone of the A or AAAA record.
+- `'12345'` - the ID of the A or AAAA record. It can be acquired from the **List records** function.
+
+</details>
+
+<details><summary>24. Disable DynamicURL.</summary>
+
+
+- **Description**: Disable the DynamicURL of an A or AAAA record.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsDisableDynamicURL('domain.tld', '12345');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the DNS zone of the A or AAAA record.
+- `'12345'` - the ID of the A or AAAA record. It can be acquired from the **List records** function.
+
+</details>
+<br />
+
+<details><summary>25. Change DynamicURL.</summary>
+
+
+- **Description**: Change the DynamicURL of an A or AAAA record.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsDisableDynamicURL('domain.tld', '12345');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the DNS zone of the A or AAAA record.
+- `'12345'` - the ID of the A or AAAA record. It can be obtained from the **List records** function.
+
+</details>
+<br />
+
+<details><summary>26. Change record's status.</summary>
+
+
+- **Description**: Changes the status of the record to active/inactive.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsChangeRecordStatus('domain.tld', '12345', 1);
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the DNS zone, where the records will be imported to.
+- `'12345'` - the ID of the record. It can be obtained from the **List records** function.
+- `'1'` - **optional**. Status indicator - **1** to activate the record and **0** to deactivate it. If the argument is skipped the status will be toggled.
+
+</details>
+<br />
+
+<details><summary>27. Add master server.</summary>
+
+
+- **Description**: Add new master server to a DNS zone. Only available for Slave DNS zones and Slave Reverse DNS zones.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsAddMasterServer('domain.tld', '1.2.3.4');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the Slave or Slave Reverse DNS zone, which the new master server will be added for.
+- `'1.2.3.4'` - the IP address of the new master server.
+
+</details>
+<br />
+
+<details><summary>28. Delete master server.</summary>
+
+
+- **Description**: Delete master server of a DNS zone. Only available for Slave DNS zones and Slave Reverse DNS zones.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsDeleteMasterServer('domain.tld', '12345');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the Slave or Slave Reverse DNS zone, which the master server will be deleted for.
+- `'12345'` - the ID of the master server. It can be obtained from the **List master servers** function.
+
+</details>
+<br />
+
+<details><summary>29. List master servers.</summary>
+
+
+- **Description**: List the master servers of the DNS zone. Only available for Slave DNS zones and Slave Reverse DNS zones.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsListMasterServer('domain.tld');
+
+?>
+```
+- `'domain.tld'` - the Slave or Slave Reverse DNS zone, which the master server will be listed for.
+
+</details>
+<br />
+
+<details><summary>30. Get mail forwards statistics.</summary>
+
+
+- **Description**: Gives details about the amount of mail servers and the mail forwards limit that is available for the account.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsMailForwardsStats();
+
+?>
+```
+
+</details>
+<br />
+
+<details><summary>31. Available mail forward servers.</summary>
+
+
+- **Description**: Shows the available mail forward servers for the account.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsAvailableMailForwards();
+
+?>
+```
+
+</details>
+<br />
+
+<details><summary>32. Add mail forward.</summary>
+
+
+- **Description**: Add new mail forward to the DNS zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsAddMailForward('domain.tld', 'apitest', 'mail', 'anzhelo@cloudns.net');
+
+?>
+```
+
+</details>
+<br />
