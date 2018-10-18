@@ -12,7 +12,7 @@ The SDK is based on the methods used in the [HTTP API](https://www.cloudns.net/w
 
 These are the minimal requirements to use/implement the ClouDNS SDK:
 
-- PHP 5.3 or above;
+- PHP 5 or above;
 - Access to the ClouDNS HTTP API;
 
 ### Installation
