@@ -540,6 +540,7 @@ $exampleVar->dnsGetAvailableRecords('domain');
 **where**:
 - `'domain'` - type of the DNS zone. The value can be **domain** for Master DNS zones, **reverse** for Reverse DNS zones and **parked** for Parked DNS zones.
 </details>
+<br />
 
 <details><summary>20. Get the available TTL.</summary>
 
@@ -622,6 +623,7 @@ $exampleVar->dnsGetDynamicURL('domain.tld', 12345);
 - `'12345'` - the ID of the A or AAAA record. It can be acquired from the **List records** function.
 
 </details>
+<br />
 
 <details><summary>24. Disable DynamicURL.</summary>
 
