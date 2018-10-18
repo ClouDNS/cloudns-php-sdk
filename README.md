@@ -799,3 +799,419 @@ $exampleVar->dnsAddMailForward('domain.tld', 'apitest', 'mail', 'anzhelo@cloudns
 
 </details>
 <br />
+
+<details><summary>33. Delete mail forward.</summary>
+
+
+- **Description**: Delete a mail forward in the DNS zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsDeleteMailForward('domain.tld', '12345');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the DNS zone, which the new mail forward will be added for.
+- `'12345'` - the ID of the mail forward. It can be obtained from the **List mail forwards** function.
+
+</details>
+<br />
+
+<details><summary>34. Modify (edit) mail forward.</summary>
+
+
+- **Description**: Delete a mail forward in the DNS zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsModifyMailForward('domain.tld', 'box', 'host', 'example@email.tld', '12345');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the DNS zone of the mail forward, which will be modified (edited).
+- `'box'` - the mail box of the mail forward (e.g. admin, support, service, etc.).
+- `'host'` - the host, which is configured for mail server (generally the one, that MX record(s) are added for).
+- `'example@email.tld'` - the email address, which the email messages will be forwarded to.
+- `'12345'` - the ID of the mail forward. It can be obtained from the **List mail forwards** function.
+
+</details>
+<br />
+
+<details><summary>35. List mail forwards.</summary>
+
+
+- **Description**: List the mail forwards of the DNS zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsListMailForwards('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the DNS zone, which the mail forwards will be listed for.
+
+</details>
+<br />
+
+<details><summary>36. Add cloud domain.</summary>
+
+
+- **Description**: Adds a cloud domain.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsAddCloudDomain('domain.tld', 'cloud-domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - master domain of the cloud.
+- `'cloud-domain.tld'` - the new domain in the cloud.
+
+</details>
+<br />
+
+<details><summary>37. Delete cloud domain.</summary>
+
+
+- **Description**: Deletes a cloud domain.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsDeleteCloudDomain('cloud-domain.tld');
+
+?>
+```
+
+**where**:
+- `'cloud-domain.tld'` - the cloud domain that will be deleted.
+
+</details>
+<br />
+
+<details><summary>38. Change cloud master.</summary>
+
+
+- **Description**: Sets a new master of the cloud.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsChangeCloudMaster('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name of the new cloud master.
+
+</details>
+<br />
+
+<details><summary>39. List cloud domains.</summary>
+
+
+- **Description**: Lists all domains in the cloud.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsListCloudDomains('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name of the cloud master.
+
+</details>
+<br />
+
+<details><summary>40. Add new IP.</summary>
+
+
+- **Description**: Adds new IP address of a slave server for zone transfers.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsAllowNewIP('domain.tld', '1.2.3.4');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name, for which the new IP address of a slave server will be add for zone transfers.
+- `'1.2.3.4'` - IP address of the slave server.
+
+</details>
+<br />
+
+<details><summary>41. Allow new IP.</summary>
+
+
+- **Description**: Adds (allows) new IP address of a slave server for zone transfers.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsAllowNewIP('domain.tld', '1.2.3.4');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name, for which the new IP address of a slave server will be added (allowed) for zone transfers.
+- `'1.2.3.4'` - IP address of the slave server.
+
+</details>
+<br />
+
+<details><summary>42. Delete an allowed IP.</summary>
+
+
+- **Description**: Removes slave server's IP address for zone transfers.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsDeleteAllowedIP('domain.tld', '12345');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name, for which the IP address of a slave server will be removed for zone transfers.
+- `'12345'` - ID of the slave server. It can be obtained from the **List the allowed IPs** funciton.
+
+</details>
+<br />
+
+<details><summary>43. List the allowed IP's.</summary>
+
+
+- **Description**: List all of the allowed IP addresses for zone transfers.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsListAllowedIP('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name, for which the allowed IP address for zone transfer will be listed.
+
+</details>
+<br />
+
+<details><summary>44. Hourly statistics.</summary>
+
+
+- **Description**: Shows hourly statistics for the DNS zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsHourlyStatistics('domain.tld', '2018', '12', '31');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name, which the statistics will be shown for.
+- `'2018'` - the year, which the statistics will be shown for.
+- `'12'` - the month, which the statistics will be shown for.
+- `'31'` - the day, which the statistics will be shown for.
+
+</details>
+<br />
+
+<details><summary>45. Daily statistics.</summary>
+
+
+- **Description**: Shows daily statistics for the DNS zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsDailyStatistics('domain.tld', '2018', '12');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name, which the statistics will be shown for.
+- `'2018'` - the year, which the statistics will be shown for.
+- `'12'` - the month, which the statistics will be shown for.
+
+</details>
+<br />
+
+<details><summary>46. Monthly statistics.</summary>
+
+
+- **Description**: Shows monthly statistics for the DNS zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsMonthlyStatistics('domain.tld', '2018', '12');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name, which the statistics will be shown for.
+- `'2018'` - the year, which the statistics will be shown for.
+
+</details>
+<br />
+
+<details><summary>47. Yearly statistics.</summary>
+
+
+- **Description**: Shows yearly statistics for the DNS zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsYearlyStatistics('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name, which the statistics will be shown for.
+
+</details>
+<br />
+
+<details><summary>48. Staistics for the last 30 days.</summary>
+
+
+- **Description**: Shows statistics of the DNS zone for the last 30 days.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsLast30DaysStatistics('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name, which the statistics will be shown for.
+
+</details>
+<br />
+
+<details><summary>49. Get templates for parked pages.</summary>
+
+
+- **Description**: Shows the templates, that we provide, fo.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsGetParkedTemplates();
+
+?>
+```
+
+</details>
+<br />
+
+<details><summary>50. Get parked zones settings.</summary>
+
+
+- **Description**: Shows the settings of the parked zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsGetParkedSettings('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name of the parked zone.
+
+</details>
+<br />
+
+<details><summary>51. Modify parked zones settings.</summary>
+
+
+- **Description**: Modify (edit) the settings of a parked zone.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsModifyParkedSettings('domain.tld', '1', 'title', 'description', 'keywords', 'contact-form');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name of the parked zone.
+- `'1'` - id of the template for the parked zone. It can be **1**, **2**, **3** or **4**. The available templates can be obtained from the "Get templates for parked pages" function.
+- `'title'` - **optional**. Title of the parked page.
+- `'keywords'` - **optional**. Keywords of the parked page.
+- `'contact-form'` - **optional**. Enables or disables the contact form of the parked page - **1** for enabled, **2** for disabled and **0** is the default value.
+
+</details>
+<br />
+
+<details><summary>52. List GeoDNS locations.</summary>
+
+
+- **Description**: Lists all the GeoDNS locations.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsModifyParkedSettings('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name of the GeoDNS zone.
+
+</details>
+<br />
