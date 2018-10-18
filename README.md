@@ -1205,7 +1205,7 @@ $exampleVar->dnsModifyParkedSettings('domain.tld', '1', 'title', 'description', 
   
 ```
 <?php
-$exampleVar->dnsModifyParkedSettings('domain.tld');
+$exampleVar->dnsListGeoDNSLocations('domain.tld');
 
 ?>
 ```
