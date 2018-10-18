@@ -271,6 +271,12 @@ class ClouDNS_SDK {
 
 		return $this->apiRequest($data, $url);
 	}
+	
+	public function dnsMailForwardsStats() {
+		$url = 'dns/get-mailforward-stats';
+
+		return $this->apiRequest(false, $url);
+	}
 
 	public function dnsAvailableMailForwards() {
 		$url = 'dns/get-mailforward-servers';
