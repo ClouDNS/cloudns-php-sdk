@@ -2024,3 +2024,255 @@ $exampleVar->domainsModifyPrivacyProtection('domain.tld', '1');
 
 </details>
 <br />
+
+<details><summary>18. Modify transfer lock.</summary>
+
+
+- **Description**: Enables/Disables the transfer lock of a domain name. The current state of it can be obtained from the **Domain information** function.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->domainsModifyTransferLock('domain.tld', '1');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the registered domain name.
+- `'1'` - transfer lock status - **1** for enable and **0** for disable.
+
+</details>
+<br />
+
+<details><summary>19. Get transfer code.</summary>
+
+
+- **Description**: Shows the transfer code (auth code) of the domain name.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->domainsGetTransferCode('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the registered domain name, for which the transfer code will be shown.
+
+</details>
+<br />
+
+<details><summary>20. Resent RAA verification.</summary>
+
+
+- **Description**: Resend the verification e-mail to the administrative contact of the domain name.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->domainsResendRAAVerification('domain.tld');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - the registered domain name.
+
+</details>
+<br />
+
+### SSL
+
+<details><summary>1. Order new SSL.</summary>
+
+
+- **Description**: Places an order for a new SSL certificate.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->sslOrderNewSSL('domain.tld', '1', '2');
+
+?>
+```
+
+**where**:
+- `'domain.tld'` - domain name, which the SSL certificate will be ordered for.
+- `'1'` - the period of the SSL certificate. The value is in years.
+- `'2'` - type of the SSL certificate - **2 - Wildcard Positive SSL**, **3 - Positive SSL**.
+
+</details>
+<br />
+
+<details><summary>2. List certificates.</summary>
+
+
+- **Description**: Get a list of ordered and owned SSL certificates.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->sslListOrderedCertificates('1', '10');
+
+?>
+```
+
+**where**:
+- `'1'` - the page, your SSL list is currently on.
+- `'10'` - the amount of results per page. It can be **10**, **20**, **30**, **50** or **100**.
+
+</details>
+<br />
+
+<details><summary>3. Get pages count.</summary>
+
+
+- **Description**: Shows the number of pages for your SSL certificates.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->sslGetPagesCount('10');
+
+?>
+```
+
+**where**:
+- `'10'` - the amount of results per page. It can be **10**, **20**, **30**, **50** or **100**.
+
+</details>
+<br />
+
+<details><summary>4. SSL Information.</summary>
+
+
+- **Description**: Shows information about the SSL certificate.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->sslInformation('ssl_id');
+
+?>
+```
+
+**where**:
+- 'ssl_id' - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
+
+</details>
+<br />
+
+<details><summary>5. Submit CSR.</summary>
+
+
+- **Description**: Submit CSR key for an SSL certificate.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->sslSubmitCSR('ssl_id', 'example@mail.tld', '-----BEGIN CERTIFICATE REQUEST----- ... -----END CERTIFICATE REQUEST-----');
+
+?>
+```
+
+**where**:
+- `'ssl_id'` - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
+- `'example@mail.tld'` - email address, which the owner of the certificate has access to.
+- `'-----BEGIN CERTIFICATE REQUEST----- ... -----END CERTIFICATE REQUEST-----'` - the CSR key.
+
+</details>
+<br />
+
+<details><summary>6. Renew SSL.</summary>
+
+
+- **Description**: Renew an SSL certificate.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->sslRenew('ssl_id', '1');
+
+?>
+```
+
+**where**:
+- `'ssl_id'` - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
+- `'1'` - the period, which the sertificate will be renewed for.
+
+</details>
+<br />
+
+<details><summary>7. Change SSL verification e-mail.</summary>
+
+
+- **Description**: Changes the verification e-mail of the SSL certificate.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->sslChangeVerificationMail('ssl_id', 'example@mail.tld');
+
+?>
+```
+
+**where**:
+- `'ssl_id'` - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
+- `'example@mail.tld'` - the new email address, which the owner of the certificate has access to.
+
+</details>
+<br />
+
+<details><summary>8. Reissue SSL.</summary>
+
+
+- **Description**: Reissue an SSL certificate.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->sslReissue('ssl_id', 'example@mail.tld', '-----BEGIN CERTIFICATE REQUEST----- ... -----END CERTIFICATE REQUEST-----');
+
+?>
+```
+
+**where**:
+- `'ssl_id'` - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
+- `'example@mail.tld'` - email address, which the owner of the certificate has access to.
+- `'-----BEGIN CERTIFICATE REQUEST----- ... -----END CERTIFICATE REQUEST-----'` - the CSR key.
+
+</details>
+<br />
+
+<details><summary>9. List SSL verification e-mails.</summary>
+
+
+- **Description**: Shows a list of all the allowed verification e-mails for an SSL certificate.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->sslListVerificationMails('ssl_id');
+
+?>
+```
+
+**where**:
+- `'ssl_id'` - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
+
+</details>
+<br />
