@@ -2276,3 +2276,277 @@ $exampleVar->sslListVerificationMails('ssl_id');
 
 </details>
 <br />
+
+### Sub
+
+<details><summary>1. Add new sub user.</summary>
+
+
+- **Description**: Adds a new API sub user.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subAddNewUser('123456789', '0', '0', '0.0.0.0');
+
+?>
+```
+
+**where**:
+- `'123456789'` - the password for the API sub user.
+- `'0'` - amount of DNS zones, that the sub user will be allowed to use/create.
+- `'0'` - amount of Mail forwards, that the sub user will be allowed to use/create.
+- `'0.0.0.0'` - **optional**. The IP address to be whitelisted, which the sub user will only have access from. If no IP address is provided (the argument is skipped), access from all IP's will be allowed.
+
+</details>
+<br />
+
+<details><summary>2. Get sub user's information.</summary>
+
+
+- **Description**: Shows information for an API sub user.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subGetUserInfo('id');
+
+?>
+```
+
+**where**:
+- `'id'` - ID of the sub user.
+
+</details>
+<br />
+
+<details><summary>3. Get pages count.</summary>
+
+
+- **Description**: Shows the number of pages with sub users.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subGetPagesCount('10');
+
+?>
+```
+
+**where**:
+- `'10'` - the amount of results per page. It can be **10**, **20**, **30**, **50** or **100**.
+
+</details>
+<br />
+
+<details><summary>4. Get pages count.</summary>
+
+
+- **Description**: Shows a list with all the API sub users.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subListSubUsers('1', '10');
+
+?>
+```
+
+**where**:
+- `'1'` - the page, your sub user list is currently on.
+- `'10'` - the amount of results per page. It can be **10**, **20**, **30**, **50** or **100**.
+
+</details>
+<br />
+
+<details><summary>5. Modify zones limit.</summary>
+
+
+- **Description**: Modifies (edits) the amount of zones available for the sub user.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subModifyZonesLimit('id', '0');
+
+?>
+```
+
+**where**:
+- `'id'` - ID of the sub user.
+- `'0'` - amount of DNS zones, that the sub user will be allowed to use/create.
+
+</details>
+<br />
+
+<details><summary>6. Modify mail forwards limit.</summary>
+
+
+- **Description**: Modifies (edits) the amount of mail forwards available for the sub user.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subModifyMailForwardsLimit('id', '0');
+
+?>
+```
+
+**where**:
+- `'id'` - ID of the sub user.
+- `'0'` - amount of DNS zones, that the sub user will be allowed to use/create.
+
+</details>
+<br />
+
+<details><summary>7. Add new IP.</summary>
+
+
+- **Description**: Adds new IP address to the whitelist, which the sub user will have access from.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subAddIP('id', '0.0.0.0');
+
+?>
+```
+
+**where**:
+- `'id'` - ID of the sub user.
+- `'0.0.0.0'` - the IP address to be whitelisted.
+
+</details>
+<br />
+
+<details><summary>8. Remove IP.</summary>
+
+
+- **Description**: Removes an IP address from the whitelist.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subRemoveIP('id', '0.0.0.0');
+
+?>
+```
+
+**where**:
+- `'id'` - ID of the sub user.
+- `'0.0.0.0'` - the IP address to be removed whitelisted.
+
+</details>
+<br />
+
+<details><summary>9. Modify status.</summary>
+
+
+- **Description**: Activate/Deactivate API sub user.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subModifyStatus('id', '0');
+
+?>
+```
+
+**where**:
+- `'id'` - ID of the sub user.
+- `'0'` - sub user status - **1** for active, **0** for inactive.
+
+</details>
+<br />
+
+<details><summary>10. Modify password.</summary>
+
+
+- **Description**: Modify (change) the password of an API sub user.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subModifyPassword('id', '123456789');
+
+?>
+```
+
+**where**:
+- `'id'` - ID of the sub user.
+- `'123456789'` - the new passowrd of the API sub user.
+
+</details>
+<br />
+
+<details><summary>11. Delegate zone.</summary>
+
+
+- **Description**: Delegate the management of a DNS zone to an API sub user.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subDelegateZone('id', 'domain.tld');
+
+?>
+```
+
+**where**:
+- `'id'` - ID of the sub user.
+- `'domain.tld'` - name of the DNS zone, that the API sub user will gain access to.
+
+</details>
+<br />
+
+<details><summary>12. Remove zone delegation.</summary>
+
+
+- **Description**: Removes a delegated DNS zone from an API sub user.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subRemoveZoneDelegation('id', 'domain.tld');
+
+?>
+```
+
+**where**:
+- `'id'` - ID of the sub user.
+- `'domain.tld'` - name of the delageted DNS zone, that will be removed from the API sub user.
+
+</details>
+<br />
+
+<details><summary>13. Delete sub user.</summary>
+
+
+- **Description**: Deletes an API sub user.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subDeleteSubUser('id');
+
+?>
+```
+
+**where**:
+- `'id'` - ID of the sub user.
+
+</details>
+<br />
