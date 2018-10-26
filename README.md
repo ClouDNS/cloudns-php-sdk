@@ -110,7 +110,9 @@ Note, that there are cases, where you will have to enter some of the **optional*
 
 ### DNS
 
-#### <details><summary>1. Available name servers.</summary> ####
+<details><summary>1. Available name servers.</summary>
+ 
+ #### Available name servers. ####
  
 - **Description**: Get a list with available domain name servers.
 
