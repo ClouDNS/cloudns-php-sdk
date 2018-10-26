@@ -9,9 +9,12 @@ The SDK is based on the methods used in the [HTTP API](https://www.cloudns.net/w
 ## Table of contents
 <!--ts-->
 * [Basic integration and requirements](#basic-integration-and-requirements)
+
   * [Installation](#installation)
   * [Initialization](#initialization)
+  
 * [SDK Functions](#sdk-functions)
+
   * [DNS](#dns)
   * [Domain](#domain)
   * [SSL](#ssl)
