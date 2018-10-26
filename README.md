@@ -59,7 +59,7 @@ where `0000` is the ID of the API sub-user (sub-atuh-id), `123456789` is the pas
 
 ```
 <?php
-$exampleVar = new ClouDNS_SDK('example@email.com', '123456789', true);
+$exampleVar = new ClouDNS_SDK('example@email.tld', '123456789', true);
 
 ?>
 ```
