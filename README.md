@@ -13,6 +13,7 @@ The SDK is based on the methods used in the [HTTP API](https://www.cloudns.net/w
 * [Initialization](#initialization)
 * [SDK Functions](#sdk-functions)
   * [DNS](#dns)
+   * [Available name servers](available-name-servers)
   * [Domain](#domain)
   * [SSL](#ssl)
   * [Sub](#sub)
