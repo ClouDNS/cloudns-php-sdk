@@ -7,8 +7,12 @@ This is the SDK for ClouDNS HTTP API. The document provides guidelines and examp
 The SDK is based on the methods used in the [HTTP API](https://www.cloudns.net/wiki/article/41/).
 
 ## Table of contents
+<!--ts-->
+
+<!--te-->
 
 ## Basic integration and requirements
+=====================================
 
 These are the minimal requirements to use/implement the ClouDNS SDK:
 
