@@ -19,7 +19,6 @@ The SDK is based on the methods used in the [HTTP API](https://www.cloudns.net/w
   * [Domain](#domain)
   * [SSL](#ssl)
   * [Sub](#sub)
-    [Remove zone delegation](#remove-zone-delegation)
 <!--te-->
 
 ## Basic integration and requirements
