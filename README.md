@@ -19,6 +19,7 @@ The SDK is based on the methods used in the [HTTP API](https://www.cloudns.net/w
   * [Domain](#domain)
   * [SSL](#ssl)
   * [Sub](#sub)
+    [Remove zone delegation](#remove-zone-delegation)
 <!--te-->
 
 ## Basic integration and requirements
@@ -2526,37 +2527,7 @@ $exampleVar->subDelegateZone('id', 'domain.tld');
 <details><summary>12. Remove zone delegation.</summary>
 
 
-- **Description**: Removes a delegated DNS zone from an API sub user.
-
-- **Example**:
-
-```
-<?php
-$exampleVar->subRemoveZoneDelegation('id', 'domain.tld');
-
-?>
-```
-
-**where**:
-- `'id'` - ID of the sub user.
-- `'domain.tld'` - name of the delageted DNS zone, that will be removed from the API sub user.
-
-</details>
-<br />
-
-<details><summary>13. Delete sub user.</summary>
-
-
-- **Description**: Deletes an API sub user.
-
-- **Example**:
-
-```
-<?php
-$exampleVar->subDeleteSubUser('id');
-
-?>
-```
+- **Description**: Removes a delegated DNS zone from an API sub user.w
 
 **where**:
 - `'id'` - ID of the sub user.
