@@ -126,9 +126,15 @@ class ClouDNS_SDK {
 	}
 
 	public function dnsListRecords($domain_name, $host = false, $type = false) {
-		$data = '&domain-name=' . $domain_name . '&host=' . $host . '&type=' . $type;
+		$data = '&domain-name=' . $domain_name;
+		if (empty($host)){
+		$data = $data . '&type=' . $type;
+		}
+		else{
+		$data = $data . '&host=' . $host . '&type=' . $type;	
+		}
 		$url = 'dns/records';
-
+		
 		return $this->apiRequest($data, $url);
 	}
 
