@@ -141,14 +141,15 @@ class ClouDNS_SDK {
 
 	public function dnsListRecords($domain_name, $host = false, $type = false) {
 		$data = '&domain-name=' . $domain_name;
-		if (empty($host)){
-		$data = $data . '&type=' . $type;
+		if (!empty($host)) {
+			$data .= '&host=' . $host;
 		}
-		else{
-		$data = $data . '&host=' . $host . '&type=' . $type;	
+		if (!empty($type)) {
+			$data .= '&type=' . $type;
 		}
+
 		$url = 'dns/records';
-		
+
 		return $this->apiRequest($data, $url);
 	}
 
