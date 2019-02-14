@@ -42,9 +42,23 @@ class ClouDNS_SDK {
 		return $this->apiRequest(false, $url);
 	}
 
-	public function dnsResgisterDomainZone($domain_name, $zone_type, $ns = false, $master_ip = false) {
-		$data = '&domain-name=' . $domain_name . '&zone-type=' . $zone_type .
-			'&ns=' . $ns . '&master-ip=' . $master_ip;
+	public function dnsRegisterDomainZone($domain_name, $zone_type, $ns = false, $master_ip = false) {
+
+		$data = '&domain-name=' . $domain_name . '&zone-type=' . $zone_type;
+
+		if (is_array($ns)) {
+			if (empty($ns)) {
+				$data .= '&ns[]=';
+			} else {
+				foreach ($ns as $value) {
+					$data .= '&ns[]=' . $value;
+				}
+			}
+		}
+
+		if (!empty($master_ip)) {
+			$data .= '&master-ip=' . $master_ip;
+		}
 		$url = 'dns/register';
 
 		return $this->apiRequest($data, $url);
