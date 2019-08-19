@@ -153,7 +153,7 @@ class ClouDNS_SDK {
 		return $this->apiRequest($data, $url);
 	}
 
-	public function dnsAddRecord($domain_name, $record_type, $host, $record, $ttl, $priority = false, $weight = false, $port = false, $frame = false, $frame_title = false, $frame_keywords = false, $frame_description = false, $save_path = false, $redirect_type = false, $mail = false, $txt = false, $algorithm = false, $fptype = false, $status = false, $geodns_location = false, $caa_flag = false, $caa_type = false, $caa_value = false) {
+	public function dnsAddRecord($domain_name, $record_type, $host, $record, $ttl, $priority = false, $weight = false, $port = false, $frame = false, $frame_title = false, $frame_keywords = false, $frame_description = false, $save_path = false, $redirect_type = false, $mail = false, $txt = false, $algorithm = false, $fptype = false, $status = true, $geodns_location = false, $caa_flag = false, $caa_type = false, $caa_value = false) {
 
 		$data = '&domain-name=' . $domain_name . '&record-type=' . $record_type . '&host=' . $host . '&record=' . $record . '&ttl=' . $ttl .
 			'&priority=' . $priority . '&weight=' . $weight . '&port=' . $port . '&frame=' . $frame . '&frame-title=' . $frame_title .
