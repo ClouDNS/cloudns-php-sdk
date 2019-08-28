@@ -143,9 +143,9 @@ $exampleVar->dnsResgisterDomainZone('domain.tld', 'zone type', array ('ns1', 'ns
 ```
 | Name            | Data type/Status| Description |
 | :-------------: |:-------------:  | :-----------|
-| domain.tld | String/Required | domain name of the DNS zone|
-| zone type | String/Required | the type of the DNS zone - master/slave/parked/geodns/reverse |
-| array ('ns1', 'ns2', 'nsn'...) | Array/**Optional**| array with name servers, that will be added as NS records in the zone|
+| domain.tld | String/Required | Domain name of the DNS zone. |
+| zone type | String/Required | The type of the DNS zone - master/slave/parked/geodns/reverse. |
+| array ('ns1', 'ns2', 'nsn'...) | Array/**Optional**| Array with name servers, that will be added as NS records in the zone. |
 | 1.2.3.4 | String/**Optional** | IP address of the Master server, for Slave zones;|
 </details>
 <br />
@@ -162,9 +162,10 @@ $exampleVar->dnsDeleteDomainZone('domain.tld');
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
 
-**where**:
-- `'domain.tld'` - the domain name of the DNS zone, that will be deleted;
 </details>
 <br />
 
@@ -176,15 +177,16 @@ $exampleVar->dnsDeleteDomainZone('domain.tld');
 
 ```
 <?php
-$exampleVar->dnsListZones('1', '10', 'keyword');
+$exampleVar->dnsListZones('current page', 'results per page', 'keyword');
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| current page | Integer/Required | The current page of your zone list. |
+| results per page | Integer/Required | Number of results per page, can be 10, 20, 30, 50 or 100. |
+| keyword | String/**Optional** | Criteria, which the results will be based on. |
 
-**where**:
-- `'1'` - the current page of your zone list;
-- `'10'` - amount of results per page. It can be 10, 20, 30, 50 or 100.
-- `'keyword'` - **optional**. A specific criteria (keyword), that your results will be based on.
 </details>
 <br />
 
@@ -196,14 +198,15 @@ $exampleVar->dnsListZones('1', '10', 'keyword');
 
 ```
 <?php
-$exampleVar->dnsGetPagesCount('10', 'keyword'));;
+$exampleVar->dnsGetPagesCount('results per page', 'keyword'));;
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| results per page | Integer/Required | Number of results per page, can be 10, 20, 30, 50 or 100. |
+| keyword | String/**Optional** | Criteria, which the results will be based on. |
 
-**where**:
-- `'10'` - amount of results per page. It can be 10, 20, 30, 50 or 100.
-- `'keyword'` - **optional**. A specific criteria (keyword), that your results will be based on.
 </details>
 <br />
 
@@ -235,9 +238,10 @@ $exampleVar->dnsGetZoneInformation('domain.tld');
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
 
-**where**:
-- `'domain.tld'` - name of the DNS zone, that you want to get information for.
 </details>
 <br />
 
@@ -254,9 +258,10 @@ $exampleVar->dnsUpdateZone('domain.tld');
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
 
-**where**:
-- `'domain.tld'` - name of the DNS zone that will be updated.
 </details>
 <br />
 
@@ -273,9 +278,10 @@ $exampleVar->dnsUpdateStatus('domain.tld');
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
 
-**where**:
-- `'domain.tld'` - name of the DNS zone, that the update status and name servers will be shown for.
 </details>
 <br />
 
@@ -292,9 +298,10 @@ $exampleVar->dnsIsUpdated('domain.tld');
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
 
-**where**:
-- `'domain.tld'` - name of the DNS zone, that the update status and name servers will be shown for.
 </details>
 <br />
 
@@ -307,14 +314,15 @@ $exampleVar->dnsIsUpdated('domain.tld');
   
  ```
 <?php
-$exampleVar->dnsChangeZonesStatus('domain.tld', '1');
+$exampleVar->dnsChangeZonesStatus('domain.tld', 'status');
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
+| status | Integer/**Optional** | Status indicator, **1** to activate, **0** to deactivate. If the argument is skipped, the status will be toggled |
 
-**where**:
-- `'domain.tld'` - name of the DNS zone, that the status will be changed for (active or inactive).
-- `'1'` - **optional**. Status indicator - **1** to activate the DNS zone and **0** to deactivate it. If the argument is skipped the status will be toggled.
 </details>
 <br />
 
@@ -327,15 +335,16 @@ $exampleVar->dnsChangeZonesStatus('domain.tld', '1');
   
  ```
 <?php
-$exampleVar->dnsListRecords('domain.tld', 'host', 'A');
+$exampleVar->dnsListRecords('domain.tld', 'host', 'record type');
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
+| host | String/**Optional** | Host, which the records will be shown for |
+| record type | String/**Optional** | Specify the type of record to be listed. For available record types, see "Get the available record types" function. |
 
-**where**:
-- `'domain.tld'` - name of the DNS zone, which the records list will be shown for.
-- `'host'` - **optional**. The host, which the list will be based on.
-- `''A'` - **optional**. Type of record, which the list will be based on. For available record types, see "Get the available record types" function.
 </details>
 <br />
 
@@ -348,17 +357,17 @@ $exampleVar->dnsListRecords('domain.tld', 'host', 'A');
   
  ```
 <?php
-$exampleVar->dnsAddRecord("domain.tld", "A", "host", "requirements", 3600, priority, weight, port, frame, frame-title, frame-keywords, frame-description, save-path, redirect-type, mail, txt, algorithm, fptype, status, geodns-location, caa-flag, caa-type, caa-value);
+$exampleVar->dnsAddRecord("domain.tld", "record type", "host", "record", "ttl", "priority", "weight", "port", "frame", "frame-title", "frame-keywords", "frame-description", "save-path", "redirect-type", "mail", "txt", "algorithm", "fptype", "status", "geodns-location", "caa-flag", "caa-type", "caa-value");
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - name of the DNS zone, which the record will be add for.
-- `'A'` - type of the record, that will be added. The available record types are: A, AAAA, MX, CNAME, TXT, NS, SRV, WR, RP, SSHFP, ALIAS, CAA for domain names and NS and PTR for reversed zones.
-- `'host'` - the host name of the record.
-- `'requirements'` - the value or string that is required for the record. For example IP address for A/AAAA record, mail server for MX record, name server for NS record, etc.
-- `'3600'` - the TTL of the record. The available TTL's are as follows:
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
+| record type | String/Required | Type of the DNS record. For available record types, see "Get the available record types" function. |
+| host | String/Required | Host name of the record. Leave empty for root hoss. |
+| record | String/Required | The specific requirements for the record - where to be pointed at (e.g. IP, hostname, server), strings, authentications, etc. |
+| ttl | Integer/Required | the TTL of the record. The available TTL's are as follows:
 60 = 1 minute
 300 = 5 minutes
 900 = 15 minutes
@@ -371,28 +380,29 @@ $exampleVar->dnsAddRecord("domain.tld", "A", "host", "requirements", 3600, prior
 259200 = 3 days
 604800 = 1 week
 1209600 = 2 weeks
-2592000 = 1 month
-- `'priority'` - **optional**. Only required when setting a priority for MX or SRV records.
-- `'weight'` - **optional**. Only required when setting weight for SRV record.
-- `'port'` - **optional**. Only required for setting port for SRV record.
-- `'frame'` - **optional**. Toggling the redirect with frame option for Web Redirect record - **0** for disable, **1** for enable.
-- `'frame-title'` - **optional**. Add title if redirect with frame is enabled for the Web Redirect record.
-- `'frame-keywords'` - **optional**. Add keywords if redirect with frame is enabled for the Web Redirect record.
-- `'frame-description'` - **optional**. Add description if redirect with frame is enabled for the Web Redirect record.
-- `'save-path'` - **optional**. Saves the path when redirecting with Web Redirect record - **0** for disable, **1** for enable.
-- `'redirect-type'` - **optional**. Unmasked redirects for Web Redirect record if the redirect with frame is disabled - **301** for constant type or **302** for temporary type.
-- `'mail'` - **optional**. E-mail address for RP records.
-- `'txt'` - **optional**. Domain name for TXT record used in RP records.
-- `'algorithm'` - **optional**. Algorithm required to create the SSHFP fingerprint. Only used for SSHFP records.
-- `'fptype'` - **optional**. Type of the SSHFP algorithm. Only used for SSHFP records.
-- `'status'` - **optional**. Status of the record - **1** for active and **0** for inactive. If omitted the record will be set as active.
-- `'geodns-location'` - **optional**. ID of the GeoDNS location that can be set for A, AAAA and CNAME records. The location's ID can be obtained from the **List GeoDNS locations** function.
-- `'caa-flag'` - **optional**. Flag used only for CAA records - **0** for Non critical and **128** for Critical.
-- `'caa-type'` - **optional**. Type of the CAA record, which can be **issue**, **issuewild** and **iodef**.
-- `'caa-value'` - **optional**. Value of the CAA record. Depending on the type of the CAA record, '`caa-type'`, it can be set as follows:
+2592000 = 1 month |
+| priority | Integer/**Optional** | Priority option for MX and SRV records. |
+| weight | Integer/**Optional** | Weight option for SRV record |
+| port | Integer/**Optional** | Port option for SRV record |
+| frame | Integer/**Optional** | Toggles the redirect with frame option for Web Redirect record: **0** for disable, **1** for enable. |
+| frame-title | String/**Optional** | Title for the redirect with frame option for Web Redirect record. |
+| frame-keywords | String/**Optional** | Keywords for the redirect with frame option for Web Redirect record. |
+| frame-description | String/**Optional** | Description for the redirect with frame option for Web Redirect record. |
+| save-path | Integer/**Optional** | Save path option for redirecting with Web Redirect record - **0** for disable, **1** for enable. |
+| redirect-type | Integer/**Optional** | Unmasked redirects for Web Redirect record if the redirect with frame is disabled - **301** for constant type or **302** for temporary type. |
+| mail | String/**Optional** | E-mail address for RP records. |
+| txt | String/**Optional** | Domain name for TXT record used in RP records. |
+| algorithm | Integer/**Optional** | Algorithm required to create for SSHFP records. |
+| fptype | Integer/**Optional** | Type of the SSHFP algorithm. |
+| status | Integer/**Optional** | Status of the record - **1** for active and **0** for inactive. If skipped, the record will be set as active. |
+| geodns-location | Integer/**Optional** | ID of the GeoDNS location that can be set for A, AAAA, CNAME, NAPTR or SRV records. The location's ID can be obtained from the **List GeoDNS locations** function. |
+| caa-flag | Integer/**Optional** | Flag option for CAA records - **0** for Non critical and **128** for Critical. |
+| caa-type | String/**Optional** | Type of the CAA record, which can be **issue**, **issuewild** and **iodef**. |
+| caa-value | String/**Optional** | Value of the CAA record. Depending on the type of the CAA record, '`caa-type'`, it can be set as follows:
 if `'caa-type'` is issue the `'caa-value'` can be hostname or ";".
 if `'caa-type'` is issuewild the `'caa-value'` can be hostname or ";".
-if `'caa-type'` is iodef the `'caa-value'` "mailto:someemail@address.tld, http://example.tld or http://example.tld.
+if `'caa-type'` is iodef the `'caa-value'` "mailto:someemail@address.tld, http://example.tld or http://example.tld. |
+
 </details>
 <br />
 
