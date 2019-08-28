@@ -147,11 +147,6 @@ $exampleVar->dnsResgisterDomainZone('domain.tld', 'zone type', array ('ns1', 'ns
 | zone type | String/Required | the type of the DNS zone - master/slave/parked/geodns/reverse |
 | array ('ns1', 'ns2', 'nsn'...) | Array/**Optional**| array with name servers, that will be added as NS records in the zone|
 | 1.2.3.4 | String/**Optional** | IP address of the Master server, for Slave zones;|
-**where**:
-- `'domain.tld'` - the registered domain name, that the DNS zone will be created for;
-- `'master/slave/parked/geodns/reverse'` - the type of the DNS zone;
-- `array ('ns1.nameserver.tld', 'ns2.nameserver.tld')` - **optional**. An array with all the name servers, that will be configured and added for the NS record(s) upon creation of the DNS zone;
-- `'1.2.3.4'` - **optional**. The IP address of the Master server, required **only** for Slave zones;
 </details>
 <br />
 
