@@ -137,11 +137,16 @@ $exampleVar->dnsAvailableNameServers();
 ```
 
 <?php
-$exampleVar->dnsResgisterDomainZone('domain.tld', 'master/slave/parked/geodns/reverse', array ('ns1.nameserver.tld', 'ns2.nameserver.tld'), '1.2.3.4');
+$exampleVar->dnsResgisterDomainZone('domain.tld', 'zone type', array ('ns1', 'ns2', 'nsn'...), '1.2.3.4');
 
 ?>
 ```
-
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | domain name of the DNS zone|
+| zone type | String/Required | the type of the DNS zone - master/slave/parked/geodns/reverse |
+| array ('ns1', 'ns2', 'nsn'...) | Array/**Optional**| array with name servers, that will be added as NS records in the zone|
+| 1.2.3.4 | String/**Optional** | IP address of the Master server, for Slave zones;|
 **where**:
 - `'domain.tld'` - the registered domain name, that the DNS zone will be created for;
 - `'master/slave/parked/geodns/reverse'` - the type of the DNS zone;
