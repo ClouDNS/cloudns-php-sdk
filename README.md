@@ -367,20 +367,7 @@ $exampleVar->dnsAddRecord("domain.tld", "record type", "host", "record", "ttl", 
 | record type | String/Required | Type of the DNS record. For available record types, see "Get the available record types" function. |
 | host | String/Required | Host name of the record. Leave empty for root hoss. |
 | record | String/Required | The specific requirements for the record - where to be pointed at (e.g. IP, hostname, server), strings, authentications, etc. |
-| ttl | Integer/Required | the TTL of the record. The available TTL's are as follows:
-60 = 1 minute
-300 = 5 minutes
-900 = 15 minutes
-1800 = 30 minutes
-3600 = 1 hour
-21600 = 6 hours
-43200 = 12 hours
-86400 = 1 day
-172800 = 2 days
-259200 = 3 days
-604800 = 1 week
-1209600 = 2 weeks
-2592000 = 1 month |
+| ttl | Integer/Required | the TTL of the record. The available TTL's are as follows: 60 = 1 minute 300 = 5 minutes 900 = 15 minutes, 1800 = 30 minutes, 3600 = 1 hour, 21600 = 6 hours, 43200 = 12 hours, 86400 = 1 day, 172800 = 2 days, 259200 = 3 days, 604800 = 1 week, 1209600 = 2 weeks, 2592000 = 1 month |
 | priority | Integer/**Optional** | Priority option for MX and SRV records. |
 | weight | Integer/**Optional** | Weight option for SRV record |
 | port | Integer/**Optional** | Port option for SRV record |
@@ -398,10 +385,7 @@ $exampleVar->dnsAddRecord("domain.tld", "record type", "host", "record", "ttl", 
 | geodns-location | Integer/**Optional** | ID of the GeoDNS location that can be set for A, AAAA, CNAME, NAPTR or SRV records. The location's ID can be obtained from the **List GeoDNS locations** function. |
 | caa-flag | Integer/**Optional** | Flag option for CAA records - **0** for Non critical and **128** for Critical. |
 | caa-type | String/**Optional** | Type of the CAA record, which can be **issue**, **issuewild** and **iodef**. |
-| caa-value | String/**Optional** | Value of the CAA record. Depending on the type of the CAA record, '`caa-type'`, it can be set as follows:
-if `'caa-type'` is issue the `'caa-value'` can be hostname or ";".
-if `'caa-type'` is issuewild the `'caa-value'` can be hostname or ";".
-if `'caa-type'` is iodef the `'caa-value'` "mailto:someemail@address.tld, http://example.tld or http://example.tld. |
+| caa-value | String/**Optional** | Value of the CAA record. Depending on the type of the CAA record, '`caa-type'`, it can be set as follows: if `'caa-type'` is issue the `'caa-value'` can be hostname or ";". If `'caa-type'` is issuewild the `'caa-value'` can be hostname or ";". If `'caa-type'` is iodef the `'caa-value'` "mailto:someemail@address.tld, http://example.tld or http://example.tld. |
 
 </details>
 <br />
