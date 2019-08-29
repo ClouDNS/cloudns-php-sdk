@@ -1251,7 +1251,7 @@ $exampleVar->domainsPriceList();
   
 ```
 <?php
-$exampleVar->domainsRegisterNewDomain('domain', 'tld', period, 'example@mail.tld', 'Name', 'Address', 'City', 'State', 'zip', 'Country', phone-code, phone-number, 'Company LTD', fax-code, fax-number, array ('ns1.nameserver.tld', ... , 'nsn.nameserver.tld'), 'registrant-type', 'registrant-type-id', registrant-policy, 'birth-date', 'birth-cc', 'birth-city', 'city-postal-code', 'publication', 'VAT-number', 'Siren-number', 'DUNS-number', 'trademark', 'Waldec-number', 'organization-type', 'privacy-protection', code, 'publicity', 'kpp', 'passport-number', 'passport-issued-by', 'passport-issued-on');
+$exampleVar->domainsRegisterNewDomain('domain', 'tld', period, 'example@mail.tld', 'Name', 'Address', 'City', 'State', 'zip', 'Country', phone-code, phone-number, 'Company', fax-code, fax-number, array ('ns1.nameserver.tld', ... , 'nsn.nameserver.tld'), 'registrant-type', 'registrant-type-id', registrant-policy, 'birth-date', 'birth-cc', 'birth-city', 'city-postal-code', 'publication', 'VAT-number', 'Siren-number', 'DUNS-number', 'trademark', 'Waldec-number', 'organization-type', 'privacy-protection', code, 'publicity', 'kpp', 'passport-number', 'passport-issued-by', 'passport-issued-on');
 
 ?>
 ```
@@ -1269,7 +1269,7 @@ $exampleVar->domainsRegisterNewDomain('domain', 'tld', period, 'example@mail.tld
 | Country | String/Required | The country of the registrant/company, which must be entered as a country code according to ISO 3166. (DE, UK, BR, etc.) |
 | phone-code | Integer/Required | Calling code of the phone number. Can be between 1 and 3 digits.|
 | phone-number | Integer/Required | The phone number. |
-| Company LTD | String/**Optional** | The name of the company. Required if the registrant type is a company. |
+| Company | String/**Optional** | The name of the company. Required if the registrant type is a company. |
 | fax-code | Integer/**Optional** | Calling code of the fax number. Can be between 1 and 3 digits.|
 | fax-number | Integer/**Optional** | The fax number. |
 | 'ns1.nameserver.tld', ... , 'nsn.nameserver.tld' | Array/**Optional** | The name servers, that the domain will be pointed at upon finishing the registration. |
@@ -1293,7 +1293,7 @@ $exampleVar->domainsRegisterNewDomain('domain', 'tld', period, 'example@mail.tld
 | kpp | Integer/**Optional** | A nine digit number available for .ru domain names. |
 | passport-number | String/**Optional** | Available for .ru domain names. Document Number. |
 | passport-issued-by | String/**Optional** | Available for .ru domain names. Document issued by (123 police station of Moscow). |
-| passport-number | String/**Optional** | Available for .ru domain names. Passport issued date. Format: DD.MM.YYYY. |
+| passport-issued-on | String/**Optional** | Available for .ru domain names. Passport issued date. Format: DD.MM.YYYY. |
 
 </details>
 <br />
@@ -1307,11 +1307,15 @@ $exampleVar->domainsRegisterNewDomain('domain', 'tld', period, 'example@mail.tld
   
 ```
 <?php
-$exampleVar->domainsRenewDomain('domain.tld', 1);
+$exampleVar->domainsRenewDomain('domain.tld', period);
 
 ?>
 ```
 **where**:
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Name of the domain, that will be renewed. |
+| period | Integer/Required | The period, for which the domain name will be renewed. The value entered is in years. The available periods can be obtained from the **List domain information** function. |
 
 - `'domain.tld'` - the domain name that will be renewed.
 - `'1'` - the period, for which the domain name will be renewed.
@@ -1328,228 +1332,50 @@ $exampleVar->domainsRenewDomain('domain.tld', 1);
   
 ```
 <?php
-$exampleVar->domainsTransferDomain('domain', 'tld', 'example@mail.tld', 'John Doe', 'Company Name LTD', 'Address', 'City', 'State', '10000', 'Country', '000', '123456789', '111', '987654321', 'transfer-code', 'registrant-type', 'birth-date', 'country-code', 'birth-city', 'city-postal-code', 'publication', 'VAT-number', 'Siren-number', 'DUNS-number', 'trademark', 'Waldec-number', 'organization-type', 'privacy-protection', 'code', 'registrant-type-id', 'publicity', 'ns', 'kpp', 'passport-number', 'passport-issued-by', 'passport-issued-on');
+$exampleVar->domainsTransferDomain('domain', 'tld', 'example@mail.tld', 'Name', 'Address', 'City', 'State', zip, 'Country', phone-code, phone-number, 'Company', fax-code, fax-number, transfer-code, 'registrant-type', 'birth-date', 'birth-cc', 'birth-city', 'city-postal-code', 'publication', 'VAT-number', 'Siren-number', 'DUNS-number', 'trademark', 'Waldec-number', 'organization-type-other', 'privacy-protection', 'code', 'registrant-type-id', 'publicity', array('ns'), 'kpp', 'passport-number', 'passport-issued-by', 'passport-issued-on');
 ;
 
 ?>
 ```
 **where**:
-
-- `'domain'` - the name of the domain.
-- `'tld'` - the TLD of the domain.
-- `'example@mail.tld'` - the email address of the registrant.
-- `'John Doe'` - the name of the registrant.
-- `'Company Name LTD'` - the name of the company.
-- `'Address'` - the address of the registrant/company.
-- `'City'` - the city of the registrant/company.
-- `'State'` - the state, e.g. Texas.
-- `'10000'` - the zip code.
-- `'Country'` - the country of the registrant/company, which must be entered only with 2 letters according to ISO 3166:
-For .de domain names it must be DE
-
-For .uk domain names it must be one of the following: GB (United Kingdom), IM (Isle of Man), JE (Jersey) or GG (Guernsey).
-
-For *.br domains (com.br, net.br, pro.br, arq.br, eco.br, ind.br, art.br, eng.br, adv.br, mus.br, blog.br) it must be BR.
-- `'000'` - the calling code of the phone number. Can be between 1 and 3 digits.
-- `'123456789'` - the phone number.
-- `'111'` - **optional**. The calling code of the fax number. Can be between 1 and 3 digits.
-- `'987654321'` - **optional**. The fax number.
-- `'transfer-code'` - **optional**. Transfer code given by the current registrar, if it is required for the TLD.
-- `'registrant-type'` - **optional**. Required field for specific TLDs.
-
-Required for .fr/.re/.pm/.tf/.wf/.yt domain names. Possible values:
-
-INDIVIDUAL - additional fields need to be added for this type
-COMPANY - company name is a mandatory field when the registrant type is COMPANY
-TRADEMARK - company name and an additional field for the trademark name need to be added for this type
-ASSOCIATION - company (associacion) name and additional field for the waldec should be added
-OTHER - company (organization) name and additional field for the registrant type should be added
-Required for .com.au and .net.au domain names. Possible values:
-
-ACN - Australian Company Number
-ABN - Australian Business Number
-VIC_BN - Victoria Business Number
-NSW_BN - New South Wales Business Number
-SA_BN - South Australia Business Number
-NT_BN - Northern Territory Business Number
-WA_BN - Western Australia Business Number
-TAS_BN - Tasmania Business Number
-ACT_BN - Australian Capital Territory Business Number
-QLD_BN - Queensland Business Number
-TM - Trademark number
-ARBN - Registrant's Australian Registered Body Number
-Other
-Required for .it domain names. Possible values:
-
-1 -  Italian and foreign natural persons
-2 - Companies/one man companies
-3 - Freelance workers/professionals
-4 - Non-profit organizations
-5 - Public organizations
-6 - Other subjects
-7 - Foreigners who match 2-6  
-Required for .ru domain names. Possible values:
-
-ORG
-PRS
-Required for .ca domain names. Possible values:
-
-CCO - Corporation (Canada or Canadian province or territory)
-CCT - Canadian citizen
-RES - Permanent Resident of Canada
-GOV - Government or government entity in Canada
-EDU - Canadian Educational institution
-ASS - Canadian Unincorporated Association
-HOP - Canadian Hospital
-PRT - Partnership Registered in Canada
-TDM - Trade-mark registered in Canada (by a non-Canadian owner)
-TRD - Canadian Trade union
-PLT - Canadian Political party
-LAM - Canadian Library, Archive or Museum
-TRS - Trust established in Canada
-ABO - Aboriginal Peoples (individuals or groups) indigenous to Canada
-INB - Indian Band recognized by the Indian Act of Canada
-LGR - Legal Representative of a Canadian Citizen or Permanent Resident
-OMK - Official mark registered in Canada
-MAJ - Her Majesty the Queen
-Required for .com.au and .net.au domain names. Possible values:
-
-ACN - This is the Registrant's Australian Company Number.
-ABN - This is the Registrant's Australian Business Number.
-VIC BN - This is the Registrant's Victoria Business Number.
-NSW BN - This is the Registrant's New South Wales Business Number.
-SA BN - This is the Registrant's South Australia Business Number.
-NT BN - This is the Registrant's Northern Territory Business Number.
-WA BN - This is the Registrant's Western Australia Business Number.
-TAS BN - This is the Registrant's Tasmania Business Number.
-ACT BN - This is the Registrant's Australian Capital Territory Business Number.
-QLD BN - This is the Registrant's Queensland Business Number.
-TM - This is the Registrant's Trademark number.
-ARBN - This is the Registrant's Registrant's Australian Registered Body Number (ARBN).
-Required for .es domain names. Possible values:
-
-1 - Natural person or individual
-39 - Economic Interest Grouping
-47 - Association
-59 - Sports Association
-68 - Trade Association
-124 - Savings Bank
-150 - Community Property
-152 - Condominium
-164 - Religious Order or Institution
-181 - Consulate
-197 - Public Law Association
-203 - Embassy
-229 - Municipality
-269 - Sports Federation
-286- Foundation
-365 - Mutual Insurance Company
-434 - Provincial Government Body
-436 - National Government Body
-439 - Political Party
-476 - Trade Union
-510 - Farm Partnership
-524 - Public Limited Company / Corporation
-525 - Sports Public Limited Company
-554 - Partnership
-560 - General Partnership
-562 - Limited Partnership
-566 - Cooperative
-608 - Worker-owned Company
-612 - Limited Liability Company
-713 - Spanish (company) Branch
-717 - Temporary Consortium / Joint Venture
-744 - Worker-owned Limited Company
-745 - Provincial Government Entity
-746 - National Government Entity
-747 - Local Government Entity
-877 - Others
-878 - Designation of Origin Regulatory Council
-879 - Natural Area Management Entity
-Required for *.br domain names. Possible values:
-
-ORG for a company
-PRS for a private person
-Required for *.cn domain names. Possible values:
-
-cnhosting for site, hosted in Mainland China
-nocnhosting for site, hosted outside Mainland China
-Required for *.ro domain names. Possible values:
-
-p - Person
-ap - Authorized person
-nc - Non-commercial
-c - Commercial
-gi - Government Institution
-pi - Public Institution
-o - Other
-
-- `'birth-date'` - **optional**. The birth date of the registrant.
-- `'country-code'` - **optional**. Birth country code.
-
-Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is INDIVIDUAL.
-
-Optional field for .it (for Registrant contact only) Must be one of the  ISO 3166-1 codes (e.g.: IT, FR, NL, ..). If the Registrant is not a natural person (registrant_type <> 1) it must be equal to the registrant country code value. If the Registrant is a natural  person (registrant_type = 1), the registrant country code and the birth_cc fields may differ but at least one of them must correspond to the ISO 3166-1 code of a country belonging to the European Union.
-
-Format: US
-
-- `'birth-city'` - **optional**. Birth city name. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is INDIVIDUAL.
-- `'city-postal-code'` - **optional**. Postal code of the birth city. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is INDIVIDUAL.
-- `'publication'` - **optional**. Restricted or Non-Restricted publication of the individual details. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is INDIVIDUAL. Possible values:
-
-0 - Non-Restricted
-1 - Restricted
-
-- `'VAT-number'` - **optional**. EU VAT number. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is COMPANY, TRADEMARK or ASSOCIATION.
-- `'Siren-number'` - **optional**. Siren number of the company (organization). Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is COMPANY, TRADEMARK or ASSOCIATION.
-- `'DUNS-number'` - **optional**. DUNS number of the company (organization). Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is COMPANY, TRADEMARK or ASSOCIATION.
-- `'trademark'` - **optional**. Only for specific TLDs.
-
-Required field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is TRADEMARK. The parameter should contain the name of the trademark.
-
-Required field for .com.au and .net.au domain names when the registrant_type is TM. The parameter should be "Trademark Owner" or "Pending TM Owner".
-
-- `'Waldec-number'` - **optional**. Waldec number of the association. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is ASSOCIATION.
-- `'organization-type'` - **optional**. Type of the organization. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is OTHER.
-- `'privacy-protection'` - **optional**. Enabling/disabling Privacy Protection for the domain. 0=disabled and 1=enabled. By default the Privacy Protection is disabled.
-- `'code'` - **optional**. 
-
-Optional field for .it domains. Identification code | Entering wrong information in this field may lead to cancelation of your domain.
-
-If the requester is an Italian natural person it contains his/her tax code (Codice Fiscale).
-
-For foreign natural persons it can contain a document number (like passport number or ID card number).
-
-For Italian associations without VAT number and numeric tax code must be equal to 'n.a.'.
-
-In all the other cases must be equal to VAT number (in the 11 numbers format if Nationality is Italian) or the numeric tax code.
-Optional field for .ru domain names. This value is the Taxpayer Identification Number (TIN). This is a 10 digit number and is mandatory for Organization Contact Type, when the Country is Russia.
-
-Required filed for .es domain names. Depending upon which registrant_type_id you provided, mention that ID's number as a value.
-
-Required filed for *.br domain names. CPF number for Individuals and CNPJ number for Organizations.
-
-Required filed for *.cn domain names. Organization ID.
-
-Required for *.ro domain names. Mandatory for Commercial Romanian entities (where person_type is 'c'). Optional for foreigners or other Romanian entities. Max Length: 40 chars. 
-- `'registrant-type-id'` - **optional**. Required for specific TLD's.
-
-Required for .com.au and .net.au domain names. Should contain the ID of the number choosen registrant type in the registrant_type parameter.
-
-Required field for .es domain names. Possible values:
-
-1 - DNI or NIF - Provide either the Spanish National Personal ID or company VAT ID number.
-3 - NIE - Provide the Spanish resident alien ID number
-0 - Other ID - If you do not have any of the above mentioned IDs, provide either your Passport number, any Foreign ID document number, Company Registration number, Driver's License number, etc.
-Required field for .ro domain names, if country is RO.
-
-An identification number for pesons (personal ID, passport number, driving license, etc), fiscal code for companies or other unique identification number or sequence of characters for juridical entities. Mandatory for Romanian entities. Optional for foreigners. Max Length: 40 chars. Min. Length: 5 chars.
-- `'publicity'` - **optional**. Available for .it domain names.  (Consent to the processing of personal data for registration) Possible field values: 1=yes, 0=NO. If NO is used the request will fail.
-- `'ns'` - **optional**. Required for **.be** domain names.
-- `'kpp'` - **optional**. Available for .ru domain names. His value is the Territory-linked Taxpayer number. This is a 9 digit number and is mandatory for the Organization Contact Type, when the Country is Russia.
-- `'passport-number'` - **optional**. Available for .ru domain names. Document Number.
-- `'passport-issued-by'` - **optional**. Available for .ru domain names. Document issued by (123 police station of Moscow).
-- `'passport-issued-on` - **optional**. Available for .ru domain names. Passport issued date. Format: DD.MM.YYYY.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain | String/Required | Name of the domain. |
+| tld | String/Required | TLD of the domain. |
+| example@mail.tld | String/Required | The email address of the registrant. |
+| Name | String/Required | The name of the registrant. |
+| Address | String/Required | The address of the registrant/company. |
+| City | String/Required | The city of the registrant/company. |
+| State | String/Required | The state, e.g. Texas. |
+| zip | Integer/Required | The zip code. |
+| Country | String/Required | The country of the registrant/company, which must be entered as a country code according to ISO 3166. (DE, UK, BR, etc.) |
+| phone-code | Integer/Required | Calling code of the phone number. Can be between 1 and 3 digits.|
+| phone-number | Integer/Required | The phone number. |
+| Company | String/**Optional** | The name of the company. Required if the registrant type is a company. |
+| fax-code | Integer/**Optional** | Calling code of the fax number. Can be between 1 and 3 digits.|
+| fax-number | Integer/**Optional** | The fax number. |
+| transfer-code | Integer/**Optional** | Transfer code given by the current registrar, if it is required for the TLD. |
+| registrant-type | String/**Optional** | Required field for specific TLDs. For more information [a link](https://www.cloudns.net/wiki/article/97/), registrant_type row. |
+| birth-date | String/**Optional** | The birth date of the registrant. For more information [a link](https://www.cloudns.net/wiki/article/97/), birth_date row. |
+| birth-cc | String/**Optional** | Birth country code, optional for certain TLD's. For more information [a link](https://www.cloudns.net/wiki/article/97/), birth_cc row. |
+| birth-city | String/**Optional** | Birth city name. For more information [a link](https://www.cloudns.net/wiki/article/97/), birth_city row. |
+| city-postal-code | String/**Optional** | Postal code of the birth city. For more information [a link](https://www.cloudns.net/wiki/article/97/), birth_zip row. |
+| publication | String/**Optional** | Possible values: **0** - Non-Restricted, **1** - Restricted, publication of the individual details. |
+| VAT-number | String/**Optional** | EU VAT number. |
+| Siren-number | String/**Optional** | Siren number of the company (organization). |
+| DUNS-number | String/**Optional** | UNS number of the company (organization). |
+| trademark | String/**Optional** | Only for specific TLD's, for more information [a link](https://www.cloudns.net/wiki/article/97/), trademark row. |
+| Waldec-number | String/**Optional** | Waldec number of the association. |
+| organization-type-other | String/**Optional** | Type of the organization. Optional field when the **registrant_type** is OTHER. |
+| privacy-protection | Integer/**Optional** | Privacy Protection for the domain: **0** for disabled and **1** for enabled. By default, Privacy Protection is disabled. |
+| code | Integer/**Optional** | Optional field for specific TLD's, for more information [a link](https://www.cloudns.net/wiki/article/97/), code row. |
+| registrant-type-id | String/**Optional** | Required field for specific TLDs. For more information [a link](https://www.cloudns.net/wiki/article/97/), registrant_type_id row. |
+| publicity | Integer/**Optional** | Available for .it domain names, with possible values: **1** for yes and **0** for no. |
+| ns | Array/**Optional** | Requred for .be domain names. |
+| kpp | Integer/**Optional** | A nine digit number available for .ru domain names. |
+| passport-number | String/**Optional** | Available for .ru domain names. Document Number. |
+| passport-issued-by | String/**Optional** | Available for .ru domain names. Document issued by (123 police station of Moscow). |
+| passport-issued-on | String/**Optional** | Available for .ru domain names. Passport issued date. Format: DD.MM.YYYY. |
 
 </details>
 <br />
@@ -1563,15 +1389,15 @@ An identification number for pesons (personal ID, passport number, driving licen
   
 ```
 <?php
-$exampleVar->domainsListRegisteredDomains(10, 1, 'keyword');
+$exampleVar->domainsListRegisteredDomains(rows-per-page, page, 'keyword');
 
 ?>
 ```
-**where**:
-
-- `'10'` - amount of results per page. It can be 10, 20, 30, 50 or 100.
-- `'1'` - the current page of your zone list;
-- `'keyword'` - **optional**. A specific criteria (keyword), that the results will be based on.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| rows-per-page | Integer/Required | Amount of results per page. It can be 10, 20, 30, 50 or 100. |
+| page | Integer/Required | Current page of your zone list. |
+| keyword | String/**Optional** | A specific criteria (keyword), that the results will be based on. |
 
 </details>
 <br />
@@ -1585,14 +1411,15 @@ $exampleVar->domainsListRegisteredDomains(10, 1, 'keyword');
 
 ```
 <?php
-$exampleVar->domainsGetPagesCount('10', 'keyword');
+$exampleVar->domainsGetPagesCount('rows-per-page', 'keyword');
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| rows-per-page | Integer/Required | Amount of results per page. It can be 10, 20, 30, 50 or 100. |
+| keyword | String/**Optional** | A specific criteria (keyword), that the results will be based on. |
 
-**where**:
-- `'10'` - amount of results per page. It can be 10, 20, 30, 50 or 100.
-- `'keyword'` - **optional**. A specific criteria (keyword), that your results will be based on.
 </details>
 <br />
 
@@ -1609,9 +1436,9 @@ $exampleVar->domainsDomainInfo('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - name of the registered domain, which the information will be given for.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Name of the registered domain |
 
 </details>
 <br />
@@ -1629,9 +1456,9 @@ $exampleVar->domainsGetContacts('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the registered domain name, which contact details will be shown for.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Name of the registered domain |
 
 </details>
 <br />
@@ -1645,32 +1472,27 @@ $exampleVar->domainsGetContacts('domain.tld');
 
 ```
 <?php
-$exampleVar->domainsModifyContacts('domain', 'tld', 'details type', 'example@mail.tld', 'John Doe', 'Company Name LTD', 'Address', 'City', 'State', '10000', 'Country', 000, '123456789', 111, 987654321);
+$exampleVar->domainsModifyContacts('domain', 'tld', 'details-type', 'example@mail.tld', 'John Doe', 'Company', 'Address', 'City', 'State', zip, 'Country', phone-code, phone-number, fax-code, fax-number);
 
 ?>
 ```
-
-**where**:
-- `'domain'` - the name of the domain.
-- `'tld'` - the TLD of the domain.
-- `'details type'` - the type of contacts, that will be modified. They can be obtained from the **Contact details** function. 
-- `'example@mail.tld'` - the email address of the registrant.
-- `'John Doe'` - the name of the registrant.
-- `'Company Name LTD'` - the name of the company.
-- `'Address'` - the address of the registrant/company.
-- `'City'` - the city of the registrant/company.
-- `'State'` - the state, e.g. Texas.
-- `'10000'` - the zip code.
-- `'Country'` - the country of the registrant/company, which must be entered only with 2 letters according to ISO 3166:
-For .de domain names it must be DE
-
-For .uk domain names it must be one of the following: GB (United Kingdom), IM (Isle of Man), JE (Jersey) or GG (Guernsey).
-
-For *.br domains (com.br, net.br, pro.br, arq.br, eco.br, ind.br, art.br, eng.br, adv.br, mus.br, blog.br) it must be BR.
-- `'000'` - the calling code of the phone number. Can be between 1 and 3 digits.
-- `'123456789'` - the phone number.
-- `'111'` - **optional**. The calling code of the fax number. Can be between 1 and 3 digits.
-- `'987654321'` - **optional**. The fax number.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain | String/Required | Name of the domain. |
+| tld | String/Required | TLD of the domain. |
+| details-type | String/Required | the type of contacts, that will be modified. They can be obtained from the **Contact details** function. |
+| example@mail.tld | String/Required | Email address of the registrant. |
+| Name | String/Required | Name of the registrant. |
+| Company | String/Required | Name of the company. |
+| Address | String/Required | Address of the registrant/comapny. |
+| City | String/Required | City of the registrant/company. |
+| State | String/Required | State, e.g. Texas. |
+| zip | Integer/Required | Zip code |
+| Country | String/Required | The country of the registrant/company, which must be entered as a country code according to ISO 3166. (DE, UK, BR, etc.) |
+| phone-code | Integer/Required | Calling code of the phone number. Can be between 1 and 3 digits.|
+| phone-number | Integer/Required | The phone number. |
+| fax-code | Integer/**Optional** | Calling code of the fax number. Can be between 1 and 3 digits.|
+| fax-number | Integer/**Optional** | The fax number. |
 
 </details>
 <br />
@@ -1688,9 +1510,9 @@ $exampleVar->domainsListNameServers('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the registered domain name.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Name of the registered domain. |
 
 </details>
 <br />
@@ -1704,14 +1526,14 @@ $exampleVar->domainsListNameServers('domain.tld');
 
 ```
 <?php
-$exampleVar->domainsModifyNameServers('domain.tld', array ('ns1.nameserver.tld', 'ns2.nameserver.tld', ... 'nsn.nameserver.tld));
+$exampleVar->domainsModifyNameServers('domain.tld', array ('ns1.nameserver.tld', ... , 'nsn.nameserver.tld));
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the registered domain name.
-- `'array ('ns1.nameserver.tld', 'ns2.nameserver.tld', ... 'nsn.nameserver.tld)'` - array with name servers, that will be modified for the domain name.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Name of the registered domain. |
+| 'ns1.nameserver.tld', ... , 'nsn.nameserver.tld' | Array/Required | Array with the name servers |
 
 </details>
 <br />
@@ -1729,9 +1551,9 @@ $exampleVar->domainsGetChildNameServers('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the registered domain name.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Name of the registered domain. |
 
 </details>
 <br />
@@ -1745,15 +1567,15 @@ $exampleVar->domainsGetChildNameServers('domain.tld');
 
 ```
 <?php
-$exampleVar->domainsAddChildNameServers('domain.tld', 'nshost', '1.2.3.4');
+$exampleVar->domainsAddChildNameServers('domain.tld', 'host', 'IP');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the registered domain name.
-- `'nshost'` - host of the child name server.
-- `'1.2.3.4'` - IP of the child name server.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Name of the registered domain. |
+| host | String/Required | Host of the child name server. |
+| IP | String/Required | IP of the child name server. |
 
 </details>
 <br />
@@ -1767,15 +1589,15 @@ $exampleVar->domainsAddChildNameServers('domain.tld', 'nshost', '1.2.3.4');
 
 ```
 <?php
-$exampleVar->domainsDeleteChildNameServers('domain.tld', 'nshost', '1.2.3.4');
+$exampleVar->domainsDeleteChildNameServers('domain.tld', 'host', 'IP');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the registered domain name.
-- `'nshost'` - host of the child name server.
-- `'1.2.3.4'` - IP of the child name server.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Name of the registered domain. |
+| host | String/Required | Host of the child name server. |
+| IP | String/Required | IP of the child name server. |
 
 </details>
 <br />
@@ -1789,16 +1611,16 @@ $exampleVar->domainsDeleteChildNameServers('domain.tld', 'nshost', '1.2.3.4');
 
 ```
 <?php
-$exampleVar->domainsModifyChildNameServers('domain.tld', 'nshost', '1.2.3.4', '4.3.2.1');
+$exampleVar->domainsModifyChildNameServers('domain.tld', 'host', 'IP', 'newIP');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the registered domain name.
-- `'nshost'` - host of the child name server.
-- `'1.2.3.4'` - old IP of the child name server.
-- `'4.3.2.1'` - new IP of the child name server.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Name of the registered domain. |
+| host | String/Required | Host of the child name server. |
+| IP | String/Required | Current IP of the child name server. |
+| newIP | String/Required | New IP of the child name server. |
 
 </details>
 <br />
@@ -1812,14 +1634,14 @@ $exampleVar->domainsModifyChildNameServers('domain.tld', 'nshost', '1.2.3.4', '4
 
 ```
 <?php
-$exampleVar->domainsModifyPrivacyProtection('domain.tld', '1');
+$exampleVar->domainsModifyPrivacyProtection('domain.tld', status);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the registered domain name.
-- `'1'` - Privacy Protection status - **1** for enable and **0** for disable.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Name of the registered domain. |
+| status | Integer/Required | Privacy Protection status - **1** for enable and **0** for disable. |
 
 </details>
 <br />
@@ -1833,14 +1655,14 @@ $exampleVar->domainsModifyPrivacyProtection('domain.tld', '1');
 
 ```
 <?php
-$exampleVar->domainsModifyTransferLock('domain.tld', '1');
+$exampleVar->domainsModifyTransferLock('domain.tld', status);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the registered domain name.
-- `'1'` - transfer lock status - **1** for enable and **0** for disable.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Name of the registered domain. |
+| status | Integer/Required | Transfer lock status - **1** for enable and **0** for disable. |
 
 </details>
 <br />
@@ -1858,9 +1680,9 @@ $exampleVar->domainsGetTransferCode('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the registered domain name, for which the transfer code will be shown.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Registered domain name. |
 
 </details>
 <br />
@@ -1878,9 +1700,9 @@ $exampleVar->domainsResendRAAVerification('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the registered domain name.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Registered domain name. |
 
 </details>
 <br />
