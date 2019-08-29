@@ -357,7 +357,7 @@ $exampleVar->dnsListRecords('domain.tld', 'host', 'record type');
   
  ```
 <?php
-$exampleVar->dnsAddRecord("domain.tld", "record type", "host", "record", "ttl", "priority", "weight", "port", "frame", "frame-title", "frame-keywords", "frame-description", "save-path", "redirect-type", "mail", "txt", "algorithm", "fptype", "status", "geodns-location", "caa-flag", "caa-type", "caa-value");
+$exampleVar->dnsAddRecord("domain.tld", "record type", "host", "record", ttl, priority, weight, port, frame, "frame-title", "frame-keywords", "frame-description", save-path, redirect-type, "mail", "txt", algorithm, fptype, status, geodns-location, caa-flag, "caa-type", "caa-value");
 
 ?>
 ```
@@ -367,7 +367,7 @@ $exampleVar->dnsAddRecord("domain.tld", "record type", "host", "record", "ttl", 
 | record type | String/Required | Type of the DNS record. For available record types, see "Get the available record types" function. |
 | host | String/Required | Host name of the record. Leave empty for root hoss. |
 | record | String/Required | The specific requirements for the record - where to be pointed at (e.g. IP, hostname, server), strings, authentications, etc. |
-| ttl | Integer/Required | the TTL of the record. The available TTL's are as follows: 60 = 1 minute 300 = 5 minutes 900 = 15 minutes, 1800 = 30 minutes, 3600 = 1 hour, 21600 = 6 hours, 43200 = 12 hours, 86400 = 1 day, 172800 = 2 days, 259200 = 3 days, 604800 = 1 week, 1209600 = 2 weeks, 2592000 = 1 month |
+| ttl | Integer/Required | The TTL of the record. The available TTL's are as follows: 60 = 1 minute 300 = 5 minutes 900 = 15 minutes, 1800 = 30 minutes, 3600 = 1 hour, 21600 = 6 hours, 43200 = 12 hours, 86400 = 1 day, 172800 = 2 days, 259200 = 3 days, 604800 = 1 week, 1209600 = 2 weeks, 2592000 = 1 month |
 | priority | Integer/**Optional** | Priority option for MX and SRV records. |
 | weight | Integer/**Optional** | Weight option for SRV record |
 | port | Integer/**Optional** | Port option for SRV record |
@@ -399,14 +399,17 @@ $exampleVar->dnsAddRecord("domain.tld", "record type", "host", "record", "ttl", 
   
  ```
 <?php
-$exampleVar->dnsDeleteRecord('domain.tld', "12345");
+$exampleVar->dnsDeleteRecord('domain.tld', "recordID");
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
+| recordID | Integer/Required | ID of the record. The ID can be found using the **List records** function. |
+</details>
+<br />
 
-**where**:
-- `'domain.tld'` - name of the DNS zone, which the record will be deleted from.
-- `'12345'` - ID of the record. The ID can be found using the **List records** function.
 </details>
 <br />
 
@@ -419,50 +422,36 @@ $exampleVar->dnsDeleteRecord('domain.tld', "12345");
   
  ```
 <?php
-$exampleVar->dnsModifyRecord("domain.tld", "12345", "host", "requirements", 3600, priority, weight, port, frame, frame-title, frame-keywords, frame-description, save-path, redirect-type, mail, txt, algorithm, fptype, geodns-location, caa-flag, caa-type, caa-value);
+$exampleVar->dnsModifyRecord("domain.tld", "recordID", "host", "record", ttl, priority, weight, port, frame, "frame-title", "frame-keywords", "frame-description", save-path, redirect-type, "mail", "txt", algorithm, fptype, geodns-location, caa-flag, "caa-type", "caa-value");
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
+| recordID | Integer/Required | ID of the record. The ID can be found using the **List records** function. |
+| host | String/Required | Host name of the record. Leave empty for root hoss. |
+| record | String/Required | The specific requirements for the record - where to be pointed at (e.g. IP, hostname, server), strings, authentications, etc. |
+| ttl | Integer/Required | The TTL of the record. The available TTL's are as follows: 60 = 1 minute 300 = 5 minutes 900 = 15 minutes, 1800 = 30 minutes, 3600 = 1 hour, 21600 = 6 hours, 43200 = 12 hours, 86400 = 1 day, 172800 = 2 days, 259200 = 3 days, 604800 = 1 week, 1209600 = 2 weeks, 2592000 = 1 month |
+| priority | Integer/**Optional** | Priority option for MX and SRV records. |
+| weight | Integer/**Optional** | Weight option for SRV record |
+| port | Integer/**Optional** | Port option for SRV record |
+| frame | Integer/**Optional** | Toggles the redirect with frame option for Web Redirect record: **0** for disable, **1** for enable. |
+| frame-title | String/**Optional** | Title for the redirect with frame option for Web Redirect record. |
+| frame-keywords | String/**Optional** | Keywords for the redirect with frame option for Web Redirect record. |
+| frame-description | String/**Optional** | Description for the redirect with frame option for Web Redirect record. |
+| save-path | Integer/**Optional** | Save path option for redirecting with Web Redirect record - **0** for disable, **1** for enable. |
+| redirect-type | Integer/**Optional** | Unmasked redirects for Web Redirect record if the redirect with frame is disabled - **301** for constant type or **302** for temporary type. |
+| mail | String/**Optional** | E-mail address for RP records. |
+| txt | String/**Optional** | Domain name for TXT record used in RP records. |
+| algorithm | Integer/**Optional** | Algorithm required to create for SSHFP records. |
+| fptype | Integer/**Optional** | Type of the SSHFP algorithm. |
+| status | Integer/**Optional** | Status of the record - **1** for active and **0** for inactive. If skipped, the record will be set as active. |
+| geodns-location | Integer/**Optional** | ID of the GeoDNS location that can be set for A, AAAA, CNAME, NAPTR or SRV records. The location's ID can be obtained from the **List GeoDNS locations** function. |
+| caa-flag | Integer/**Optional** | Flag option for CAA records - **0** for Non critical and **128** for Critical. |
+| caa-type | String/**Optional** | Type of the CAA record, which can be **issue**, **issuewild** and **iodef**. |
+| caa-value | String/**Optional** | Value of the CAA record. Depending on the type of the CAA record, '`caa-type'`, it can be set as follows: if `'caa-type'` is issue the `'caa-value'` can be hostname or ";". If `'caa-type'` is issuewild the `'caa-value'` can be hostname or ";". If `'caa-type'` is iodef the `'caa-value'` "mailto:someemail@address.tld, http://example.tld or http://example.tld. |
 
-**where**:
-- `'domain.tld'` - name of the DNS zone, which the record will be add for.
-- `'12345'` - ID of the record. The ID can be found using the **List records** function.
-- `'host'` - the host name of the record.
-- `'requirements'` - the value or string that is required for the record. For example IP address for A/AAAA record, mail server for MX record, name server for NS record, etc.
-- `'3600'` - the TTL of the record. The available TTL's are as follows:
-60 = 1 minute
-300 = 5 minutes
-900 = 15 minutes
-1800 = 30 minutes
-3600 = 1 hour
-21600 = 6 hours
-43200 = 12 hours
-86400 = 1 day
-172800 = 2 days
-259200 = 3 days
-604800 = 1 week
-1209600 = 2 weeks
-2592000 = 1 month
-- `'priority'` - **optional**. Only required when setting a priority for MX or SRV records.
-- `'weight'` - **optional**. Only required when setting weight for SRV record.
-- `'port'` - **optional**. Only required for setting port for SRV record.
-- `'frame'` - **optional**. Toggling the redirect with frame option for Web Redirect record - **0** for disable, **1** for enable.
-- `'frame-title'` - **optional**. Add title if redirect with frame is enabled for the Web Redirect record.
-- `'frame-keywords'` - **optional**. Add keywords if redirect with frame is enabled for the Web Redirect record.
-- `'frame-description'` - **optional**. Add description if redirect with frame is enabled for the Web Redirect record.
-- `'save-path'` - **optional**. Saves the path when redirecting with Web Redirect record - **0** for disable, **1** for enable.
-- `'redirect-type'` - **optional**. Unmasked redirects for Web Redirect record if the redirect with frame is disabled - **301** for constant type or **302** for temporary type.
-- `'mail'` - **optional**. E-mail address for RP records.
-- `'txt'` - **optional**. Domain name for TXT record used in RP records.
-- `'algorithm'` - **optional**. Algorithm required to create the SSHFP fingerprint. Only used for SSHFP records.
-- `'fptype'` - **optional**. Type of the SSHFP algorithm. Only used for SSHFP records.
-- `'geodns-location'` - **optional**. ID of the GeoDNS location that can be set for A, AAAA and CNAME records. The location's ID can be obtained from the **List GeoDNS locations** function.
-- `'caa-flag'` - **optional**. Flag used only for CAA records - **0** for Non critical and **128** for Critical.
-- `'caa-type'` - **optional**. Type of the CAA record, which can be **issue**, **issuewild** and **iodef**.
-- `'caa-value'` - **optional**. Value of the CAA record. Depending on the type of the CAA record, '`caa-type'`, it can be set as follows:
-if `'caa-type'` is issue the `'caa-value'` can be hostname or ";".
-if `'caa-type'` is issuewild the `'caa-value'` can be hostname or ";".
-if `'caa-type'` is iodef the `'caa-value'` "mailto:someemail@address.tld, http://example.tld or http://example.tld.
 </details>
 <br />
 
@@ -475,15 +464,16 @@ if `'caa-type'` is iodef the `'caa-value'` "mailto:someemail@address.tld, http:/
   
 ```
 <?php
-$exampleVar->dnsCopyRecords('domain.tld', 'domain2.tld', 1);
+$exampleVar->dnsCopyRecords('domain.tld', 'domain2.tld', delete-records);
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone, which the records will be copied to. |
+| domain-2.tld | String/Required | Domain name of the DNS zone, which the records will be copied from. |
+| delete-records | Integer/**Optional** | If entered (set to 1), deletes all the current records, if such exists, from domain.tld. |
 
-**where**:
-- `'domain.tld'` - name of the DNS zone, which the records will be copied to.
-- `'domain2.tld'` - name of the DNS zone, which the records will be copied from.
-- `'1'` - **optional**. If entered (set to 1), deletes all the existing records in the DNS zozo, which the records will be copied to.
 </details>
 <br />
 
@@ -496,18 +486,17 @@ $exampleVar->dnsCopyRecords('domain.tld', 'domain2.tld', 1);
   
 ```
 <?php
-$exampleVar->dnsCopyRecords('domain.tld', 'bind', '@ 3600 IN TXT "v=spf1 a mx include:_spf.google.com ~all"
-@ 3600 IN MX ASPMX.L.GOOGLE.COM.', 1);
+$exampleVar->dnsCopyRecords('domain.tld', 'format', 'records-list", delete-records);
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone, which the records will be imported to. |
+| format | String/Required | The format, which will be used to import the records. The available formats are **bind** and **tinydns**. |
+| records-list | String/Required | List of the records based on the chosen format. The records must be added one per row. |
+| delete-records | Integer/**Optional** | If entered (set to 1), deletes all the current records, if such exists, from domain.tld. |
 
-**where**:
-- `'domain.tld'` - name of the DNS zone, which the records will be imported to.
-- `'bind'` - the format, which will be used to import the records. The available formats are **bind** and **tinydns**.
-- `'@ 3600 IN TXT "v=spf1 a mx include:_spf.google.com ~all"
-    @ 3600 IN MX ASPMX.L.GOOGLE.COM.'` - list of the records based on the chosen format. The records must be added one per row.
-- `'1'` - **optional**. If entered (set to 1), deletes all the existing records in the DNS zozo, which the records will be imported to.
 </details>
 <br />
 
@@ -524,9 +513,10 @@ $exampleVar->dnsExportRecordsBIND('domain.tld');
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone, which the records will be exported from in BIND format. |
 
-**where**:
-- `'domain.tld'` - name of the DNS zone, which the records will be exported from in BIND format.
 </details>
 <br />
 
@@ -539,13 +529,14 @@ $exampleVar->dnsExportRecordsBIND('domain.tld');
   
 ```
 <?php
-$exampleVar->dnsGetAvailableRecords('domain');
+$exampleVar->dnsGetAvailableRecords('zone-type');
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| zone-type | String/Required | type of the DNS zone. The value can be **domain** for Master DNS zones, **reverse** for Reverse DNS zones and **parked** for Parked DNS zones. |
 
-**where**:
-- `'domain'` - type of the DNS zone. The value can be **domain** for Master DNS zones, **reverse** for Reverse DNS zones and **parked** for Parked DNS zones.
 </details>
 <br />
 
@@ -579,9 +570,9 @@ $exampleVar->dnsGetSOA('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - is the name of the DNS zone, that the SOA details will be shown for.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone, which the SOA details will be shown for. |
 
 </details>
 <br />
@@ -595,19 +586,20 @@ $exampleVar->dnsGetSOA('domain.tld');
   
 ```
 <?php
-$exampleVar->dnsModifySOA('domain.tld', 'ns1.nameserver.tld', 'example@email.tld', 2000, 3000, 2000000, 3600);
+$exampleVar->dnsModifySOA('domain.tld', 'ns.nameserver.tld', 'example@email.tld', refresh, retry, expire, ttl);
 
 ?>
 ```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone, which the SOA details will be modified for. |
+| ns.nameserver.tld | String/Required | Host name of the primary name server. |
+| example@email.tld | Integer/Required | DNS admin email. |
+| refresh | Integer/Required | Refresh rate. The value must be between **1200** and **43200** seconds. |
+| retry | Integer/Required | Retry rate. The value must be between **180** and **2419200** seconds. |
+| expire | Integer/Required | Expire rate. The value must be between **1209600** and **2419200** seconds. |
+| ttl | Integer/Required | Default TTL. The value must be between **60** and **2419200** seconds. |
 
-**where**:
-- `'domain.tld'` - is the name of the DNS zone, that the SOA details will be modified (edited) for.
-- `'ns1.nameserver.tld'` - host name of the primary name server.
-- `'example@email.tld'` - DNS admin email.
-- `'2000'` - the refresh rate. The value must be between **1200** and **43200** seconds.
-- `'3000'` - the retry rate. The value must be between **180** and **2419200** seconds.
-- `'2000000'` - the expire rate. The value must be between **1209600** and **2419200** seconds.
-- `'3600'` - the default TTL. The value must be between **60** and **2419200** seconds.
 </details>
 <br />
 
@@ -620,14 +612,14 @@ $exampleVar->dnsModifySOA('domain.tld', 'ns1.nameserver.tld', 'example@email.tld
   
 ```
 <?php
-$exampleVar->dnsGetDynamicURL('domain.tld', 12345);
+$exampleVar->dnsGetDynamicURL('domain.tld', recordID);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the DNS zone of the A or AAAA record.
-- `'12345'` - the ID of the A or AAAA record. It can be acquired from the **List records** function.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
+| recordID | Integer/Required | ID of the A or AAAA record. The ID can be found using the **List records** function. |
 
 </details>
 <br />
@@ -641,14 +633,14 @@ $exampleVar->dnsGetDynamicURL('domain.tld', 12345);
   
 ```
 <?php
-$exampleVar->dnsDisableDynamicURL('domain.tld', '12345');
+$exampleVar->dnsDisableDynamicURL('domain.tld', recordID);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the DNS zone of the A or AAAA record.
-- `'12345'` - the ID of the A or AAAA record. It can be acquired from the **List records** function.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
+| recordID | Integer/Required | ID of the A or AAAA record. The ID can be found using the **List records** function. |
 
 </details>
 <br />
@@ -662,14 +654,14 @@ $exampleVar->dnsDisableDynamicURL('domain.tld', '12345');
   
 ```
 <?php
-$exampleVar->dnsDisableDynamicURL('domain.tld', '12345');
+$exampleVar->dnsDisableDynamicURL('domain.tld', recordID);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the DNS zone of the A or AAAA record.
-- `'12345'` - the ID of the A or AAAA record. It can be obtained from the **List records** function.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
+| recordID | Integer/Required | ID of the A or AAAA record. The ID can be found using the **List records** function. |
 
 </details>
 <br />
@@ -683,15 +675,15 @@ $exampleVar->dnsDisableDynamicURL('domain.tld', '12345');
   
 ```
 <?php
-$exampleVar->dnsChangeRecordStatus('domain.tld', '12345', 1);
+$exampleVar->dnsChangeRecordStatus('domain.tld', recordID, status);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the DNS zone, where the records will be imported to.
-- `'12345'` - the ID of the record. It can be obtained from the **List records** function.
-- `'1'` - **optional**. Status indicator - **1** to activate the record and **0** to deactivate it. If the argument is skipped the status will be toggled.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
+| recordID | Integer/Required | ID of record. The ID can be found using the **List records** function. |
+| status | Integer/**Optional** | Status of the record - **1** for active and **0** for inactive. If skipped, the record will be toggled. |
 
 </details>
 <br />
@@ -699,20 +691,20 @@ $exampleVar->dnsChangeRecordStatus('domain.tld', '12345', 1);
 <details><summary>27. Add master server.</summary>
 
 
-- **Description**: Add new master server to a DNS zone. Only available for Slave DNS zones and Slave Reverse DNS zones.
+- **Description**: Add new master server to a DNS zone. Only available for Secondary DNS zones and Secondary Reverse DNS zones.
 
 - **Example**:
   
 ```
 <?php
-$exampleVar->dnsAddMasterServer('domain.tld', '1.2.3.4');
+$exampleVar->dnsAddMasterServer('domain.tld', 'IP');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the Slave or Slave Reverse DNS zone, which the new master server will be added for.
-- `'1.2.3.4'` - the IP address of the new master server.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
+| IP | String/Required | IP address of the new master server. |
 
 </details>
 <br />
@@ -726,14 +718,14 @@ $exampleVar->dnsAddMasterServer('domain.tld', '1.2.3.4');
   
 ```
 <?php
-$exampleVar->dnsDeleteMasterServer('domain.tld', '12345');
+$exampleVar->dnsDeleteMasterServer('domain.tld', masterID);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the Slave or Slave Reverse DNS zone, which the master server will be deleted for.
-- `'12345'` - the ID of the master server. It can be obtained from the **List master servers** function.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
+| masterID | Integer/Required | ID of the master server. It can be obtained from the **List master servers** function. |
 
 </details>
 <br />
@@ -751,7 +743,9 @@ $exampleVar->dnsListMasterServer('domain.tld');
 
 ?>
 ```
-- `'domain.tld'` - the Slave or Slave Reverse DNS zone, which the master server will be listed for.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone. |
 
 </details>
 <br />
@@ -793,37 +787,42 @@ $exampleVar->dnsAvailableMailForwards();
 <details><summary>32. Add mail forward.</summary>
 
 
-- **Description**: Add new mail forward to the DNS zone.
+- **Description**: Add new mail forward to a DNS zone.
 
 - **Example**:
   
 ```
 <?php
-$exampleVar->dnsAddMailForward('domain.tld', 'apitest', 'mail', 'anzhelo@cloudns.net');
+$exampleVar->dnsAddMailForward('domain.tld', 'box', 'host', 'destination-mail');
 
 ?>
 ```
-
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone, which the mail forward will be added for. |
+| box | String/Required | Name of the mailbox for the mail forward. |
+| host | String/Required | Host of the mailbox. If empty, the mail forward will be created for the main domain name. | 
+| destination-mail | String/Required | Existing email address, where the mail forwards will be received from. |
 </details>
 <br />
 
 <details><summary>33. Delete mail forward.</summary>
 
 
-- **Description**: Delete a mail forward in the DNS zone.
+- **Description**: Delete a mail forward for a specified DNS zone.
 
 - **Example**:
   
 ```
 <?php
-$exampleVar->dnsDeleteMailForward('domain.tld', '12345');
+$exampleVar->dnsDeleteMailForward('domain.tld', mailID);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the DNS zone, which the new mail forward will be added for.
-- `'12345'` - the ID of the mail forward. It can be obtained from the **List mail forwards** function.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone, which the mail forward will be removed from. |
+| mailID | Integer/Required | ID of the mail forward. It can be obtained from the **List mail forwards** function. |
 
 </details>
 <br />
@@ -831,23 +830,23 @@ $exampleVar->dnsDeleteMailForward('domain.tld', '12345');
 <details><summary>34. Modify (edit) mail forward.</summary>
 
 
-- **Description**: Delete a mail forward in the DNS zone.
+- **Description**: Modify a mail forward of a DNS zone.
 
 - **Example**:
   
 ```
 <?php
-$exampleVar->dnsModifyMailForward('domain.tld', 'box', 'host', 'example@email.tld', '12345');
+$exampleVar->dnsModifyMailForward('domain.tld', 'box', 'host', 'destination-mail', mailID);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the DNS zone of the mail forward, which will be modified (edited).
-- `'box'` - the mail box of the mail forward (e.g. admin, support, service, etc.).
-- `'host'` - the host, which is configured for mail server (generally the one, that MX record(s) are added for).
-- `'example@email.tld'` - the email address, which the email messages will be forwarded to.
-- `'12345'` - the ID of the mail forward. It can be obtained from the **List mail forwards** function.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone, which the mail forward will be added for. |
+| box | String/Required | Name of the mailbox for the mail forward. |
+| host | String/Required | Host of the mailbox. If empty, the mail forward will be created for the main domain name. | 
+| destination-mail | String/Required | Existing email address, where the mail forwards will be received from. |
+| mailID | Integer/Required | ID of the mail forward. It can be obtained from the **List mail forwards** function. |
 
 </details>
 <br />
@@ -865,9 +864,9 @@ $exampleVar->dnsListMailForwards('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - the DNS zone, which the mail forwards will be listed for.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone, which the mail forwards will be listed for. |
 
 </details>
 <br />
@@ -885,10 +884,10 @@ $exampleVar->dnsAddCloudDomain('domain.tld', 'cloud-domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - master domain of the cloud.
-- `'cloud-domain.tld'` - the new domain in the cloud.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Master domain of the cloud. |
+| cloud-domain.tld | String/Required | The new domain in the cloud. |
 
 </details>
 <br />
@@ -906,9 +905,9 @@ $exampleVar->dnsDeleteCloudDomain('cloud-domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'cloud-domain.tld'` - the cloud domain that will be deleted.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| cloud-domain.tld | String/Required | Cloud domain that will be deleted. |
 
 </details>
 <br />
@@ -926,9 +925,9 @@ $exampleVar->dnsChangeCloudMaster('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name of the new cloud master.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required |  Domain name of the new cloud master. |
 
 </details>
 <br />
@@ -946,56 +945,35 @@ $exampleVar->dnsListCloudDomains('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name of the cloud master.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Master domain of the cloud. |
 
 </details>
 <br />
 
-<details><summary>40. Add new IP.</summary>
+<details><summary>40. Allow new IP.</summary>
 
 
-- **Description**: Adds new IP address of a slave server for zone transfers.
+- **Description**: Allow new IP address of a slave server for zone transfers.
 
 - **Example**:
   
 ```
 <?php
-$exampleVar->dnsAllowNewIP('domain.tld', '1.2.3.4');
+$exampleVar->dnsAllowNewIP('domain.tld', 'IP');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name, for which the new IP address of a slave server will be add for zone transfers.
-- `'1.2.3.4'` - IP address of the slave server.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name, which the slave server's IP address will be added for zone transfers. |
+| IP | String/Required | IP address of the slave server. |
 
 </details>
 <br />
 
-<details><summary>41. Allow new IP.</summary>
-
-
-- **Description**: Adds (allows) new IP address of a slave server for zone transfers.
-
-- **Example**:
-  
-```
-<?php
-$exampleVar->dnsAllowNewIP('domain.tld', '1.2.3.4');
-
-?>
-```
-
-**where**:
-- `'domain.tld'` - domain name, for which the new IP address of a slave server will be added (allowed) for zone transfers.
-- `'1.2.3.4'` - IP address of the slave server.
-
-</details>
-<br />
-
-<details><summary>42. Delete an allowed IP.</summary>
+<details><summary>41. Delete an allowed IP.</summary>
 
 
 - **Description**: Removes slave server's IP address for zone transfers.
@@ -1004,19 +982,19 @@ $exampleVar->dnsAllowNewIP('domain.tld', '1.2.3.4');
   
 ```
 <?php
-$exampleVar->dnsDeleteAllowedIP('domain.tld', '12345');
+$exampleVar->dnsDeleteAllowedIP('domain.tld', serverID);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name, for which the IP address of a slave server will be removed for zone transfers.
-- `'12345'` - ID of the slave server. It can be obtained from the **List the allowed IPs** funciton.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
+| IP | Integer/Required | IP address of the slave server. |
 
 </details>
 <br />
 
-<details><summary>43. List the allowed IP's.</summary>
+<details><summary>42. List allowed IP's.</summary>
 
 
 - **Description**: List all of the allowed IP addresses for zone transfers.
@@ -1029,14 +1007,14 @@ $exampleVar->dnsListAllowedIP('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name, for which the allowed IP address for zone transfer will be listed.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
 
 </details>
 <br />
 
-<details><summary>44. Hourly statistics.</summary>
+<details><summary>43. Hourly statistics.</summary>
 
 
 - **Description**: Shows hourly statistics for the DNS zone.
@@ -1045,21 +1023,21 @@ $exampleVar->dnsListAllowedIP('domain.tld');
   
 ```
 <?php
-$exampleVar->dnsHourlyStatistics('domain.tld', '2018', '12', '31');
+$exampleVar->dnsHourlyStatistics('domain.tld', year, month, day);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name, which the statistics will be shown for.
-- `'2018'` - the year, which the statistics will be shown for.
-- `'12'` - the month, which the statistics will be shown for.
-- `'31'` - the day, which the statistics will be shown for.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
+| year | Integer/Required | The year, which the statistics will be shown for. |
+| month | Integer/Required | The month, which the statistics will be shown for. |
+| day | Integer/Required | The day, which the statistics will be shown for. |
 
 </details>
 <br />
 
-<details><summary>45. Daily statistics.</summary>
+<details><summary>44. Daily statistics.</summary>
 
 
 - **Description**: Shows daily statistics for the DNS zone.
@@ -1068,20 +1046,20 @@ $exampleVar->dnsHourlyStatistics('domain.tld', '2018', '12', '31');
   
 ```
 <?php
-$exampleVar->dnsDailyStatistics('domain.tld', '2018', '12');
+$exampleVar->dnsDailyStatistics('domain.tld', year, month);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name, which the statistics will be shown for.
-- `'2018'` - the year, which the statistics will be shown for.
-- `'12'` - the month, which the statistics will be shown for.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
+| year | Integer/Required | The year, which the statistics will be shown for. |
+| month | Integer/Required | The month, which the statistics will be shown for. |
 
 </details>
 <br />
 
-<details><summary>46. Monthly statistics.</summary>
+<details><summary>45. Monthly statistics.</summary>
 
 
 - **Description**: Shows monthly statistics for the DNS zone.
@@ -1090,19 +1068,19 @@ $exampleVar->dnsDailyStatistics('domain.tld', '2018', '12');
   
 ```
 <?php
-$exampleVar->dnsMonthlyStatistics('domain.tld', '2018');
+$exampleVar->dnsMonthlyStatistics('domain.tld', year);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name, which the statistics will be shown for.
-- `'2018'` - the year, which the statistics will be shown for.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
+| year | Integer/Required | The year, which the statistics will be shown for. |
 
 </details>
 <br />
 
-<details><summary>47. Yearly statistics.</summary>
+<details><summary>46. Yearly statistics.</summary>
 
 
 - **Description**: Shows yearly statistics for the DNS zone.
@@ -1115,14 +1093,14 @@ $exampleVar->dnsYearlyStatistics('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name, which the statistics will be shown for.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
 
 </details>
 <br />
 
-<details><summary>48. Staistics for the last 30 days.</summary>
+<details><summary>47. Staistics for the last 30 days.</summary>
 
 
 - **Description**: Shows statistics of the DNS zone for the last 30 days.
@@ -1135,14 +1113,14 @@ $exampleVar->dnsLast30DaysStatistics('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name, which the statistics will be shown for.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the DNS zone |
 
 </details>
 <br />
 
-<details><summary>49. Get templates for parked pages.</summary>
+<details><summary>48. Get templates for parked pages.</summary>
 
 
 - **Description**: Shows the templates, that we provide, fo.
@@ -1159,7 +1137,7 @@ $exampleVar->dnsGetParkedTemplates();
 </details>
 <br />
 
-<details><summary>50. Get parked zones settings.</summary>
+<details><summary>49. Get parked zones settings.</summary>
 
 
 - **Description**: Shows the settings of the parked zone.
@@ -1172,14 +1150,14 @@ $exampleVar->dnsGetParkedSettings('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name of the parked zone.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the parked DNS zone |
 
 </details>
 <br />
 
-<details><summary>51. Modify parked zones settings.</summary>
+<details><summary>50. Modify parked zones settings.</summary>
 
 
 - **Description**: Modify (edit) the settings of a parked zone.
@@ -1188,22 +1166,23 @@ $exampleVar->dnsGetParkedSettings('domain.tld');
   
 ```
 <?php
-$exampleVar->dnsModifyParkedSettings('domain.tld', '1', 'title', 'description', 'keywords', 'contact-form');
+$exampleVar->dnsModifyParkedSettings('domain.tld', templateID, 'title', 'description', 'keywords', contact-form);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name of the parked zone.
-- `'1'` - id of the template for the parked zone. It can be **1**, **2**, **3** or **4**. The available templates can be obtained from the "Get templates for parked pages" function.
-- `'title'` - **optional**. Title of the parked page.
-- `'keywords'` - **optional**. Keywords of the parked page.
-- `'contact-form'` - **optional**. Enables or disables the contact form of the parked page - **1** for enabled, **2** for disabled and **0** is the default value.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the parked DNS zone |
+| templateID | Integer/Required | ID of the template for the parked zone. It can be **1**, **2**, **3** or **4**. The available templates can be obtained from the "Get templates for parked pages" function. |
+| title | String/**Optional** | Title of the parked page. |
+| description | String/**Optional** | Description of the parked page. |
+| keywords | String/**Optional** | Keywords of the parked page. |
+| contact-form | Integer/**Optional** | Enables or disables the contact form of the parked page - **1** for enabled, **2** for disabled and **0** is the default value. |
 
 </details>
 <br />
 
-<details><summary>52. List GeoDNS locations.</summary>
+<details><summary>51. List GeoDNS locations.</summary>
 
 
 - **Description**: Lists all the GeoDNS locations.
@@ -1216,9 +1195,9 @@ $exampleVar->dnsListGeoDNSLocations('domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name of the GeoDNS zone.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the GeoDNS zone. |
 
 </details>
 <br />
@@ -1238,10 +1217,10 @@ $exampleVar->domainCheckAvailability('domain', array ('com', 'net', ... , 'tld')
 
 ?>
 ```
-
-**where**:
-- `'domain'` - the name of the domain, that will be checked for availability (without the .TLD).
-- `array ('com', 'net', ... , 'tld')` - array with TLD's, that will be checked in combination with the `'domain'`.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain | String/Required | Domain name that will be checked. |
+| 'com', 'net', ... , 'tld' | Array/Required | Array with TLD's, that will be checked in combination with the domain. |
 
 </details>
 <br />
@@ -1272,236 +1251,49 @@ $exampleVar->domainsPriceList();
   
 ```
 <?php
-$exampleVar->domainsRegisterNewDomain('domain', 'tld', 'period', 'example@mail.tld', 'John Doe', 'Company Name LTD', 'Address', 'City', 'State', '10000', 'Country', '000', '123456789', '111', '987654321', array ('ns1.nameserver.tld', 'ns2.nameserver.tld', ... , 'nsn.nameserver.tld'), 'registrant-type', 'registrant-type-id', 'registrant-policy', 'birth-date', 'country-code', 'birth-city', 'city-postal-code', 'publication', 'VAT-number', 'Siren-number', 'DUNS-number', 'trademark', 'Waldec-number', 'organization-type', 'privacy-protection', 'code', 'publicity', 'kpp', 'passport-number', 'passport-issued-by', 'passport-issued-on');
+$exampleVar->domainsRegisterNewDomain('domain', 'tld', period, 'example@mail.tld', 'Name', 'Address', 'City', 'State', 'zip', 'Country', phone-code, phone-number, 'Company LTD', fax-code, fax-number, array ('ns1.nameserver.tld', ... , 'nsn.nameserver.tld'), 'registrant-type', 'registrant-type-id', registrant-policy, 'birth-date', 'birth-cc', 'birth-city', 'city-postal-code', 'publication', 'VAT-number', 'Siren-number', 'DUNS-number', 'trademark', 'Waldec-number', 'organization-type', 'privacy-protection', code, 'publicity', 'kpp', 'passport-number', 'passport-issued-by', 'passport-issued-on');
 
 ?>
 ```
-
-**where**:
-- `'domain'` - the name of the domain.
-- `'tld'` - the TLD of the domain.
-- `'period'` - the registration period of the domain. The value entered is in years. The available periods can be obtained from the **List domain information** function.
-- `'example@mail.tld' - the email address of the registrant.
-- `'John Doe'` - the name of the registrant.
-- `'Company Name LTD'` - the name of the company.
-- `'Address'` - the address of the registrant/company.
-- `'City'` - the city of the registrant/company.
-- `'State'` - the state, e.g. Texas.
-- `'10000'` - the zip code.
-- `'Country'` - the country of the registrant/company, which must be entered only with 2 letters according to ISO 3166:
-For .de domain names it must be DE
-
-For .uk domain names it must be one of the following: GB (United Kingdom), IM (Isle of Man), JE (Jersey) or GG (Guernsey).
-
-For *.br domains (com.br, net.br, pro.br, arq.br, eco.br, ind.br, art.br, eng.br, adv.br, mus.br, blog.br) it must be BR.
-- `'000'` - the calling code of the phone number. Can be between 1 and 3 digits.
-- `'123456789'` - the phone number.
-- `'111'` - **optional**. The calling code of the fax number. Can be between 1 and 3 digits.
-- `'987654321'` - **optional**. The fax number.
-- `array ('ns1.nameserver.tld', 'ns2.nameserver.tld', ... , 'nsn.nameserver.tld')` - **optional**. The name servers, that the domain will be pointed at upon finishing the registration.
-- `'registrant-type'` - **optional**. Required field for specific TLDs.
-
-Required for .fr/.re/.pm/.tf/.wf/.yt domain names. Possible values:
-
-INDIVIDUAL - additional fields need to be added for this type
-COMPANY - company name is a mandatory field when the registrant type is COMPANY
-TRADEMARK - company name and an additional field for the trademark name need to be added for this type
-ASSOCIATION - company (associacion) name and additional field for the waldec should be added
-OTHER - company (organization) name and additional field for the registrant type should be added
-Required for .com.au and .net.au domain names. Possible values:
-
-ACN - Australian Company Number
-ABN - Australian Business Number
-VIC_BN - Victoria Business Number
-NSW_BN - New South Wales Business Number
-SA_BN - South Australia Business Number
-NT_BN - Northern Territory Business Number
-WA_BN - Western Australia Business Number
-TAS_BN - Tasmania Business Number
-ACT_BN - Australian Capital Territory Business Number
-QLD_BN - Queensland Business Number
-TM - Trademark number
-ARBN - Registrant's Australian Registered Body Number
-Other
-Required for .it domain names. Possible values:
-
-1 -  Italian and foreign natural persons
-2 - Companies/one man companies
-3 - Freelance workers/professionals
-4 - Non-profit organizations
-5 - Public organizations
-6 - Other subjects
-7 - Foreigners who match 2-6  
-Required for .ru domain names. Possible values:
-
-ORG
-PRS
-Required for .ca domain names. Possible values:
-
-CCO - Corporation (Canada or Canadian province or territory)
-CCT - Canadian citizen
-RES - Permanent Resident of Canada
-GOV - Government or government entity in Canada
-EDU - Canadian Educational institution
-ASS - Canadian Unincorporated Association
-HOP - Canadian Hospital
-PRT - Partnership Registered in Canada
-TDM - Trade-mark registered in Canada (by a non-Canadian owner)
-TRD - Canadian Trade union
-PLT - Canadian Political party
-LAM - Canadian Library, Archive or Museum
-TRS - Trust established in Canada
-ABO - Aboriginal Peoples (individuals or groups) indigenous to Canada
-INB - Indian Band recognized by the Indian Act of Canada
-LGR - Legal Representative of a Canadian Citizen or Permanent Resident
-OMK - Official mark registered in Canada
-MAJ - Her Majesty the Queen
-Required for .com.au and .net.au domain names. Possible values:
-
-ACN - This is the Registrant's Australian Company Number.
-ABN - This is the Registrant's Australian Business Number.
-VIC BN - This is the Registrant's Victoria Business Number.
-NSW BN - This is the Registrant's New South Wales Business Number.
-SA BN - This is the Registrant's South Australia Business Number.
-NT BN - This is the Registrant's Northern Territory Business Number.
-WA BN - This is the Registrant's Western Australia Business Number.
-TAS BN - This is the Registrant's Tasmania Business Number.
-ACT BN - This is the Registrant's Australian Capital Territory Business Number.
-QLD BN - This is the Registrant's Queensland Business Number.
-TM - This is the Registrant's Trademark number.
-ARBN - This is the Registrant's Registrant's Australian Registered Body Number (ARBN).
-Required for .es domain names. Possible values:
-
-1 - Natural person or individual
-39 - Economic Interest Grouping
-47 - Association
-59 - Sports Association
-68 - Trade Association
-124 - Savings Bank
-150 - Community Property
-152 - Condominium
-164 - Religious Order or Institution
-181 - Consulate
-197 - Public Law Association
-203 - Embassy
-229 - Municipality
-269 - Sports Federation
-286- Foundation
-365 - Mutual Insurance Company
-434 - Provincial Government Body
-436 - National Government Body
-439 - Political Party
-476 - Trade Union
-510 - Farm Partnership
-524 - Public Limited Company / Corporation
-525 - Sports Public Limited Company
-554 - Partnership
-560 - General Partnership
-562 - Limited Partnership
-566 - Cooperative
-608 - Worker-owned Company
-612 - Limited Liability Company
-713 - Spanish (company) Branch
-717 - Temporary Consortium / Joint Venture
-744 - Worker-owned Limited Company
-745 - Provincial Government Entity
-746 - National Government Entity
-747 - Local Government Entity
-877 - Others
-878 - Designation of Origin Regulatory Council
-879 - Natural Area Management Entity
-Required for *.br domain names. Possible values:
-
-ORG for a company
-PRS for a private person
-Required for *.cn domain names. Possible values:
-
-cnhosting for site, hosted in Mainland China
-nocnhosting for site, hosted outside Mainland China
-Required for *.ro domain names. Possible values:
-
-p - Person
-ap - Authorized person
-nc - Non-commercial
-c - Commercial
-gi - Government Institution
-pi - Public Institution
-o - Other
-
-- `'registrant-type-id'` - **optional**. Required for specific TLD's.
-
-Required for .com.au and .net.au domain names. Should contain the ID of the number choosen registrant type in the registrant_type parameter.
-
-Required field for .es domain names. Possible values:
-
-1 - DNI or NIF - Provide either the Spanish National Personal ID or company VAT ID number.
-3 - NIE - Provide the Spanish resident alien ID number
-0 - Other ID - If you do not have any of the above mentioned IDs, provide either your Passport number, any Foreign ID document number, Company Registration number, Driver's License number, etc.
-Required field for .ro domain names, if country is RO.
-
-An identification number for pesons (personal ID, passport number, driving license, etc), fiscal code for companies or other unique identification number or sequence of characters for juridical entities. Mandatory for Romanian entities. Optional for foreigners. Max Length: 40 chars. Min. Length: 5 chars.
-
-- `'registrant-policy'` - **optional** - Required for specific TLD's.
-
-Required for .com.au and .net.au domain names. Possible values:
-
-1 - if Domain Name is an Exact Match OR Abbreviation OR Acronym of your Entity or Trading Name.
-2 - if Close and substantial connection between the domain name and the operations of your Entity.
-
-- `'birth-date'` - **optional**. The birth date of the registrant.
-- `'country-code'` - **optional**. Birth country code.
-
-Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is INDIVIDUAL.
-
-Optional field for .it (for Registrant contact only) Must be one of the  ISO 3166-1 codes (e.g.: IT, FR, NL, ..). If the Registrant is not a natural person (registrant_type <> 1) it must be equal to the registrant country code value. If the Registrant is a natural  person (registrant_type = 1), the registrant country code and the birth_cc fields may differ but at least one of them must correspond to the ISO 3166-1 code of a country belonging to the European Union.
-
-Format: US
-
-- `'birth-city'` - **optional**. Birth city name. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is INDIVIDUAL.
-- `'city-postal-code'` - **optional**. Postal code of the birth city. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is INDIVIDUAL.
-- `'publication'` - **optional**. Restricted or Non-Restricted publication of the individual details. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is INDIVIDUAL. Possible values:
-
-0 - Non-Restricted
-1 - Restricted
-
-- `'VAT-number'` - **optional**. EU VAT number. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is COMPANY, TRADEMARK or ASSOCIATION.
-- `'Siren-number'` - **optional**. Siren number of the company (organization). Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is COMPANY, TRADEMARK or ASSOCIATION.
-- `'DUNS-number'` - **optional**. DUNS number of the company (organization). Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is COMPANY, TRADEMARK or ASSOCIATION.
-- `'trademark'` - **optional**. Only for specific TLDs.
-
-Required field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is TRADEMARK. The parameter should contain the name of the trademark.
-
-Required field for .com.au and .net.au domain names when the registrant_type is TM. The parameter should be "Trademark Owner" or "Pending TM Owner".
-
-- `'Waldec-number'` - **optional**. Waldec number of the association. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is ASSOCIATION.
-- `'organization-type'` - **optional**. Type of the organization. Optional field for .fr/.re/.pm/.tf/.wf/.yt domain names when the registrant_type is OTHER.
-- `'privacy-protection'` - **optional**. Enabling/disabling Privacy Protection for the domain. 0=disabled and 1=enabled. By default the Privacy Protection is disabled.
-- `'code'` - **optional**. 
-
-Optional field for .it domains. Identification code | Entering wrong information in this field may lead to cancelation of your domain.
-
-If the requester is an Italian natural person it contains his/her tax code (Codice Fiscale).
-
-For foreign natural persons it can contain a document number (like passport number or ID card number).
-
-For Italian associations without VAT number and numeric tax code must be equal to 'n.a.'.
-
-In all the other cases must be equal to VAT number (in the 11 numbers format if Nationality is Italian) or the numeric tax code.
-Optional field for .ru domain names. This value is the Taxpayer Identification Number (TIN). This is a 10 digit number and is mandatory for Organization Contact Type, when the Country is Russia.
-
-Required filed for .es domain names. Depending upon which registrant_type_id you provided, mention that ID's number as a value.
-
-Required filed for *.br domain names. CPF number for Individuals and CNPJ number for Organizations.
-
-Required filed for *.cn domain names. Organization ID.
-
-Required for *.ro domain names. Mandatory for Commercial Romanian entities (where person_type is 'c'). Optional for foreigners or other Romanian entities. Max Length: 40 chars. 
-
-- `'publicity'` - **optional**. Available for .it domain names.  (Consent to the processing of personal data for registration) Possible field values: 1=yes, 0=NO. If NO is used the request will fail.
-- `'kpp'` - **optional**. Available for .ru domain names. His value is the Territory-linked Taxpayer number. This is a 9 digit number and is mandatory for the Organization Contact Type, when the Country is Russia.
-- `'passport-number'` - **optional**. Available for .ru domain names. Document Number.
-- `'passport-issued-by'` - **optional**. Available for .ru domain names. Document issued by (123 police station of Moscow).
-- `'passport-issued-on` - **optional**. Available for .ru domain names. Passport issued date. Format: DD.MM.YYYY.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain | String/Required | Name of the domain. |
+| tld | String/Required | TLD of the domain. |
+| period | Integer/Required | The registration period of the domain. The value entered is in years. The available periods can be obtained from the **List domain information** function. |
+| example@mail.tld | String/Required | The email address of the registrant. |
+| Name | String/Required | The name of the registrant. |
+| Address | String/Required | The address of the registrant/company. |
+| City | String/Required | The city of the registrant/company. |
+| State | String/Required | The state, e.g. Texas. |
+| zip | Integer/Required | The zip code. |
+| Country | String/Required | The country of the registrant/company, which must be entered as a country code according to ISO 3166. (DE, UK, BR, etc.) |
+| phone-code | Integer/Required | Calling code of the phone number. Can be between 1 and 3 digits.|
+| phone-number | Integer/Required | The phone number. |
+| Company LTD | String/**Optional** | The name of the company. Required if the registrant type is a company. |
+| fax-code | Integer/**Optional** | Calling code of the fax number. Can be between 1 and 3 digits.|
+| fax-number | Integer/**Optional** | The fax number. |
+| 'ns1.nameserver.tld', ... , 'nsn.nameserver.tld' | Array/**Optional** | The name servers, that the domain will be pointed at upon finishing the registration. |
+| registrant-type | String/**Optional** | Required field for specific TLDs. For more information [a link](https://www.cloudns.net/wiki/article/97/), registrant_type row. |
+| registrant-type-id | String/**Optional** | Required field for specific TLDs. For more information [a link](https://www.cloudns.net/wiki/article/97/), registrant_type_id row. |
+| registrant-policy | Integer/**Optional** | Required for specific TLD's, such as .com.au and .net.au domain names. Possible values: **1** - if Domain Name is an Exact Match OR Abbreviation OR Acronym of your Entity or Trading Name, **2** - if Close and substantial connection between the domain name and the operations of your Entity. |
+| birth-date | String/**Optional** | The birth date of the registrant. For more information [a link](https://www.cloudns.net/wiki/article/97/), birth_date row. |
+| birth-cc | String/**Optional** | Birth country code, optional for certain TLD's. For more information [a link](https://www.cloudns.net/wiki/article/97/), birth_cc row. |
+| birth-city | String/**Optional** | Birth city name. For more information [a link](https://www.cloudns.net/wiki/article/97/), birth_city row. |
+| city-postal-code | String/**Optional** | Postal code of the birth city. For more information [a link](https://www.cloudns.net/wiki/article/97/), birth_zip row. |
+| publication | String/**Optional** | Possible values: **0** - Non-Restricted, **1** - Restricted, publication of the individual details. |
+| VAT-number | String/**Optional** | EU VAT number. |
+| Siren-number | String/**Optional** | Siren number of the company (organization). |
+| DUNS-number | String/**Optional** | UNS number of the company (organization). |
+| trademark | String/**Optional** | Only for specific TLD's, for more information [a link](https://www.cloudns.net/wiki/article/97/), trademark row. |
+| Waldec-number | String/**Optional** | Waldec number of the association. |
+| organization-type-other | String/**Optional** | Type of the organization. Optional field when the **registrant_type** is OTHER. |
+| privacy-protection | Integer/**Optional** | Privacy Protection for the domain: **0** for disabled and **1** for enabled. By default, Privacy Protection is disabled. |
+| code | Integer/**Optional** | Optional field for specific TLD's, for more information [a link](https://www.cloudns.net/wiki/article/97/), code row. |
+| publicity | Integer/**Optional** | Available for .it domain names, with possible values: **1** for yes and **0** for no. |
+| kpp | Integer/**Optional** | A nine digit number available for .ru domain names. |
+| passport-number | String/**Optional** | Available for .ru domain names. Document Number. |
+| passport-issued-by | String/**Optional** | Available for .ru domain names. Document issued by (123 police station of Moscow). |
+| passport-number | String/**Optional** | Available for .ru domain names. Passport issued date. Format: DD.MM.YYYY. |
 
 </details>
 <br />
