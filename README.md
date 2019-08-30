@@ -1918,7 +1918,7 @@ $exampleVar->subAddNewUser('password', zone-amount, mf-amount, 'IP');
 | password | String/Required | Password for the API sub user. |
 | zone-amount | Integer/Required | Amount of DNS zones, available for the sub user. |
 | mf-amount | Integer/Required | Amount of mail forwards, available for the sub user. |
-| IP | String/Required | String/**Optional** | Whitelisted IP address. If argument is skipped, access from all IP's will be allowed. |
+| IP | String/**Optional** | Whitelisted IP address. If argument is skipped, access from all IP's will be allowed. |
 
 </details>
 <br />
