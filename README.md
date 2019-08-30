@@ -1718,15 +1718,15 @@ $exampleVar->domainsResendRAAVerification('domain.tld');
 
 ```
 <?php
-$exampleVar->sslOrderNewSSL('domain.tld', '1', '2');
+$exampleVar->sslOrderNewSSL('domain.tld', period, type);
 
 ?>
 ```
-
-**where**:
-- `'domain.tld'` - domain name, which the SSL certificate will be ordered for.
-- `'1'` - the period of the SSL certificate. The value is in years.
-- `'2'` - type of the SSL certificate - **2 - Wildcard Positive SSL**, **3 - Positive SSL**.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name, which the SSL certificate will be ordered for. |
+| period | Integer/Required | Period of the SSL certificate. The value is in years. |
+| type | Integer/Required | Type of the SSL certificate - **2 - Wildcard Positive SSL**, **3 - Positive SSL**. |
 
 </details>
 <br />
@@ -1740,14 +1740,14 @@ $exampleVar->sslOrderNewSSL('domain.tld', '1', '2');
 
 ```
 <?php
-$exampleVar->sslListOrderedCertificates('1', '10');
+$exampleVar->sslListOrderedCertificates('page', rows-per-page);
 
 ?>
 ```
-
-**where**:
-- `'1'` - the page, your SSL list is currently on.
-- `'10'` - the amount of results per page. It can be **10**, **20**, **30**, **50** or **100**.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| page | String/Required | The page, your SSL list is currently on. |
+| rows-per-page | Integer/Required | Amount of results per page. It can be **10**, **20**, **30**, **50** or **100**. |
 
 </details>
 <br />
@@ -1761,13 +1761,13 @@ $exampleVar->sslListOrderedCertificates('1', '10');
 
 ```
 <?php
-$exampleVar->sslGetPagesCount('10');
+$exampleVar->sslGetPagesCount(rows-per-page);
 
 ?>
 ```
-
-**where**:
-- `'10'` - the amount of results per page. It can be **10**, **20**, **30**, **50** or **100**.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| rows-per-page | Integer/Required | Amount of results per page. It can be **10**, **20**, **30**, **50** or **100**. |
 
 </details>
 <br />
@@ -1781,13 +1781,13 @@ $exampleVar->sslGetPagesCount('10');
 
 ```
 <?php
-$exampleVar->sslInformation('ssl_id');
+$exampleVar->sslInformation(sslID);
 
 ?>
 ```
-
-**where**:
-- 'ssl_id' - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| sslID | Integer/Required | ID of the SSL certificate. It can be obtained from the **List certificates** function. |
 
 </details>
 <br />
@@ -1801,15 +1801,15 @@ $exampleVar->sslInformation('ssl_id');
 
 ```
 <?php
-$exampleVar->sslSubmitCSR('ssl_id', 'example@mail.tld', '-----BEGIN CERTIFICATE REQUEST----- ... -----END CERTIFICATE REQUEST-----');
+$exampleVar->sslSubmitCSR(sslID, 'example@mail.tld', 'csr');
 
 ?>
 ```
-
-**where**:
-- `'ssl_id'` - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
-- `'example@mail.tld'` - email address, which the owner of the certificate has access to.
-- `'-----BEGIN CERTIFICATE REQUEST----- ... -----END CERTIFICATE REQUEST-----'` - the CSR key.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| sslID | Integer/Required | ID of the SSL certificate. It can be obtained from the **List certificates** function. |
+| example@mail.tld | String/Required | Email address of the owner of the certificate |
+| 'csr' | String/Required | The CSR key. |
 
 </details>
 <br />
@@ -1823,14 +1823,14 @@ $exampleVar->sslSubmitCSR('ssl_id', 'example@mail.tld', '-----BEGIN CERTIFICATE 
 
 ```
 <?php
-$exampleVar->sslRenew('ssl_id', '1');
+$exampleVar->sslRenew('sslID', period);
 
 ?>
 ```
-
-**where**:
-- `'ssl_id'` - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
-- `'1'` - the period, which the sertificate will be renewed for.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| sslID | Integer/Required | ID of the SSL certificate. It can be obtained from the **List certificates** function. |
+| period | Integer/Required | Period, which the sertificate will be renewed for. The value is in years. |
 
 </details>
 <br />
@@ -1844,14 +1844,14 @@ $exampleVar->sslRenew('ssl_id', '1');
 
 ```
 <?php
-$exampleVar->sslChangeVerificationMail('ssl_id', 'example@mail.tld');
+$exampleVar->sslChangeVerificationMail('sslID', 'example@mail.tld');
 
 ?>
 ```
-
-**where**:
-- `'ssl_id'` - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
-- `'example@mail.tld'` - the new email address, which the owner of the certificate has access to.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| sslID | Integer/Required | ID of the SSL certificate. It can be obtained from the **List certificates** function. |
+| example@mail.tld | String/Required | New email address of the owner of the certificate |
 
 </details>
 <br />
@@ -1865,15 +1865,15 @@ $exampleVar->sslChangeVerificationMail('ssl_id', 'example@mail.tld');
 
 ```
 <?php
-$exampleVar->sslReissue('ssl_id', 'example@mail.tld', '-----BEGIN CERTIFICATE REQUEST----- ... -----END CERTIFICATE REQUEST-----');
+$exampleVar->sslReissue('sslID', 'example@mail.tld', 'csr');
 
 ?>
 ```
-
-**where**:
-- `'ssl_id'` - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
-- `'example@mail.tld'` - email address, which the owner of the certificate has access to.
-- `'-----BEGIN CERTIFICATE REQUEST----- ... -----END CERTIFICATE REQUEST-----'` - the CSR key.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| sslID | Integer/Required | ID of the SSL certificate. It can be obtained from the **List certificates** function. |
+| example@mail.tld | String/Required | Email address of the owner of the certificate |
+| 'csr' | String/Required | The CSR key. |
 
 </details>
 <br />
@@ -1891,9 +1891,9 @@ $exampleVar->sslListVerificationMails('ssl_id');
 
 ?>
 ```
-
-**where**:
-- `'ssl_id'` - the ID of the SSL certificate. It can be obtained from the **List certificates** function.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| sslID | Integer/Required | ID of the SSL certificate. It can be obtained from the **List certificates** function. |
 
 </details>
 <br />
@@ -1909,16 +1909,16 @@ $exampleVar->sslListVerificationMails('ssl_id');
 
 ```
 <?php
-$exampleVar->subAddNewUser('123456789', '0', '0', '0.0.0.0');
+$exampleVar->subAddNewUser('password', zone-amount, mf-amount, 'IP');
 
 ?>
 ```
-
-**where**:
-- `'123456789'` - the password for the API sub user.
-- `'0'` - amount of DNS zones, that the sub user will be allowed to use/create.
-- `'0'` - amount of Mail forwards, that the sub user will be allowed to use/create.
-- `'0.0.0.0'` - **optional**. The IP address to be whitelisted, which the sub user will only have access from. If no IP address is provided (the argument is skipped), access from all IP's will be allowed.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| password | String/Required | Password for the API sub user. |
+| zone-amount | Integer/Required | Amount of DNS zones, available for the sub user. |
+| mf-amount | Integer/Required | Amount of mail forwards, available for the sub user. |
+| IP | String/Required | String/**Optional** | Whitelisted IP address. If argument is skipped, access from all IP's will be allowed. |
 
 </details>
 <br />
@@ -1936,9 +1936,9 @@ $exampleVar->subGetUserInfo('id');
 
 ?>
 ```
-
-**where**:
-- `'id'` - ID of the sub user.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| id | Integer/Required | ID of the sub user. |
 
 </details>
 <br />
@@ -1952,18 +1952,18 @@ $exampleVar->subGetUserInfo('id');
 
 ```
 <?php
-$exampleVar->subGetPagesCount('10');
+$exampleVar->subGetPagesCount(rows-per-page);
 
 ?>
 ```
-
-**where**:
-- `'10'` - the amount of results per page. It can be **10**, **20**, **30**, **50** or **100**.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| rows-per-page | Integer/Required | Amount of results per page. It can be **10**, **20**, **30**, **50** or **100**. |
 
 </details>
 <br />
 
-<details><summary>4. Get pages count.</summary>
+<details><summary>4. List sub users.</summary>
 
 
 - **Description**: Shows a list with all the API sub users.
@@ -1972,14 +1972,14 @@ $exampleVar->subGetPagesCount('10');
 
 ```
 <?php
-$exampleVar->subListSubUsers('1', '10');
+$exampleVar->subListSubUsers(page, rows-per-page);
 
 ?>
 ```
-
-**where**:
-- `'1'` - the page, your sub user list is currently on.
-- `'10'` - the amount of results per page. It can be **10**, **20**, **30**, **50** or **100**.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| page | Integer/Required | The page, your sub user list is currently on. |
+| rows-per-page | Integer/Required | Amount of results per page. It can be **10**, **20**, **30**, **50** or **100**. |
 
 </details>
 <br />
@@ -1993,14 +1993,14 @@ $exampleVar->subListSubUsers('1', '10');
 
 ```
 <?php
-$exampleVar->subModifyZonesLimit('id', '0');
+$exampleVar->subModifyZonesLimit(id, zone-amount);
 
 ?>
 ```
-
-**where**:
-- `'id'` - ID of the sub user.
-- `'0'` - amount of DNS zones, that the sub user will be allowed to use/create.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| id | Integer/Required | ID of the sub user. |
+| zone-amount | Integer/Required | Amount of DNS zones, available for the sub user. |
 
 </details>
 <br />
@@ -2014,14 +2014,14 @@ $exampleVar->subModifyZonesLimit('id', '0');
 
 ```
 <?php
-$exampleVar->subModifyMailForwardsLimit('id', '0');
+$exampleVar->subModifyMailForwardsLimit(id, mf-amount);
 
 ?>
 ```
-
-**where**:
-- `'id'` - ID of the sub user.
-- `'0'` - amount of DNS zones, that the sub user will be allowed to use/create.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| id | Integer/Required | ID of the sub user. |
+| mf-amount | Integer/Required | Amount of mail forwards, available for the sub user. |
 
 </details>
 <br />
@@ -2035,14 +2035,14 @@ $exampleVar->subModifyMailForwardsLimit('id', '0');
 
 ```
 <?php
-$exampleVar->subAddIP('id', '0.0.0.0');
+$exampleVar->subAddIP(id, 'IP');
 
 ?>
 ```
-
-**where**:
-- `'id'` - ID of the sub user.
-- `'0.0.0.0'` - the IP address to be whitelisted.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| id | Integer/Required | ID of the sub user. |
+| IP | String/Required | String/Required | Whitelisted IP address. |
 
 </details>
 <br />
@@ -2056,14 +2056,14 @@ $exampleVar->subAddIP('id', '0.0.0.0');
 
 ```
 <?php
-$exampleVar->subRemoveIP('id', '0.0.0.0');
+$exampleVar->subRemoveIP('id', 'IP');
 
 ?>
 ```
-
-**where**:
-- `'id'` - ID of the sub user.
-- `'0.0.0.0'` - the IP address to be removed whitelisted.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| id | Integer/Required | ID of the sub user. |
+| IP | String/Required | String/Required | Whitelisted IP address. |
 
 </details>
 <br />
@@ -2077,14 +2077,14 @@ $exampleVar->subRemoveIP('id', '0.0.0.0');
 
 ```
 <?php
-$exampleVar->subModifyStatus('id', '0');
+$exampleVar->subModifyStatus(id, status);
 
 ?>
 ```
-
-**where**:
-- `'id'` - ID of the sub user.
-- `'0'` - sub user status - **1** for active, **0** for inactive.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| id | Integer/Required | ID of the sub user. |
+| status | Integer/Required | Sub user status - **1** for active, **0** for inactive. |
 
 </details>
 <br />
@@ -2098,14 +2098,14 @@ $exampleVar->subModifyStatus('id', '0');
 
 ```
 <?php
-$exampleVar->subModifyPassword('id', '123456789');
+$exampleVar->subModifyPassword(id, 'password');
 
 ?>
 ```
-
-**where**:
-- `'id'` - ID of the sub user.
-- `'123456789'` - the new passowrd of the API sub user.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| id | Integer/Required | ID of the sub user. |
+| password | String/Required | New password for the API sub user. |
 
 </details>
 <br />
@@ -2119,14 +2119,14 @@ $exampleVar->subModifyPassword('id', '123456789');
 
 ```
 <?php
-$exampleVar->subDelegateZone('id', 'domain.tld');
+$exampleVar->subDelegateZone(id, 'domain.tld');
 
 ?>
 ```
-
-**where**:
-- `'id'` - ID of the sub user.
-- `'domain.tld'` - name of the DNS zone, that the API sub user will gain access to.
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| id | Integer/Required | ID of the sub user. |
+| domain.tld | String/Required | Name of the DNS zone. |
 
 </details>
 <br />
@@ -2134,10 +2134,41 @@ $exampleVar->subDelegateZone('id', 'domain.tld');
 <details><summary>12. Remove zone delegation.</summary>
 
 
-- **Description**: Removes a delegated DNS zone from an API sub user.w
+- **Description**: Removes a delegated DNS zone from an API sub user.
 
-**where**:
-- `'id'` - ID of the sub user.
+- **Example**:
+
+```
+<?php
+$exampleVar->subRemoveZoneDelegation(id, 'domain.tld');
+
+?>
+```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| id | Integer/Required | ID of the sub user. |
+| domain.tld | String/Required | Name of the DNS zone. |
 
 </details>
 <br />
+
+<details><summary>13. Delete sub user.</summary>
+
+
+- **Description**: Delete a sub user.
+
+- **Example**:
+
+```
+<?php
+$exampleVar->subDeleteSubUser(id);
+
+?>
+```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| id | Integer/Required | ID of the sub user. |
+
+</details>
+<br />
+
