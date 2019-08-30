@@ -407,8 +407,6 @@ $exampleVar->dnsDeleteRecord('domain.tld', "recordID");
 | :-------------: |:-------------:  | :-----------|
 | domain.tld | String/Required | Domain name of the DNS zone |
 | recordID | Integer/Required | ID of the record. The ID can be found using the **List records** function. |
-</details>
-<br />
 
 </details>
 <br />
