@@ -468,15 +468,15 @@ class ClouDNS_SDK {
 		return $this->apiRequest(false, $url);
 	}
 
-	public function domainsRegisterNewDomain($domain_name, $tld, $period, $mail, $name, $company, $address, $city, $state, $zip, $country, $telnocc, $telno, $faxnocc = false, $faxno = false, $ns = false, $registrant_type = false, $registrant_type_id = false, $registrant_policy = false, $birth_date = false, $birth_cc = false, $birth_city = false, $birth_zip = false, $publication = false, $vat = false, $siren = false, $duns = false, $trademark = false, $waldec = false, $registrant_type_other = false, $privacy_protection = false, $code = false, $publicity = false, $kpp = false, $passport_number = false, $passport_issued_by = false, $passport_issued_on = false) {
+	public function domainsRegisterNewDomain($domain_name, $tld, $period, $mail, $name, $address, $city, $state, $zip, $country, $telnocc, $telno, $company = false, $faxnocc = false, $faxno = false, $ns = false, $registrant_type = false, $registrant_type_id = false, $registrant_policy = false, $birth_date = false, $birth_cc = false, $birth_city = false, $birth_zip = false, $publication = false, $vat = false, $siren = false, $duns = false, $trademark = false, $waldec = false, $registrant_type_other = false, $privacy_protection = false, $code = false, $publicity = false, $kpp = false, $passport_number = false, $passport_issued_by = false, $passport_issued_on = false) {
 		if (!is_array($ns) && ($ns != false)) {
 			return "Invalid ns array!";
 		}
 		$data = '&domain-name=' . $domain_name . '&tld=' . $tld . '&period=' . $period .
-			'&mail=' . $mail . '&name=' . $name . '&company=' . $company . '&address=' .
+			'&mail=' . $mail . '&name=' . $name . '&address=' .
 			$address . '&city=' . $city . '&state=' . $state . '&zip=' . $zip .
 			'&country=' . $country . '&telnocc=' . $telnocc . '&telno=' . $telno .
-			'&faxnocc=' . $faxnocc . '&faxno=' . $faxno;
+			'&company=' . $company . '&faxnocc=' . $faxnocc . '&faxno=' . $faxno;
 		if ($ns != false) {
 			foreach ($ns as $value) {
 				$data = $data . '&ns[]=' . $value;
@@ -504,14 +504,14 @@ class ClouDNS_SDK {
 		return $this->apiRequest($data, $url);
 	}
 
-	public function domainsTransferDomain($domain_name, $tld, $mail, $name, $company, $address, $city, $state, $zip, $country, $telnocc, $telno, $faxnocc = false, $faxno = false, $transfer_code = false, $registrant_type = false, $birth_date = false, $birth_cc = false, $birth_city = false, $birth_zip = false, $publication = false, $vat = false, $siren = false, $duns = false, $trademark = false, $waldec = false, $registrant_type_other = false, $privacy_protection = false, $code = false, $registrant_type_id = false, $publicity = false, $ns = false, $kpp = false, $passport_number = false, $passport_issued_by = false, $passport_issued_on = false) {
+	public function domainsTransferDomain($domain_name, $tld, $mail, $name, $address, $city, $state, $zip, $country, $telnocc, $telno, $company = false, $faxnocc = false, $faxno = false, $transfer_code = false, $registrant_type = false, $birth_date = false, $birth_cc = false, $birth_city = false, $birth_zip = false, $publication = false, $vat = false, $siren = false, $duns = false, $trademark = false, $waldec = false, $registrant_type_other = false, $privacy_protection = false, $code = false, $registrant_type_id = false, $publicity = false, $ns = false, $kpp = false, $passport_number = false, $passport_issued_by = false, $passport_issued_on = false) {
 		if (!is_array($ns) && ($ns != false)) {
 			return "Invalid ns array!";
 		}
 		$data = '&domain-name=' . $domain_name . '&tld=' . $tld . '&mail=' . $mail .
-			'&name=' . $name . '&company=' . $company . '&address=' . $address .
+			'&name=' . $name . '&address=' . $address .
 			'&city=' . $city . '&state=' . $state . '&zip=' . $zip . '&country=' . $country .
-			'&telnocc=' . $telnocc . '&telno=' . $telno . '&faxnocc=' . $faxnocc . '&faxno=' . $faxno .
+			'&telnocc=' . $telnocc . '&telno=' . $telno . '&company=' . $company . '&faxnocc=' . $faxnocc . '&faxno=' . $faxno .
 			'&transfer-code=' . $transfer_code . '&registrant_type=' . $registrant_type . '&birth_date=' . $birth_date .
 			'&birth_cc=' . $birth_cc . '&birth_city=' . $birth_city . '&birth_zip=' . $birth_zip . '&publication=' . $publication .
 			'&vat=' . $vat . '&siren=' . $siren . '&duns=' . $duns . '&trademark=' . $trademark . '&waldec=' . $waldec .
