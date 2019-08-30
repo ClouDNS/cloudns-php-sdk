@@ -55,9 +55,9 @@ $exampleVar = new ClouDNS_SDK('0000', '123456789', false);
 ?>
 ```
 
-where `0000` is the ID of the API user (atuh-id), `123456789` is the password of the API user (auth-password) and `false` indicates the type of the API user.
+where `0000` is the ID of the API user (auth-id), `123456789` is the password of the API user (auth-password) and `false` indicates the type of the API user.
 
-- For API sub-users with authorization ID (sub-auth-id):
+- For API sub-users with ID authorization (sub-auth-id):
 
 ```
 <?php
@@ -66,18 +66,18 @@ $exampleVar = new ClouDNS_SDK('0000', '123456789', true);
 ?>
 ```
 
-where `0000` is the ID of the API sub-user (sub-atuh-id), `123456789` is the password of the API sub-user (auth-password) and `true` indicates the type of the API user.
+where `0000` is the ID of the API sub-user (sub-auth-id), `123456789` is the password of the API sub-user (auth-password) and `true` indicates the type of the API user.
 
 - For API sub-users with user authorization (sub-auth-user):
 
 ```
 <?php
-$exampleVar = new ClouDNS_SDK('example@email.tld', '123456789', true);
+$exampleVar = new ClouDNS_SDK('username', '123456789', true);
 
 ?>
 ```
 
-where `example@email.com` is the email address set for the API sub-user (sub-atuh-user), `123456789` is the password of the API sub-user (auth-password) and `true` indicates the type of the API user.
+where `username` is the username set for the API sub-user (sub-auth-user), `123456789` is the password of the API sub-user (auth-password) and `true` indicates the type of the API user.
 
 ## SDK Functions
 
