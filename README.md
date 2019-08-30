@@ -18,7 +18,7 @@ The SDK is based on the methods used in the [HTTP API](https://www.cloudns.net/w
   * [DNS](#dns)
   * [Domain](#domain)
   * [SSL](#ssl)
-  * [Sub](#sub)
+  * [Sub users](#sub)
 <!--te-->
 
 ## Basic integration and requirements
@@ -1896,7 +1896,7 @@ $exampleVar->sslListVerificationMails('ssl_id');
 </details>
 <br />
 
-### Sub
+### Sub users
 
 <details><summary>1. Add new sub user.</summary>
 
