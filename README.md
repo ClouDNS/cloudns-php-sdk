@@ -32,7 +32,7 @@ These are the minimal requirements to use/implement the ClouDNS SDK:
 
 1. [Download](https://github.com/ClouDNS/cloudns-php-sdk/archive/master.zip) the SDK file.
 2. Add the SDK file to your project's folder.
-3. Include it in your project. Here is a basic exmaple on how to do so:
+3. Include it in your project. Here is a basic example on how to do so:
 
 ```
 <?php
@@ -1100,7 +1100,7 @@ $exampleVar->dnsYearlyStatistics('domain.tld');
 </details>
 <br />
 
-<details><summary>47. Staistics for the last 30 days.</summary>
+<details><summary>47. Statistics for the last 30 days.</summary>
 
 
 - **Description**: Shows statistics of the DNS zone for the last 30 days.
@@ -1520,7 +1520,7 @@ $exampleVar->domainsListNameServers('domain.tld');
 <details><summary>12. Modify name servers.</summary>
 
 
-- **Description**: Modifiy (edit) the name servers for a registered domain name.
+- **Description**: Modify (edit) the name servers for a registered domain name.
 
 - **Example**:
 
