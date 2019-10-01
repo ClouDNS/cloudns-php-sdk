@@ -1309,7 +1309,6 @@ $exampleVar->domainsRenewDomain('domain.tld', period);
 
 ?>
 ```
-**where**:
 | Name            | Data type/Status| Description |
 | :-------------: |:-------------:  | :-----------|
 | domain.tld | String/Required | Name of the domain, that will be renewed. |
@@ -1335,7 +1334,6 @@ $exampleVar->domainsTransferDomain('domain', 'tld', 'example@mail.tld', 'Name', 
 
 ?>
 ```
-**where**:
 | Name            | Data type/Status| Description |
 | :-------------: |:-------------:  | :-----------|
 | domain | String/Required | Name of the domain. |
