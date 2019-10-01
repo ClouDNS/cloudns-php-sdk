@@ -484,7 +484,7 @@ $exampleVar->dnsCopyRecords('domain.tld', 'domain2.tld', delete-records);
   
 ```
 <?php
-$exampleVar->dnsCopyRecords('domain.tld', 'format', 'records-list", delete-records);
+$exampleVar->dnsCopyRecords('domain.tld', 'format', 'records-list', delete-records);
 
 ?>
 ```
