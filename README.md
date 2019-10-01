@@ -652,7 +652,7 @@ $exampleVar->dnsDisableDynamicURL('domain.tld', recordID);
   
 ```
 <?php
-$exampleVar->dnsDisableDynamicURL('domain.tld', recordID);
+$exampleVar->dnsChangeDynamicURL('domain.tld', recordID);
 
 ?>
 ```
