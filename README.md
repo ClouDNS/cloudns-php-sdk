@@ -478,13 +478,13 @@ $exampleVar->dnsCopyRecords('domain.tld', 'domain2.tld', delete-records);
 <details><summary>17. Import records.</summary>
 
 
-- **Description**: Copies all the records from a specific zone.
+- **Description**: Imports the records of a zone.
 
 - **Example**:
   
 ```
 <?php
-$exampleVar->dnsCopyRecords('domain.tld', 'format', 'records-list', delete-records);
+$exampleVar->dnsImportRecords('domain.tld', 'format', 'records-list', delete-records);
 
 ?>
 ```
