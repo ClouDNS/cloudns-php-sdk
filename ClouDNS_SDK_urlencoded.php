@@ -25,7 +25,7 @@ class ClouDNS_SDK {
 		$init = curl_init();
 		curl_setopt($init, CURLOPT_SSL_VERIFYPEER, FALSE);
 		curl_setopt($init, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($init, CURLOPT_URL, 'https://apidev.cloudns.net/' . $api_url . '.json');
+		curl_setopt($init, CURLOPT_URL, 'https://api.cloudns.net/' . $api_url . '.json');
 		curl_setopt($init, CURLOPT_POST, true);
 		curl_setopt($init, CURLOPT_POSTFIELDS, $this->user_type . '=' . $this->id . '&auth-password=' . $this->password . $api_data);
 
