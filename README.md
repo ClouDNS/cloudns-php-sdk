@@ -198,7 +198,7 @@ $exampleVar->dnsListZones('current page', 'results per page', 'keyword');
 
 ```
 <?php
-$exampleVar->dnsGetPagesCount('results per page', 'keyword'));;
+$exampleVar->dnsGetPagesCount('results per page', 'keyword');
 
 ?>
 ```
