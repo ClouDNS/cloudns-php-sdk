@@ -159,7 +159,7 @@ class ClouDNS_SDK {
 			'&priority=' . urlencode($priority) . '&weight=' . urlencode($weight) . '&port=' . urlencode($port) . '&frame=' . urlencode($frame) . '&frame-title=' . urlencode($frame_title) .
 			'&frame-keywords=' . urlencode($frame_keywords) . '&frame-description=' . urlencode($frame_description) . '&save-path=' . urlencode($save_path) .
 			'&redirect-type=' . urlencode($redirect_type) . '&mail=' . urlencode($mail) . '&txt=' . urlencode($txt) . '&algorithm=' . urlencode($algorithm) . '&fptype=' . urlencode($fptype) .
-			'&status=' . urlencode($status) . '&geodns_location=' . urlencode($geodns_location) . '&caa_flag=' . urlencode($caa_flag) . '&caa_type=' . urlencode($caa_type) . '&caa_value=' . urlencode($caa_value);
+			'&status=' . urlencode($status) . '&geodns-location=' . urlencode($geodns_location) . '&caa_flag=' . urlencode($caa_flag) . '&caa_type=' . urlencode($caa_type) . '&caa_value=' . urlencode($caa_value);
 		$url = 'dns/add-record';
 
 		return $this->apiRequest($data, $url);
@@ -178,7 +178,7 @@ class ClouDNS_SDK {
 			'&priority=' . urlencode($priority) . '&weight=' . urlencode($weight) . '&port=' . urlencode($port) . '&frame=' . urlencode($frame) . '&frame-title=' . urlencode($frame_title) .
 			'&frame-keywords=' . urlencode($frame_keywords) . '&frame-description=' . urlencode($frame_description) . '&save-path=' . urlencode($save_path) .
 			'&redirect-type=' . urlencode($redirect_type) . '&mail=' . urlencode($mail) . '&txt=' . urlencode($txt) . '&algorithm=' . urlencode($algorithm) . '&fptype=' . urlencode($fptype) .
-			'&status=' . urlencode($status) . '&geodns_location=' . urlencode($geodns_location) . '&caa_flag=' . urlencode($caa_flag) . '&caa_type=' . urlencode($caa_type) . '&caa_value=' . urlencode($caa_value);
+			'&status=' . urlencode($status) . '&geodns-location=' . urlencode($geodns_location) . '&caa_flag=' . urlencode($caa_flag) . '&caa_type=' . urlencode($caa_type) . '&caa_value=' . urlencode($caa_value);
 		$url = 'dns/mod-record';
 
 		return $this->apiRequest($data, $url);
