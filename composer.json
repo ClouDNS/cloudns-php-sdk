@@ -5,6 +5,6 @@
     "license": "Apache-2.0",
     "require": {
         "php": ">=5.3.0",
-        "cloudns/cloudns-sdk": "*"
+        "cloudns/cloudns-sdk": "1.0.*"
     }
 }
