@@ -3,5 +3,7 @@
     "description": "ClouDNS PHP SDK for HTTP API",
     "type": "library",
     "license": "Apache-2.0",
-    "require": {}
+    "require": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
