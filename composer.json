@@ -4,8 +4,7 @@
     "type": "project",
     "license": "Apache-2.0",
     "require": {
-        "php": ">=5.3.0",
-        "cloudns/cloudns-sdk": "*"
+        "php": ">=5.3.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
