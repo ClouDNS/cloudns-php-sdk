@@ -2,10 +2,5 @@
     "name": "cloudns/cloudns-sdk",
     "description": "ClouDNS PHP SDK for HTTP API",
     "type": "project",
-    "license": "Apache-2.0",
-    "require": {
-        "php": ">=5.3.0"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "license": "Apache-2.0"
 }
