@@ -3,4 +3,11 @@
     "description": "ClouDNS PHP SDK for HTTP API",
     "type": "project",
     "license": "Apache-2.0"
-}
+},
+"require": {
+		"php": "^5.4.0 || 7.0.*",
+		php-curl-class/php-curl-class: 2.1.1
+},
+"require-dev": {
+		"phpunit/phpunit": *
+},
