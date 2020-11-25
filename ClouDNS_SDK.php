@@ -449,6 +449,40 @@ class ClouDNS_SDK {
 		return $this->apiRequest($data, $url);
 	}
 
+	public function dnsAddGroup($domain_name, $name) {
+		$data = '&domain-name=' . urlencode($domain_name) . '&name=' . urlencode($name);
+		$url = 'dns/add-group';
+
+		return $this->apiRequest($data, $url);
+	}
+
+	public function dnsChangeGroup($domain_name, $group_id) {
+		$data = '&domain-name=' . urlencode($domain_name) . '&group-id=' . urlencode($group_id);
+		$url = 'dns/change-group';
+
+		return $this->apiRequest($data, $url);
+	}
+
+	public function dnsListGroups() {
+		$url = 'dns/list-groups';
+
+		return $this->apiRequest(false, $url);
+	}
+
+	public function dnsDeleteGroup($group_id) {
+		$data = '&group-id=' . urlencode($group_id);
+		$url = 'dns/delete-group';
+
+		return $this->apiRequest($data, $url);
+	}
+
+	public function dnsRenameGroup($group_id, $new_name) {
+		$data = '&group-id=' . urlencode($group_id) . '&new-name=' . urlencode($new_name);
+		$url = 'dns/rename-group';
+
+		return $this->apiRequest($data, $url);
+	}
+
 	public function domainCheckAvailability($name, $tld = array()) {
 		$data = '&name=' . urlencode($name);
 		if (is_array($tld)) {

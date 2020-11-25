@@ -1200,6 +1200,106 @@ $exampleVar->dnsListGeoDNSLocations('domain.tld');
 </details>
 <br />
 
+<details><summary>52. Add group.</summary>
+
+
+- **Description**: Create new group and add a certain DNS zone in the group instantly.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsAddGroup('domain.tld', 'name');
+
+?>
+```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name you wish to add in the group. |
+| name | String/Required | Name of the group. |
+
+</details>
+<br />
+
+<details><summary>53. Change group.</summary>
+
+
+- **Description**: Change the group which a DNS zone belongs to.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsAddGroup('domain.tld', 'group-id');
+
+?>
+```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| domain.tld | String/Required | Domain name of the zone. |
+| group-id | String/Required | ID of the relevant group. |
+
+</details>
+<br />
+
+<details><summary>54. List groups.</summary>
+
+
+- **Description**: Gets a list with all groups you have added for your DNS zones.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsListGroups();
+
+?>
+```
+
+</details>
+<br />
+
+<details><summary>55. Delete group.</summary>
+
+
+- **Description**: Delete a certain group of yours.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsDeleteGroup('group-id');
+
+?>
+```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| group-id | String/Required | ID of the relevant group. |
+
+</details>
+<br />
+
+<details><summary>56. Rename group.</summary>
+
+
+- **Description**: Rename a certain group of yours.
+
+- **Example**:
+  
+```
+<?php
+$exampleVar->dnsRenameGroup('group-id', 'new-name);
+
+?>
+```
+| Name            | Data type/Status| Description |
+| :-------------: |:-------------:  | :-----------|
+| group-id | String/Required | ID of the relevant group. |
+| new-name | String/Required | New name for the group. |
+
+</details>
+<br />
+
 ### Domain
 
 <details><summary>1. Check availability.</summary>
