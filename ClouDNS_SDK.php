@@ -81,7 +81,7 @@ class ClouDNS_SDK {
 
 	public function dnsListZones($page, $rows_per_page, $search = false, $groupId = "") {
 		$data = '&page=' . urlencode($page) . '&rows-per-page=' . urlencode($rows_per_page) .
-			'&search=' . urlencode($search) . ($groupId != "" ? '&group-id='.$groupId : "");
+            ($search !== false ? '&search=' . urlencode($search) : "") . ($groupId != "" ? '&group-id='.urlencode($groupId) : "");
 		$url = 'dns/list-zones';
 
 		return $this->apiRequest($data, $url);
