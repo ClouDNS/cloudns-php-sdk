@@ -1,5 +1,7 @@
 <?php
 
+namespace ClouDNS;
+
 class ClouDNS_SDK {
 
 	protected $id;
