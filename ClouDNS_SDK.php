@@ -261,7 +261,7 @@ class ClouDNS_SDK {
 
 	public function dnsImportViaTransfer($domain_name, $server) {
 		$data = '&domain-name=' . urlencode($domain_name) . '&server=' . urlencode($server);
-		$url = 'dns/change-dynamic-url';
+		$url = 'dns/axfr-import';
 
 		return $this->apiRequest($data, $url);
 	}
