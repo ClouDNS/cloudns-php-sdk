@@ -30,6 +30,7 @@ These are the minimal requirements to use/implement the ClouDNS SDK:
 
 ### Installation
 
+#### Download
 1. [Download](https://github.com/ClouDNS/cloudns-php-sdk/archive/master.zip) the SDK file.
 2. Add the SDK file to your project's folder.
 3. Include it in your project. Here is a basic example on how to do so:
@@ -42,6 +43,18 @@ include "ClouDNS_SDK.php";
 
 ?>
 ```
+
+#### composer
+1. install using `composer require cloudns/cloudns-sdk`
+
+```php
+<?php
+
+require_once(__DIR__."/vendor/autoload.php");
+
+use ClouDNS\ClouDNS_SDK;
+```
+
 ### Initialization
 
 To gain access and use the methods, included in the SDK, the HTTP API credentials needs to be entered and verified:
