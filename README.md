@@ -433,7 +433,7 @@ $exampleVar->dnsDeleteRecord('domain.tld', "recordID");
   
  ```
 <?php
-$exampleVar->dnsModifyRecord("domain.tld", "recordID", "host", "record", ttl, priority, weight, port, frame, "frame-title", "frame-keywords", "frame-description", save-path, redirect-type, "mail", "txt", algorithm, fptype, geodns-location, caa-flag, "caa-type", "caa-value");
+$exampleVar->dnsModifyRecord("domain.tld", "recordID", "host", "record", ttl, priority, weight, port, frame, "frame-title", "frame-keywords", "frame-description", save-path, redirect-type, "mail", "txt", algorithm, fptype, status, geodns-location, caa-flag, "caa-type", "caa-value");
 
 ?>
 ```
