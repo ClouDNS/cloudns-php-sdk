@@ -155,13 +155,114 @@ class ClouDNS_SDK {
 		return $this->apiRequest($data, $url);
 	}
 
-	public function dnsAddRecord($domain_name, $record_type, $host, $record, $ttl, $priority = false, $weight = false, $port = false, $frame = false, $frame_title = false, $frame_keywords = false, $frame_description = false, $save_path = false, $redirect_type = false, $mail = false, $txt = false, $algorithm = false, $fptype = false, $status = true, $geodns_location = false, $caa_flag = false, $caa_type = false, $caa_value = false) {
+	public function dnsAddRecord(
+        $domain_name,
+        $record_type,
+        $host,
+        $record,
+        $ttl,
+        $priority = false,
+        $weight = false,
+        $port = false,
+        $frame = false,
+        $frame_title = false,
+        $frame_keywords = false,
+        $frame_description = false,
+        $save_path = false,
+        $redirect_type = false,
+        $mail = false,
+        $txt = false,
+        $algorithm = false,
+        $fptype = false,
+        $status = true,
+        $geodns_location = false,
+        $caa_flag = false,
+        $caa_type = false,
+        $caa_value = false,
+        $mobile_meta = false,
+        $tlsa_usage = false,
+        $tlsa_selector = false,
+        $tlsa_matching_type = false,
+        $key_tag = false,
+        $digest_type = false,
+        $order = false,
+        $pref = false,
+        $flag = false,
+        $params = false,
+        $regexp = false,
+        $replace = false,
+        $cert_type = false,
+        $cert_key_tag = false,
+        $cert_algorithm = false,
+        $lat_deg = false,
+        $lat_min = false,
+        $lat_sec = false,
+        $lat_dir = false,
+        $long_deg = false,
+        $long_min = false,
+        $long_sec = false,
+        $long_dir = false,
+        $altitude = false,
+        $size = false,
+        $h_precision = false,
+        $v_precision = false,
+        $cpu = false,
+        $os = false
+    ) {
 
-		$data = '&domain-name=' . urlencode($domain_name) . '&record-type=' . urlencode($record_type) . '&host=' . urlencode($host) . '&record=' . urlencode($record) . '&ttl=' . urlencode($ttl) .
-			'&priority=' . urlencode($priority) . '&weight=' . urlencode($weight) . '&port=' . urlencode($port) . '&frame=' . urlencode($frame) . '&frame-title=' . urlencode($frame_title) .
-			'&frame-keywords=' . urlencode($frame_keywords) . '&frame-description=' . urlencode($frame_description) . '&save-path=' . urlencode($save_path) .
-			'&redirect-type=' . urlencode($redirect_type) . '&mail=' . urlencode($mail) . '&txt=' . urlencode($txt) . '&algorithm=' . urlencode($algorithm) . '&fptype=' . urlencode($fptype) .
-			'&status=' . urlencode($status) . '&geodns-location=' . urlencode($geodns_location) . '&caa_flag=' . urlencode($caa_flag) . '&caa_type=' . urlencode($caa_type) . '&caa_value=' . urlencode($caa_value);
+        $data = '&domain-name=' . urlencode($domain_name) .
+            '&record-type=' . urlencode($record_type) .
+            '&host=' . urlencode($host) .
+            '&record=' . urlencode($record) .
+            '&ttl=' . urlencode($ttl) .
+            '&priority=' . urlencode($priority) .
+            '&weight=' . urlencode($weight) .
+            '&port=' . urlencode($port) .
+            '&frame=' . urlencode($frame) .
+            '&frame-title=' . urlencode($frame_title) .
+            '&frame-keywords=' . urlencode($frame_keywords) .
+            '&frame-description=' . urlencode($frame_description) .
+            '&save-path=' . urlencode($save_path) .
+            '&redirect-type=' . urlencode($redirect_type) .
+            '&mail=' . urlencode($mail) .
+            '&txt=' . urlencode($txt) .
+            '&algorithm=' . urlencode($algorithm) .
+            '&fptype=' . urlencode($fptype) .
+            '&status=' . urlencode($status) .
+            '&geodns-location=' . urlencode($geodns_location) .
+            '&caa_flag=' . urlencode($caa_flag) .
+            '&caa_type=' . urlencode($caa_type) .
+            '&caa_value=' . urlencode($caa_value) .
+            '&mobile-meta=' . urlencode($mobile_meta) .
+            '&tlsa_usage=' . urlencode($tlsa_usage) .
+            '&tlsa_selector=' . urlencode($tlsa_selector) .
+            '&tlsa_matching_type=' . urlencode($tlsa_matching_type) .
+            '&key-tag=' . urlencode($key_tag) .
+            '&digest-type=' . urlencode($digest_type) .
+            '&order=' . urlencode($order) .
+            '&pref=' . urlencode($pref) .
+            '&flag=' . urlencode($flag) .
+            '&params=' . urlencode($params) .
+            '&regexp=' . urlencode($regexp) .
+            '&replace=' . urlencode($replace) .
+            '&cert-type=' . urlencode($cert_type) .
+            '&cert-key-tag=' . urlencode($cert_key_tag) .
+            '&cert-algorithm=' . urlencode($cert_algorithm) .
+            '&lat-deg=' . urlencode($lat_deg) .
+            '&lat-min=' . urlencode($lat_min) .
+            '&lat-sec=' . urlencode($lat_sec) .
+            '&lat-dir=' . urlencode($lat_dir) .
+            '&long-deg=' . urlencode($long_deg) .
+            '&long-min=' . urlencode($long_min) .
+            '&long-sec=' . urlencode($long_sec) .
+            '&long-dir=' . urlencode($long_dir) .
+            '&altitude=' . urlencode($altitude) .
+            '&size=' . urlencode($size) .
+            '&h-precision=' . urlencode($h_precision) .
+            '&v-precision=' . urlencode($v_precision) .
+            '&cpu=' . urlencode($cpu) .
+            '&os=' . urlencode($os);
+
 		$url = 'dns/add-record';
 
 		return $this->apiRequest($data, $url);
@@ -174,14 +275,115 @@ class ClouDNS_SDK {
 		return $this->apiRequest($data, $url);
 	}
 
-	public function dnsModifyRecord($domain_name, $record_id, $host, $record, $ttl, $priority = false, $weight = false, $port = false, $frame = false, $frame_title = false, $frame_keywords = false, $frame_description = false, $save_path = false, $redirect_type = false, $mail = false, $txt = false, $algorithm = false, $fptype = false, $status = false, $geodns_location = false, $caa_flag = false, $caa_type = false, $caa_value = false) {
+	public function dnsModifyRecord(
+        $domain_name,
+        $record_id,
+        $host,
+        $record,
+        $ttl,
+        $priority = false,
+        $weight = false,
+        $port = false,
+        $frame = false,
+        $frame_title = false,
+        $frame_keywords = false,
+        $frame_description = false,
+        $save_path = false,
+        $redirect_type = false,
+        $mail = false,
+        $txt = false,
+        $algorithm = false,
+        $fptype = false,
+        $status = false,
+        $geodns_location = false,
+        $caa_flag = false,
+        $caa_type = false,
+        $caa_value = false,
+        $mobile_meta = false,
+        $tlsa_usage = false,
+        $tlsa_selector = false,
+        $tlsa_matching_type = false,
+        $key_tag = false,
+        $digest_type = false,
+        $order = false,
+        $pref = false,
+        $flag = false,
+        $params = false,
+        $regexp = false,
+        $replace = false,
+        $cert_type = false,
+        $cert_key_tag = false,
+        $cert_algorithm = false,
+        $lat_deg = false,
+        $lat_min = false,
+        $lat_sec = false,
+        $lat_dir = false,
+        $long_deg = false,
+        $long_min = false,
+        $long_sec = false,
+        $long_dir = false,
+        $altitude = false,
+        $size = false,
+        $h_precision = false,
+        $v_precision = false,
+        $cpu = false,
+        $os = false
+    ) {
 
-		$data = '&domain-name=' . urlencode($domain_name) . '&record-id=' . urlencode($record_id) . '&host=' . urlencode($host) . '&record=' . urlencode($record) . '&ttl=' . urlencode($ttl) .
-			'&priority=' . urlencode($priority) . '&weight=' . urlencode($weight) . '&port=' . urlencode($port) . '&frame=' . urlencode($frame) . '&frame-title=' . urlencode($frame_title) .
-			'&frame-keywords=' . urlencode($frame_keywords) . '&frame-description=' . urlencode($frame_description) . '&save-path=' . urlencode($save_path) .
-			'&redirect-type=' . urlencode($redirect_type) . '&mail=' . urlencode($mail) . '&txt=' . urlencode($txt) . '&algorithm=' . urlencode($algorithm) . '&fptype=' . urlencode($fptype) .
-			'&status=' . urlencode($status) . '&geodns-location=' . urlencode($geodns_location) . '&caa_flag=' . urlencode($caa_flag) . '&caa_type=' . urlencode($caa_type) . '&caa_value=' . urlencode($caa_value);
-		$url = 'dns/mod-record';
+        $data = '&domain-name=' . urlencode($domain_name) .
+            '&record-id=' . urlencode($record_id) .
+            '&host=' . urlencode($host) .
+            '&record=' . urlencode($record) .
+            '&ttl=' . urlencode($ttl) .
+            '&priority=' . urlencode($priority) .
+            '&weight=' . urlencode($weight) .
+            '&port=' . urlencode($port) .
+            '&frame=' . urlencode($frame) .
+            '&frame-title=' . urlencode($frame_title) .
+            '&frame-keywords=' . urlencode($frame_keywords) .
+            '&frame-description=' . urlencode($frame_description) .
+            '&save-path=' . urlencode($save_path) .
+            '&redirect-type=' . urlencode($redirect_type) .
+            '&mail=' . urlencode($mail) .
+            '&txt=' . urlencode($txt) .
+            '&algorithm=' . urlencode($algorithm) .
+            '&fptype=' . urlencode($fptype) .
+            '&status=' . urlencode($status) .
+            '&geodns-location=' . urlencode($geodns_location) .
+            '&caa_flag=' . urlencode($caa_flag) .
+            '&caa_type=' . urlencode($caa_type) .
+            '&caa_value=' . urlencode($caa_value) .
+            '&mobile-meta=' . urlencode($mobile_meta) .
+            '&tlsa_usage=' . urlencode($tlsa_usage) .
+            '&tlsa_selector=' . urlencode($tlsa_selector) .
+            '&tlsa_matching_type=' . urlencode($tlsa_matching_type) .
+            '&key-tag=' . urlencode($key_tag) .
+            '&digest-type=' . urlencode($digest_type) .
+            '&order=' . urlencode($order) .
+            '&pref=' . urlencode($pref) .
+            '&flag=' . urlencode($flag) .
+            '&params=' . urlencode($params) .
+            '&regexp=' . urlencode($regexp) .
+            '&replace=' . urlencode($replace) .
+            '&cert-type=' . urlencode($cert_type) .
+            '&cert-key-tag=' . urlencode($cert_key_tag) .
+            '&cert-algorithm=' . urlencode($cert_algorithm) .
+            '&lat-deg=' . urlencode($lat_deg) .
+            '&lat-min=' . urlencode($lat_min) .
+            '&lat-sec=' . urlencode($lat_sec) .
+            '&lat-dir=' . urlencode($lat_dir) .
+            '&long-deg=' . urlencode($long_deg) .
+            '&long-min=' . urlencode($long_min) .
+            '&long-sec=' . urlencode($long_sec) .
+            '&long-dir=' . urlencode($long_dir) .
+            '&altitude=' . urlencode($altitude) .
+            '&size=' . urlencode($size) .
+            '&h-precision=' . urlencode($h_precision) .
+            '&v-precision=' . urlencode($v_precision) .
+            '&cpu=' . urlencode($cpu) .
+            '&os=' . urlencode($os);
+
+        $url = 'dns/mod-record';
 
 		return $this->apiRequest($data, $url);
 	}
@@ -237,11 +439,11 @@ class ClouDNS_SDK {
 
 		return $this->apiRequest($data, $url);
 	}
-	
+
 	public function dnsGetDynamicURL ($domain_name, $record_id) {
 		$data = '&domain-name=' . urlencode($domain_name) . '&record-id=' . urlencode($record_id);
 		$url = 'dns/get-dynamic-url';
-		
+
 		return $this->apiRequest($data, $url);
 	}
 
@@ -300,7 +502,7 @@ class ClouDNS_SDK {
 
 		return $this->apiRequest(false, $url);
 	}
-	
+
 	public function dnsAvailableMailForwards() {
 		$url = 'dns/get-mailforward-servers';
 
@@ -560,7 +762,7 @@ class ClouDNS_SDK {
 		} else {
 			$data = $data . '&ns=' . urlencode($ns);
 		}
-		$data = $data . '&kpp=' . urlencode($kpp) . '&passport_number=' . urlencode($passport_number) . '&passport_issued_by=' . urlencode($passport_issued_by) . 
+		$data = $data . '&kpp=' . urlencode($kpp) . '&passport_number=' . urlencode($passport_number) . '&passport_issued_by=' . urlencode($passport_issued_by) .
 			'&passport_issued_on=' . urlencode($passport_issued_on);
 		$url = 'domains/order-transfer-domain';
 
@@ -597,8 +799,8 @@ class ClouDNS_SDK {
 
 	public function domainsModifyContacts($domain_name, $type, $mail, $name, $company, $address1, $city, $state, $zip, $country, $telnocc, $telno, $address2 = false, $address3 = false, $faxnocc = false, $faxno = false) {
 		$data = '&domain-name=' . urlencode($domain_name) . '&type=' . urlencode($type) . '&mail=' . urlencode($mail) . '&name=' . urlencode($name) . '&company=' .
-			urlencode($company) . '&address1=' . urlencode($address1) . '&city=' . urlencode($city) . '&state=' . urlencode($state) . '&zip=' . urlencode($zip) . 
-			'&country=' . urlencode($country) . '&telnocc=' . urlencode($telnocc) . '&telno=' . urlencode($telno) . '&address2=' . urlencode($address2) . 
+			urlencode($company) . '&address1=' . urlencode($address1) . '&city=' . urlencode($city) . '&state=' . urlencode($state) . '&zip=' . urlencode($zip) .
+			'&country=' . urlencode($country) . '&telnocc=' . urlencode($telnocc) . '&telno=' . urlencode($telno) . '&address2=' . urlencode($address2) .
 			'&address3=' . urlencode($address3) . '&faxnocc=' . urlencode($faxnocc) . '&faxno=' . urlencode($faxno);
 		$url = 'domains/set-contacts';
 
@@ -754,7 +956,7 @@ class ClouDNS_SDK {
 	public function subAddNewUser($password, $zones, $mail_forwards, $ip = false) {
 		$data = '&password=' . urlencode($password) . '&zones=' . urlencode($zones) . '&mail-forwards=' . urlencode($mail_forwards) . '&ip=' . urlencode($ip);
 		$url = 'sub-users/add';
-	
+
 		return $this->apiRequest($data, $url);
 	}
 
