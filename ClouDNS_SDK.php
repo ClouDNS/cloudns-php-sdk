@@ -7,8 +7,9 @@ class ClouDNS_SDK {
 	protected $id;
 	protected $password;
 	protected $user_type;
+	protected $ssl_verify_peer;
 
-	function __construct($auth_id, $auth_password, $is_subuser = false) {
+	function __construct($auth_id, $auth_password, $is_subuser = false, $ssl_verify_peer = true) {
 		if ($is_subuser == false) {
 			$this->user_type = 'auth-id';
 		} else {
@@ -20,12 +21,13 @@ class ClouDNS_SDK {
 		}
 		$this->id = $auth_id;
 		$this->password = $auth_password;
+		$this->ssl_verify_peer = $ssl_verify_peer;
 	}
 
 	private function apiRequest($api_data, $api_url) {
 
 		$init = curl_init();
-		curl_setopt($init, CURLOPT_SSL_VERIFYPEER, FALSE);
+		curl_setopt($init, CURLOPT_SSL_VERIFYPEER, $this->ssl_verify_peer);
 		curl_setopt($init, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($init, CURLOPT_URL, 'https://api.cloudns.net/' . $api_url . '.json');
 		curl_setopt($init, CURLOPT_POST, true);
