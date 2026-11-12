@@ -92,6 +92,61 @@ $exampleVar = new ClouDNS_SDK('username', '123456789', true);
 
 where `username` is the username set for the API sub-user (sub-auth-user), `123456789` is the password of the API sub-user (auth-password) and `true` indicates the type of the API user.
 
+### HTTP timeouts and local errors
+
+The connection timeout defaults to 10 seconds and the total request timeout to
+60 seconds. Configure both on an existing instance without changing constructor
+arguments:
+
+```php
+$exampleVar->setTimeouts(5, 30);
+$result = $exampleVar->apiLogin();
+$error = $exampleVar->getLastError();
+```
+
+Timeouts must be non-negative integers in seconds. Invalid settings throw
+`InvalidArgumentException` without changing either timeout. Zero uses cURL's
+behavior: 0 for the connection timeout uses its default (normally 300 seconds),
+and 0 for the total timeout disables that limit. The total limit includes the
+connection phase. No automatic retries are performed.
+
+Transport failures and invalid JSON return `null`, preserving the existing
+return convention. `getLastError()` returns `null` or an array containing `type`,
+`code` and `message`. Types are `transport` (cURL error number), `http` (HTTP
+status), and `json` (`json_last_error()` code). Initialization failures use code
+0. Messages contain no credentials or response bodies. The error is reset at
+the beginning of each HTTP request; methods that return before making a request
+do not change it.
+
+Every valid JSON value retains its original decoded return value, including
+API failure objects, strings, booleans and JSON `null`. HTTP statuses outside
+200–299 also set a local `http` error while retaining valid JSON bodies for
+compatibility. Invalid JSON takes precedence over an HTTP status error.
+Callers should check `getLastError()` as well as the API result. A normal API
+failure in a valid HTTP 2xx JSON response remains an API result, not a local
+transport error.
+
+TLS peer verification remains enabled by default. The existing explicit fourth
+constructor argument is preserved. Credentials are form-encoded separately;
+operation parameters keep their existing encoding and repeated array syntax.
+
+### Offline tests
+
+Run `php tests/http-layer.php`. The tests replace the SDK's namespace-local
+cURL functions with mocks; they never open sockets or require API credentials.
+The mocks also supply cURL constants when the extension is absent. Production
+use still requires ext-curl and JSON support.
+
+`tests/fixtures/public-api.json` records public signatures and request/return
+snapshots from upstream commit `55a3e297db6f2de9a0bc2a284be6eb0a1e33948e`.
+Each operation is checked with required arguments only and with all arguments,
+using dummy values. To reproduce the fixture with a modern PHP CLI:
+
+```sh
+git show 55a3e297db6f2de9a0bc2a284be6eb0a1e33948e:ClouDNS_SDK.php > /tmp/cloudns-original.php
+php tests/http-layer.php --snapshot-original /tmp/cloudns-original.php > tests/fixtures/public-api.json
+```
+
 ## SDK Functions
 
 Here you will find examples for every method, used in the SDK. The methods are presented as PHP function calls and are divided into four main categories - DNS (for DNS zones, records, etc.), Domain (for registered domains), SSL (for SSL certificates) and Sub (for sub-users). They can be used only after a successful login to the API.

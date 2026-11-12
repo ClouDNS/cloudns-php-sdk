@@ -8,6 +8,9 @@ class ClouDNS_SDK {
 	protected $password;
 	protected $user_type;
 	protected $ssl_verify_peer;
+	protected $connect_timeout = 10;
+	protected $timeout = 60;
+	protected $last_error = null;
 
 	function __construct($auth_id, $auth_password, $is_subuser = false, $ssl_verify_peer = true) {
 		if ($is_subuser == false) {
@@ -24,20 +27,67 @@ class ClouDNS_SDK {
 		$this->ssl_verify_peer = $ssl_verify_peer;
 	}
 
+	/** Set connection and total timeouts in seconds; 0 uses cURL's defaults. */
+	public function setTimeouts($connect_timeout, $timeout) {
+		if (!is_int($connect_timeout) || $connect_timeout < 0 || !is_int($timeout) || $timeout < 0) {
+			throw new \InvalidArgumentException('Timeouts must be non-negative integers.');
+		}
+		$this->connect_timeout = $connect_timeout;
+		$this->timeout = $timeout;
+		return $this;
+	}
+
+	/** Local HTTP/JSON error for the most recent request, or null. */
+	public function getLastError() {
+		return $this->last_error;
+	}
+
 	private function apiRequest($api_data, $api_url) {
+		$this->last_error = null;
 
 		$init = curl_init();
-		curl_setopt($init, CURLOPT_SSL_VERIFYPEER, $this->ssl_verify_peer);
-		curl_setopt($init, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($init, CURLOPT_URL, 'https://api.cloudns.net/' . $api_url . '.json');
-		curl_setopt($init, CURLOPT_POST, true);
-		curl_setopt($init, CURLOPT_POSTFIELDS, $this->user_type . '=' . $this->id . '&auth-password=' . $this->password . $api_data);
+		if ($init === false) {
+			$this->last_error = array('type' => 'transport', 'code' => 0, 'message' => 'Unable to initialize cURL.');
+			return null;
+		}
+		// The operation parameters are already encoded by the public methods.
+		$credentials = http_build_query(array($this->user_type => $this->id, 'auth-password' => $this->password), '', '&');
+		$configured = curl_setopt_array($init, array(
+			CURLOPT_SSL_VERIFYPEER => $this->ssl_verify_peer,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_URL => 'https://api.cloudns.net/' . $api_url . '.json',
+			CURLOPT_POST => true,
+			CURLOPT_POSTFIELDS => $credentials . $api_data,
+			CURLOPT_CONNECTTIMEOUT => $this->connect_timeout,
+			CURLOPT_TIMEOUT => $this->timeout
+		));
+		if (!$configured) {
+			$this->last_error = array('type' => 'transport', 'code' => curl_errno($init), 'message' => 'Unable to configure cURL.');
+			curl_close($init);
+			return null;
+		}
 
 		$content = curl_exec($init);
-
+		$errno = curl_errno($init);
+		$http_status = curl_getinfo($init, CURLINFO_HTTP_CODE);
 		curl_close($init);
 
-		return json_decode($content, true);
+		if ($content === false) {
+			// Do not expose credentials or server response bodies in diagnostics.
+			$this->last_error = array('type' => 'transport', 'code' => $errno, 'message' => 'HTTP transport failed.');
+			return null;
+		}
+		if ($http_status < 200 || $http_status >= 300) {
+			$this->last_error = array('type' => 'http', 'code' => $http_status, 'message' => 'Unexpected HTTP status.');
+		}
+		$result = json_decode($content, true);
+		// PHP 5.3 reports no JSON error for an empty string.
+		$json_error = $content === '' ? JSON_ERROR_SYNTAX : json_last_error();
+		if ($json_error !== JSON_ERROR_NONE) {
+			$this->last_error = array('type' => 'json', 'code' => $json_error, 'message' => 'Invalid JSON response.');
+			return null;
+		}
+		return $result;
 	}
 
 	public function apiLogin() {
